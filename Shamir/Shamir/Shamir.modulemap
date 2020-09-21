@@ -1,0 +1,7 @@
+framework module Shamir {
+  umbrella header "Shamir.h"
+
+  export *
+  module * { export * }
+
+}
