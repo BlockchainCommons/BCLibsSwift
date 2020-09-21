@@ -15,7 +15,7 @@ The frameworks that have the "C" prefix wrap the C libraries themselves. The one
 
 The C libraries have each other as dependencies, so to use any of these frameworks you must include it and any of its dependencies.
 
-* `CCryptoCase` has no dependencies
+* `CCryptoBase` has no dependencies
 * `CShamir` depends on `CCryptoBase`
 * `CSSKR` depends on `CShamir` and `CCryptoBase`
 
