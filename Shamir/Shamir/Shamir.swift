@@ -1,8 +1,8 @@
 import Foundation
 import CShamir
 
-struct ShamirError: Error {
-    let message: String
+public struct ShamirError: Error {
+    public let message: String
     init(_ message: String) { self.message = message }
 }
 
@@ -26,6 +26,11 @@ public typealias RandomFunc = (Int) -> Data
 public struct ShamirShare {
     public let index: Int
     public var data: [UInt8]
+
+    public init(index: Int, data: [UInt8]) {
+        self.index = index
+        self.data = data
+    }
 }
 
 public func splitSecret(threshold: Int, shareCount: Int, secret: Data, randomGenerator: @escaping RandomFunc) -> [ShamirShare] {

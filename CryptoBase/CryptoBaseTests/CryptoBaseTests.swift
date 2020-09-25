@@ -1,5 +1,5 @@
 import XCTest
-@testable import CryptoBase
+import CryptoBase
 
 class CryptoBaseTests: XCTestCase {
     func testSHA() {

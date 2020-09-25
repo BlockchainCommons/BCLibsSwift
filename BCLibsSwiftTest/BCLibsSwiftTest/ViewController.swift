@@ -8,12 +8,12 @@
 import UIKit
 
 import CCryptoBase
-//import CShamir
-//import CSSKR
+import CShamir
+import CSSKR
 
 import CryptoBase
-//import Shamir
-//import SSKR
+import Shamir
+import SSKR
 
 class ViewController: UIViewController {
 
@@ -21,7 +21,5 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
 

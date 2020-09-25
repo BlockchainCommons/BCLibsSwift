@@ -1,5 +1,5 @@
 import XCTest
-@testable import SSKR
+import SSKR
 
 extension SSKRShare: CustomStringConvertible {
     public var description: String {

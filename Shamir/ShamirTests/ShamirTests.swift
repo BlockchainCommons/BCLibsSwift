@@ -1,5 +1,5 @@
 import XCTest
-@testable import Shamir
+import Shamir
 
 extension ShamirShare: CustomStringConvertible {
     public var description: String {

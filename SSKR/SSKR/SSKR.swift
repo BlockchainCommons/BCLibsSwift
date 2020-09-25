@@ -1,9 +1,9 @@
 import Foundation
 import CSSKR
 
-struct SSKRError: Error {
-    let message: String
-    init(_ message: String) { self.message = message }
+public struct SSKRError: Error {
+    public let message: String
+    public init(_ message: String) { self.message = message }
 }
 
 class Wrapper<T> {
@@ -35,6 +35,10 @@ public func SSKRCountShares(groupThreshold: Int, groups: [SSKRGroupDescriptor]) 
 
 public struct SSKRShare {
     public let data: [UInt8]
+
+    public init(data: [UInt8]) {
+        self.data = data
+    }
 }
 
 public func SSKRGenerate(groupThreshold: Int, groups: [SSKRGroupDescriptor], secret: Data, randomGenerator: @escaping RandomFunc) throws -> [[SSKRShare]] {
