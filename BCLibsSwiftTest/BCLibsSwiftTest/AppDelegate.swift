@@ -7,6 +7,14 @@
 
 import UIKit
 
+import CCryptoBase
+import CShamir
+import CSSKR
+
+import CryptoBase
+import Shamir
+import SSKR
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

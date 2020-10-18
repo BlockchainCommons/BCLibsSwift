@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		032939A9253BBF0300E52AD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032939A8253BBF0300E52AD5 /* AppDelegate.swift */; };
+		032939AB253BBF0300E52AD5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032939AA253BBF0300E52AD5 /* ContentView.swift */; };
+		032939AD253BBF0400E52AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 032939AC253BBF0400E52AD5 /* Assets.xcassets */; };
+		032939B0253BBF0400E52AD5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 032939AF253BBF0400E52AD5 /* Preview Assets.xcassets */; };
+		032939B3253BBF0400E52AD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 032939B1253BBF0400E52AD5 /* Main.storyboard */; };
+		032939C7253BBF1E00E52AD5 /* CCryptoBase.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C257251B069B00BC8B3E /* CCryptoBase.xcframework */; };
+		032939C8253BBF1E00E52AD5 /* CCryptoBase.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C257251B069B00BC8B3E /* CCryptoBase.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		032939CA253BBF2000E52AD5 /* CryptoBase.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C254251B069B00BC8B3E /* CryptoBase.xcframework */; };
+		032939CB253BBF2000E52AD5 /* CryptoBase.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C254251B069B00BC8B3E /* CryptoBase.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		032939CC253BBF2100E52AD5 /* CShamir.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C253251B069B00BC8B3E /* CShamir.xcframework */; };
+		032939CD253BBF2100E52AD5 /* CShamir.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C253251B069B00BC8B3E /* CShamir.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		032939CE253BBF2200E52AD5 /* CSSKR.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C255251B069B00BC8B3E /* CSSKR.xcframework */; };
+		032939CF253BBF2200E52AD5 /* CSSKR.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C255251B069B00BC8B3E /* CSSKR.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		032939D0253BBF2400E52AD5 /* Shamir.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C252251B069B00BC8B3E /* Shamir.xcframework */; };
+		032939D1253BBF2400E52AD5 /* Shamir.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C252251B069B00BC8B3E /* Shamir.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		032939D2253BBF2500E52AD5 /* SSKR.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C256251B069B00BC8B3E /* SSKR.xcframework */; };
+		032939D3253BBF2500E52AD5 /* SSKR.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C256251B069B00BC8B3E /* SSKR.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03D3C258251B069B00BC8B3E /* Shamir.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C252251B069B00BC8B3E /* Shamir.xcframework */; };
 		03D3C259251B069B00BC8B3E /* Shamir.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C252251B069B00BC8B3E /* Shamir.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03D3C25A251B069B00BC8B3E /* CShamir.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C253251B069B00BC8B3E /* CShamir.xcframework */; };
@@ -28,6 +45,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		032939C9253BBF1E00E52AD5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				032939C8253BBF1E00E52AD5 /* CCryptoBase.xcframework in Embed Frameworks */,
+				032939CD253BBF2100E52AD5 /* CShamir.xcframework in Embed Frameworks */,
+				032939CF253BBF2200E52AD5 /* CSSKR.xcframework in Embed Frameworks */,
+				032939CB253BBF2000E52AD5 /* CryptoBase.xcframework in Embed Frameworks */,
+				032939D3253BBF2500E52AD5 /* SSKR.xcframework in Embed Frameworks */,
+				032939D1253BBF2400E52AD5 /* Shamir.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03D3C264251B069C00BC8B3E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,6 +80,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		032939A6253BBF0300E52AD5 /* BCLibsSwiftTest-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BCLibsSwiftTest-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		032939A8253BBF0300E52AD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		032939AA253BBF0300E52AD5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		032939AC253BBF0400E52AD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		032939AF253BBF0400E52AD5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		032939B2253BBF0400E52AD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		032939B4253BBF0400E52AD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		032939B5253BBF0400E52AD5 /* BCLibsSwiftTest_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BCLibsSwiftTest_Mac.entitlements; sourceTree = "<group>"; };
 		03D3C252251B069B00BC8B3E /* Shamir.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Shamir.xcframework; path = ../build/Shamir.xcframework; sourceTree = "<group>"; };
 		03D3C253251B069B00BC8B3E /* CShamir.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CShamir.xcframework; path = ../build/CShamir.xcframework; sourceTree = "<group>"; };
 		03D3C254251B069B00BC8B3E /* CryptoBase.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CryptoBase.xcframework; path = ../build/CryptoBase.xcframework; sourceTree = "<group>"; };
@@ -65,6 +106,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		032939A3253BBF0300E52AD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				032939CE253BBF2200E52AD5 /* CSSKR.xcframework in Frameworks */,
+				032939CC253BBF2100E52AD5 /* CShamir.xcframework in Frameworks */,
+				032939C7253BBF1E00E52AD5 /* CCryptoBase.xcframework in Frameworks */,
+				032939CA253BBF2000E52AD5 /* CryptoBase.xcframework in Frameworks */,
+				032939D2253BBF2500E52AD5 /* SSKR.xcframework in Frameworks */,
+				032939D0253BBF2400E52AD5 /* Shamir.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03E17606251A0F38008D3181 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -81,10 +135,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		032939A7253BBF0300E52AD5 /* BCLibsSwiftTest-Mac */ = {
+			isa = PBXGroup;
+			children = (
+				032939A8253BBF0300E52AD5 /* AppDelegate.swift */,
+				032939AA253BBF0300E52AD5 /* ContentView.swift */,
+				032939AC253BBF0400E52AD5 /* Assets.xcassets */,
+				032939B1253BBF0400E52AD5 /* Main.storyboard */,
+				032939B4253BBF0400E52AD5 /* Info.plist */,
+				032939B5253BBF0400E52AD5 /* BCLibsSwiftTest_Mac.entitlements */,
+				032939AE253BBF0400E52AD5 /* Preview Content */,
+			);
+			path = "BCLibsSwiftTest-Mac";
+			sourceTree = "<group>";
+		};
+		032939AE253BBF0400E52AD5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				032939AF253BBF0400E52AD5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		03E17600251A0F38008D3181 = {
 			isa = PBXGroup;
 			children = (
 				03E1760B251A0F38008D3181 /* BCLibsSwiftTest */,
+				032939A7253BBF0300E52AD5 /* BCLibsSwiftTest-Mac */,
 				03E1760A251A0F38008D3181 /* Products */,
 				03E17621251A0F67008D3181 /* Frameworks */,
 			);
@@ -94,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				03E17609251A0F38008D3181 /* BCLibsSwiftTest.app */,
+				032939A6253BBF0300E52AD5 /* BCLibsSwiftTest-Mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,6 +207,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		032939A5253BBF0300E52AD5 /* BCLibsSwiftTest-Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 032939B8253BBF0400E52AD5 /* Build configuration list for PBXNativeTarget "BCLibsSwiftTest-Mac" */;
+			buildPhases = (
+				032939A2253BBF0300E52AD5 /* Sources */,
+				032939A3253BBF0300E52AD5 /* Frameworks */,
+				032939A4253BBF0300E52AD5 /* Resources */,
+				032939C9253BBF1E00E52AD5 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BCLibsSwiftTest-Mac";
+			productName = "BCLibsSwiftTest-Mac";
+			productReference = 032939A6253BBF0300E52AD5 /* BCLibsSwiftTest-Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
 		03E17608251A0F38008D3181 /* BCLibsSwiftTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03E1761D251A0F3A008D3181 /* Build configuration list for PBXNativeTarget "BCLibsSwiftTest" */;
@@ -156,6 +252,9 @@
 				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					032939A5253BBF0300E52AD5 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
 					03E17608251A0F38008D3181 = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -175,11 +274,22 @@
 			projectRoot = "";
 			targets = (
 				03E17608251A0F38008D3181 /* BCLibsSwiftTest */,
+				032939A5253BBF0300E52AD5 /* BCLibsSwiftTest-Mac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		032939A4253BBF0300E52AD5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				032939B3253BBF0400E52AD5 /* Main.storyboard in Resources */,
+				032939B0253BBF0400E52AD5 /* Preview Assets.xcassets in Resources */,
+				032939AD253BBF0400E52AD5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03E17607251A0F38008D3181 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,6 +303,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		032939A2253BBF0300E52AD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				032939AB253BBF0300E52AD5 /* ContentView.swift in Sources */,
+				032939A9253BBF0300E52AD5 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03E17605251A0F38008D3181 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -206,6 +325,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		032939B1253BBF0400E52AD5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				032939B2253BBF0400E52AD5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		03E17612251A0F38008D3181 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -225,6 +352,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		032939B6253BBF0400E52AD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "BCLibsSwiftTest-Mac/BCLibsSwiftTest_Mac.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"BCLibsSwiftTest-Mac/Preview Content\"";
+				DEVELOPMENT_TEAM = YZHG975W3A;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "BCLibsSwiftTest-Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PRODUCT_BUNDLE_IDENTIFIER = "blockchaincommons.BCLibsSwiftTest-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		032939B7253BBF0400E52AD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "BCLibsSwiftTest-Mac/BCLibsSwiftTest_Mac.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"BCLibsSwiftTest-Mac/Preview Content\"";
+				DEVELOPMENT_TEAM = YZHG975W3A;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "BCLibsSwiftTest-Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PRODUCT_BUNDLE_IDENTIFIER = "blockchaincommons.BCLibsSwiftTest-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		03E1761B251A0F3A008D3181 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -388,6 +571,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		032939B8253BBF0400E52AD5 /* Build configuration list for PBXNativeTarget "BCLibsSwiftTest-Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				032939B6253BBF0400E52AD5 /* Debug */,
+				032939B7253BBF0400E52AD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		03E17604251A0F38008D3181 /* Build configuration list for PBXProject "BCLibsSwiftTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

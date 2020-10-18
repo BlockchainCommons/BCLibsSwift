@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 set -e # abort if any command fails
 
+git submodule update --init
+
 MIN_IOS_VERSION="13.6"
 MIN_MAC_VERSION="10.15"
 PROJ_ROOT=${PWD}
@@ -13,10 +15,9 @@ build_init()
   PLATFORM=$2
   ARCH=$3
   TARGET=$4
-  HOST=$5
-  SDK=$6
-  BITCODE=$7
-  VERSION=$8
+  SDK=$5
+  BITCODE=$6
+  VERSION=$7
   SDK_PATH=`xcrun -sdk ${SDK} --show-sdk-path`
   BUILD_ARCH_DIR=${BUILD_ROOT}/${PLATFORM}-${ARCH}
   PREFIX=${BUILD_ARCH_DIR}/${LIB_NAME}
@@ -37,7 +38,7 @@ build_bc_crypto_base()
   cp ${PROJ_ROOT}/CCryptoBase.modulemap src/module.modulemap
 
   ./configure \
-    --host=${HOST} \
+    --host=${TARGET} \
     --prefix=${PREFIX}
 
   make clean
@@ -64,7 +65,7 @@ build_bc_shamir()
   cp ${PROJ_ROOT}/CShamir.modulemap src/module.modulemap
 
   ./configure \
-    --host=${HOST} \
+    --host=${TARGET} \
     --prefix=${PREFIX}
 
   make clean
@@ -97,7 +98,7 @@ build_csskr()
   cp ${PROJ_ROOT}/CSSKR.modulemap src/module.modulemap
 
   ./configure \
-    --host=${HOST} \
+    --host=${TARGET} \
     --prefix=${PREFIX}
 
   make clean
@@ -114,23 +115,26 @@ build_csskr()
 
 build_c_libraries()
 (
-  git submodule update --init
-
-  IOS_ARM64_PARAMS=("ios" "arm64" "aarch64-apple-ios" "arm-apple-darwin" "iphoneos" "-fembed-bitcode" "-mios-version-min=${MIN_IOS_VERSION}")
-  MAC_CATALYST_X86_64_PARAMS=("mac-catalyst" "x86_64" "x86_64-apple-ios13.0-macabi" "x86_64-apple-darwin" "macosx" "-fembed-bitcode" "-mmacosx-version-min=${MIN_MAC_VERSION}") # This is the build that runs under Catalyst
-  IOS_SIMULATOR_X86_64_PARAMS=("ios-simulator" "x86_64" "x86_64-apple-ios" "x86_64-apple-darwin" "iphonesimulator" "-fembed-bitcode-marker" "-mios-simulator-version-min=${MIN_IOS_VERSION}")
+  #                            PLATFORM        ARCH     TARGET                        SDK               BITCODE                  VERSION
+  IOS_ARM64_PARAMS=(           "ios"           "arm64"  "aarch64-apple-ios"           "iphoneos"        "-fembed-bitcode"        "-mios-version-min=${MIN_IOS_VERSION}")
+  MAC_CATALYST_X86_64_PARAMS=( "mac-catalyst"  "x86_64" "x86_64-apple-ios13.0-macabi" "macosx"          "-fembed-bitcode"        "-mmacosx-version-min=${MIN_MAC_VERSION}")
+  IOS_SIMULATOR_X86_64_PARAMS=("ios-simulator" "x86_64" "x86_64-apple-ios"            "iphonesimulator" "-fembed-bitcode-marker" "-mios-simulator-version-min=${MIN_IOS_VERSION}")
+  MACOSX_X86_64_PARAMS=(       "macosx"        "x86_64" "x86_64-apple-darwin10"       "macosx"          "-fembed-bitcode"        "-mmacosx-version-min=${MIN_MAC_VERSION}")
 
   build_bc_crypto_base ${IOS_ARM64_PARAMS[@]}
   build_bc_crypto_base ${MAC_CATALYST_X86_64_PARAMS[@]}
   build_bc_crypto_base ${IOS_SIMULATOR_X86_64_PARAMS[@]}
+  build_bc_crypto_base ${MACOSX_X86_64_PARAMS[@]}
 
   build_bc_shamir ${IOS_ARM64_PARAMS[@]}
   build_bc_shamir ${MAC_CATALYST_X86_64_PARAMS[@]}
   build_bc_shamir ${IOS_SIMULATOR_X86_64_PARAMS[@]}
+  build_bc_shamir ${MACOSX_X86_64_PARAMS[@]}
 
   build_csskr ${IOS_ARM64_PARAMS[@]}
   build_csskr ${MAC_CATALYST_X86_64_PARAMS[@]}
   build_csskr ${IOS_SIMULATOR_X86_64_PARAMS[@]}
+  build_csskr ${MACOSX_X86_64_PARAMS[@]}
 )
 
 build_c_xcframework()
@@ -143,6 +147,7 @@ build_c_xcframework()
     -library "${BUILD_ROOT}/ios-arm64/${LIB_NAME}/lib/lib${LIB_NAME}.a" -headers "${BUILD_ROOT}/ios-arm64/${LIB_NAME}/include/" \
     -library "${BUILD_ROOT}/mac-catalyst-x86_64/${LIB_NAME}/lib/lib${LIB_NAME}.a" -headers "${BUILD_ROOT}/mac-catalyst-x86_64/${LIB_NAME}/include/" \
     -library "${BUILD_ROOT}/ios-simulator-x86_64/${LIB_NAME}/lib/lib${LIB_NAME}.a" -headers "${BUILD_ROOT}/ios-simulator-x86_64/${LIB_NAME}/include/" \
+    -library "${BUILD_ROOT}/macosx-x86_64/${LIB_NAME}/lib/lib${LIB_NAME}.a" -headers "${BUILD_ROOT}/macosx-x86_64/${LIB_NAME}/include/" \
     -output "${BUILD_ROOT}/${XC_FRAMEWORK}.xcframework"
 }
 
@@ -182,7 +187,10 @@ build_swift_framework()
     ARCHS=${XC_ARCH} \
     SKIP_INSTALL=NO \
     BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
-    SUPPORTS_MACCATALYST=${XC_CATALYST}"
+    SUPPORTS_MACCATALYST=${XC_CATALYST} \
+    CODE_SIGN_IDENTITY="" \
+    CODE_SIGNING_REQUIRED=NO \
+    "
 
   xcodebuild clean build ${XC_ARGS[@]}
 
@@ -190,29 +198,42 @@ build_swift_framework()
     xcodebuild ${XC_ARGS[@]} -showBuildSettings | grep -o '\<BUILD_DIR = .*' | cut -d ' ' -f 3
     `
 
-  XC_FRAMEWORK_SOURCE_DIR=${XC_BUILD_DIR}/${XC_CONFIGURATION}-${XC_PLATFORM_DIR}
+  if [ $XC_PLATFORM_DIR == "NONE" ]
+  then
+    XC_FRAMEWORK_SOURCE_DIR=${XC_BUILD_DIR}/${XC_CONFIGURATION}
+  else
+    XC_FRAMEWORK_SOURCE_DIR=${XC_BUILD_DIR}/${XC_CONFIGURATION}-${XC_PLATFORM_DIR}
+  fi
+
   cp -R "${XC_FRAMEWORK_SOURCE_DIR}/${XC_FRAMEWORK_DIR_NAME}" ${XC_DEST_BUILD_DIR}/
 
-  echo diff -rq "${XC_FRAMEWORK_SOURCE_DIR}/${XC_FRAMEWORK_DIR_NAME}" "${XC_DEST_BUILD_DIR}/${XC_FRAMEWORK_DIR_NAME}"
+  xcodebuild clean ${XC_ARGS[@]}
+
+  #echo diff -rq "${XC_FRAMEWORK_SOURCE_DIR}/${XC_FRAMEWORK_DIR_NAME}" "${XC_DEST_BUILD_DIR}/${XC_FRAMEWORK_DIR_NAME}"
 }
 
 build_swift_frameworks()
 (
-  IOS_ARM64_PARAMS=("arm64" "ios-arm64" "iphoneos" "iphoneos" "NO" "IPHONEOS_DEPLOYMENT_TARGET=${MIN_IOS_VERSION}")
-  MAC_CATALYST_X86_64_PARAMS=("x86_64" "mac-catalyst-x86_64" "macosx" "maccatalyst" "YES" "MACOSX_DEPLOYMENT_TARGET=${MIN_MAC_VERSION}")
-  IOS_SIMULATOR_X86_64_PARAMS=("x86_64" "ios-simulator-x86_64" "iphonesimulator" "iphonesimulator" "NO" "IPHONEOS_DEPLOYMENT_TARGET=${MIN_IOS_VERSION}")
+  #                            ARCH     BUILD_DIR_NAME         SDK               PLATFORM_DIR      CATALYST  VERSION
+  IOS_ARM64_PARAMS=(           "arm64"  "ios-arm64"            "iphoneos"        "iphoneos"        "NO"      "IPHONEOS_DEPLOYMENT_TARGET=${MIN_IOS_VERSION}")
+  MAC_CATALYST_X86_64_PARAMS=( "x86_64" "mac-catalyst-x86_64"  "macosx"          "maccatalyst"     "YES"     "MACOSX_DEPLOYMENT_TARGET=${MIN_MAC_VERSION}")
+  IOS_SIMULATOR_X86_64_PARAMS=("x86_64" "ios-simulator-x86_64" "iphonesimulator" "iphonesimulator" "NO"      "IPHONEOS_DEPLOYMENT_TARGET=${MIN_IOS_VERSION}")
+  MACOSX_X86_64_PARAMS=(       "x86_64" "macosx-x86_64"        "macosx"          "NONE"            "NO"      "MACOSX_DEPLOYMENT_TARGET=${MIN_MAC_VERSION}")
 
   build_swift_framework CryptoBase ${IOS_ARM64_PARAMS[@]}
   build_swift_framework CryptoBase ${MAC_CATALYST_X86_64_PARAMS[@]}
   build_swift_framework CryptoBase ${IOS_SIMULATOR_X86_64_PARAMS[@]}
+  build_swift_framework CryptoBase ${MACOSX_X86_64_PARAMS[@]}
 
   build_swift_framework Shamir ${IOS_ARM64_PARAMS[@]}
   build_swift_framework Shamir ${MAC_CATALYST_X86_64_PARAMS[@]}
   build_swift_framework Shamir ${IOS_SIMULATOR_X86_64_PARAMS[@]}
+  build_swift_framework Shamir ${MACOSX_X86_64_PARAMS[@]}
 
   build_swift_framework SSKR ${IOS_ARM64_PARAMS[@]}
   build_swift_framework SSKR ${MAC_CATALYST_X86_64_PARAMS[@]}
   build_swift_framework SSKR ${IOS_SIMULATOR_X86_64_PARAMS[@]}
+  build_swift_framework SSKR ${MACOSX_X86_64_PARAMS[@]}
 )
 
 build_swift_xcframework()
@@ -228,6 +249,7 @@ build_swift_xcframework()
   -framework ${BUILD_ROOT}/ios-arm64/${PLATFORM_FRAMEWORK_NAME} \
   -framework ${BUILD_ROOT}/mac-catalyst-x86_64/${PLATFORM_FRAMEWORK_NAME} \
   -framework ${BUILD_ROOT}/ios-simulator-x86_64/${PLATFORM_FRAMEWORK_NAME} \
+  -framework ${BUILD_ROOT}/macosx-x86_64/${PLATFORM_FRAMEWORK_NAME} \
   -output ${XC_FRAMEWORK_PATH}
 
   # As of September 22, 2020, the step above is broken:
@@ -242,6 +264,9 @@ build_swift_xcframework()
 
   rm -rf ${XC_FRAMEWORK_PATH}/ios-x86_64-simulator/${PLATFORM_FRAMEWORK_NAME}
   cp -R ${BUILD_ROOT}/ios-simulator-x86_64/${PLATFORM_FRAMEWORK_NAME} ${XC_FRAMEWORK_PATH}/ios-x86_64-simulator/
+
+  rm -rf ${XC_FRAMEWORK_PATH}/macos-x86_64/${PLATFORM_FRAMEWORK_NAME}
+  cp -R ${BUILD_ROOT}/macosx-x86_64/${PLATFORM_FRAMEWORK_NAME} ${XC_FRAMEWORK_PATH}/macos-x86_64/
 }
 
 build_swift_xcframeworks()
