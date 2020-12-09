@@ -9,6 +9,13 @@ PROJ_ROOT=${PWD}
 DEPS_ROOT=${PROJ_ROOT}/deps
 BUILD_ROOT=${PROJ_ROOT}/build
 
+# Terminal colors
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+BLUE=`tput setaf 4`
+CYAN=`tput setaf 6`
+RESET=`tput sgr0`
+
 build_init()
 {
   LIB_NAME=$1
@@ -27,6 +34,8 @@ build_init()
   export LDFLAGS="-arch ${ARCH} ${BITCODE}"
   export CC="$(xcrun --sdk ${SDK} -f clang) -arch ${ARCH} -isysroot ${SDK_PATH}"
   export CXX="$(xcrun --sdk ${SDK} -f clang++) -arch ${ARCH} -isysroot ${SDK_PATH}"
+
+  echo "${BLUE}== ${LIB_NAME} ${PLATFORM} ${ARCH} ==${RESET}"
 }
 
 build_bc_crypto_base()
@@ -50,6 +59,33 @@ build_bc_crypto_base()
   # Add the modulemap
   pushd ${PREFIX}/include/bc-crypto-base
   cp ${PROJ_ROOT}/CCryptoBase.modulemap module.modulemap
+  popd
+}
+
+build_bc_bip39()
+{
+  build_init bc-bip39 $@
+
+  pushd ${DEPS_ROOT}/bc-bip39
+
+  export CFLAGS+=" -I${BUILD_ARCH_DIR}/bc-crypto-base/include"
+  export LDFLAGS+=" -L${BUILD_ARCH_DIR}/bc-crypto-base/lib"
+
+  cp ${PROJ_ROOT}/CBIP39.modulemap src/module.modulemap
+
+  ./configure \
+    --host=${TARGET} \
+    --prefix=${PREFIX}
+
+  make clean
+  make install
+  make clean
+
+  popd
+
+  # Add the modulemap
+  pushd ${PREFIX}/include/bc-bip39
+  cp ${PROJ_ROOT}/CBIP39.modulemap module.modulemap
   popd
 }
 
@@ -115,6 +151,8 @@ build_csskr()
 
 build_c_libraries()
 (
+  echo "${CYAN}==== Building C Libraries ====${RESET}"
+
   #                            PLATFORM        ARCH     TARGET                        SDK               BITCODE                  VERSION
   IOS_ARM64_PARAMS=(           "ios"           "arm64"  "aarch64-apple-ios"           "iphoneos"        "-fembed-bitcode"        "-mios-version-min=${MIN_IOS_VERSION}")
   MAC_CATALYST_X86_64_PARAMS=( "mac-catalyst"  "x86_64" "x86_64-apple-ios13.0-macabi" "macosx"          "-fembed-bitcode"        "-mmacosx-version-min=${MIN_MAC_VERSION}")
@@ -125,6 +163,11 @@ build_c_libraries()
   build_bc_crypto_base ${MAC_CATALYST_X86_64_PARAMS[@]}
   build_bc_crypto_base ${IOS_SIMULATOR_X86_64_PARAMS[@]}
   build_bc_crypto_base ${MACOSX_X86_64_PARAMS[@]}
+
+  build_bc_bip39 ${IOS_ARM64_PARAMS[@]}
+  build_bc_bip39 ${MAC_CATALYST_X86_64_PARAMS[@]}
+  build_bc_bip39 ${IOS_SIMULATOR_X86_64_PARAMS[@]}
+  build_bc_bip39 ${MACOSX_X86_64_PARAMS[@]}
 
   build_bc_shamir ${IOS_ARM64_PARAMS[@]}
   build_bc_shamir ${MAC_CATALYST_X86_64_PARAMS[@]}
@@ -142,6 +185,8 @@ build_c_xcframework()
   XC_FRAMEWORK=$1
   LIB_NAME=$2
 
+  echo "${BLUE}== ${XC_FRAMEWORK} ==${RESET}"
+
   rm -rf "${BUILD_ROOT}/${XC_FRAMEWORK}.xcframework"
   xcodebuild -create-xcframework \
     -library "${BUILD_ROOT}/ios-arm64/${LIB_NAME}/lib/lib${LIB_NAME}.a" -headers "${BUILD_ROOT}/ios-arm64/${LIB_NAME}/include/" \
@@ -153,7 +198,10 @@ build_c_xcframework()
 
 build_c_xcframeworks()
 (
+  echo "${CYAN}==== Building C XCFrameworks ====${RESET}"
+
   build_c_xcframework CCryptoBase bc-crypto-base
+  build_c_xcframework CBIP39 bc-bip39
   build_c_xcframework CShamir bc-shamir
   build_c_xcframework CSSKR bc-sskr
 )
@@ -192,6 +240,8 @@ build_swift_framework()
     CODE_SIGNING_REQUIRED=NO \
     "
 
+  echo "${BLUE}== ${XC_FRAMEWORK} ${XC_BUILD_DIR_NAME} ==${RESET}"
+
   xcodebuild clean build ${XC_ARGS[@]}
 
   XC_BUILD_DIR=`
@@ -214,6 +264,8 @@ build_swift_framework()
 
 build_swift_frameworks()
 (
+  echo "${CYAN}==== Building Swift Frameworks ====${RESET}"
+
   #                            ARCH     BUILD_DIR_NAME         SDK               PLATFORM_DIR      CATALYST  VERSION
   IOS_ARM64_PARAMS=(           "arm64"  "ios-arm64"            "iphoneos"        "iphoneos"        "NO"      "IPHONEOS_DEPLOYMENT_TARGET=${MIN_IOS_VERSION}")
   MAC_CATALYST_X86_64_PARAMS=( "x86_64" "mac-catalyst-x86_64"  "macosx"          "maccatalyst"     "YES"     "MACOSX_DEPLOYMENT_TARGET=${MIN_MAC_VERSION}")
@@ -224,6 +276,11 @@ build_swift_frameworks()
   build_swift_framework CryptoBase ${MAC_CATALYST_X86_64_PARAMS[@]}
   build_swift_framework CryptoBase ${IOS_SIMULATOR_X86_64_PARAMS[@]}
   build_swift_framework CryptoBase ${MACOSX_X86_64_PARAMS[@]}
+
+  build_swift_framework BIP39 ${IOS_ARM64_PARAMS[@]}
+  build_swift_framework BIP39 ${MAC_CATALYST_X86_64_PARAMS[@]}
+  build_swift_framework BIP39 ${IOS_SIMULATOR_X86_64_PARAMS[@]}
+  build_swift_framework BIP39 ${MACOSX_X86_64_PARAMS[@]}
 
   build_swift_framework Shamir ${IOS_ARM64_PARAMS[@]}
   build_swift_framework Shamir ${MAC_CATALYST_X86_64_PARAMS[@]}
@@ -271,7 +328,10 @@ build_swift_xcframework()
 
 build_swift_xcframeworks()
 (
+  echo "${CYAN}==== Building Swift XCFrameworks ====${RESET}"
+
   build_swift_xcframework CryptoBase
+  build_swift_xcframework BIP39
   build_swift_xcframework Shamir
   build_swift_xcframework SSKR
 )

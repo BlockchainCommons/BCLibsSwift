@@ -7,107 +7,120 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		030A63DC25035EDA00A1D27E /* SSKR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 030A63D225035ED900A1D27E /* SSKR.framework */; };
-		030A63E325035EDA00A1D27E /* SSKR.h in Headers */ = {isa = PBXBuildFile; fileRef = 030A63D525035ED900A1D27E /* SSKR.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		030A63F025036DDF00A1D27E /* CSSKR.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 030A63EF25036DDF00A1D27E /* CSSKR.xcframework */; };
-		030A640B250382A300A1D27E /* SSKRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A6404250382A300A1D27E /* SSKRTests.swift */; };
-		03605B2E2514702D00002D2F /* SSKR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03605B2D2514702D00002D2F /* SSKR.swift */; };
-		03605B42251475C200002D2F /* CCryptoBase.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03605B382514758E00002D2F /* CCryptoBase.xcframework */; };
-		03605B44251475C200002D2F /* CShamir.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03605B392514758E00002D2F /* CShamir.xcframework */; };
-		03BA7FF925183BEB00DE50B4 /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BA7FF825183BEB00DE50B4 /* TestUtils.swift */; };
+		0374751F2581167C00211084 /* BIP39.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037475152581167C00211084 /* BIP39.framework */; };
+		037475242581167C00211084 /* BIP39Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037475232581167C00211084 /* BIP39Tests.swift */; };
+		037475262581167C00211084 /* BIP39.h in Headers */ = {isa = PBXBuildFile; fileRef = 037475182581167C00211084 /* BIP39.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		03747534258116FA00211084 /* CBIP39.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03747532258116FA00211084 /* CBIP39.xcframework */; };
+		03747535258116FA00211084 /* CBIP39.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03747532258116FA00211084 /* CBIP39.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		03747536258116FA00211084 /* CCryptoBase.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03747533258116FA00211084 /* CCryptoBase.xcframework */; };
+		03747537258116FA00211084 /* CCryptoBase.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03747533258116FA00211084 /* CCryptoBase.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0374753B2581173C00211084 /* BIP39.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374753A2581173C00211084 /* BIP39.swift */; };
+		037475552581222B00211084 /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037475542581222B00211084 /* TestUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		030A63DD25035EDA00A1D27E /* PBXContainerItemProxy */ = {
+		037475202581167C00211084 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 030A63C925035ED900A1D27E /* Project object */;
+			containerPortal = 0374750C2581167C00211084 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 030A63D125035ED900A1D27E;
-			remoteInfo = SSKR;
+			remoteGlobalIDString = 037475142581167C00211084;
+			remoteInfo = BIP39;
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		03747538258116FA00211084 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				03747535258116FA00211084 /* CBIP39.xcframework in Embed Frameworks */,
+				03747537258116FA00211084 /* CCryptoBase.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		030A63D225035ED900A1D27E /* SSKR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SSKR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		030A63D525035ED900A1D27E /* SSKR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSKR.h; sourceTree = "<group>"; };
-		030A63D625035ED900A1D27E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		030A63DB25035EDA00A1D27E /* SSKRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSKRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		030A63E225035EDA00A1D27E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		030A63EF25036DDF00A1D27E /* CSSKR.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CSSKR.xcframework; path = ../build/CSSKR.xcframework; sourceTree = SOURCE_ROOT; };
-		030A6404250382A300A1D27E /* SSKRTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSKRTests.swift; sourceTree = "<group>"; };
-		03605B2D2514702D00002D2F /* SSKR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSKR.swift; sourceTree = "<group>"; };
-		03605B382514758E00002D2F /* CCryptoBase.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CCryptoBase.xcframework; path = ../build/CCryptoBase.xcframework; sourceTree = SOURCE_ROOT; };
-		03605B392514758E00002D2F /* CShamir.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CShamir.xcframework; path = ../build/CShamir.xcframework; sourceTree = SOURCE_ROOT; };
-		03BA7FF825183BEB00DE50B4 /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
+		037475152581167C00211084 /* BIP39.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BIP39.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		037475182581167C00211084 /* BIP39.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BIP39.h; sourceTree = "<group>"; };
+		037475192581167C00211084 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0374751E2581167C00211084 /* BIP39Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BIP39Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		037475232581167C00211084 /* BIP39Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIP39Tests.swift; sourceTree = "<group>"; };
+		037475252581167C00211084 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03747532258116FA00211084 /* CBIP39.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CBIP39.xcframework; path = ../build/CBIP39.xcframework; sourceTree = "<group>"; };
+		03747533258116FA00211084 /* CCryptoBase.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CCryptoBase.xcframework; path = ../build/CCryptoBase.xcframework; sourceTree = "<group>"; };
+		0374753A2581173C00211084 /* BIP39.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIP39.swift; sourceTree = "<group>"; };
+		037475542581222B00211084 /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		030A63CF25035ED900A1D27E /* Frameworks */ = {
+		037475122581167C00211084 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				030A63F025036DDF00A1D27E /* CSSKR.xcframework in Frameworks */,
-				03605B44251475C200002D2F /* CShamir.xcframework in Frameworks */,
-				03605B42251475C200002D2F /* CCryptoBase.xcframework in Frameworks */,
+				03747534258116FA00211084 /* CBIP39.xcframework in Frameworks */,
+				03747536258116FA00211084 /* CCryptoBase.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		030A63D825035EDA00A1D27E /* Frameworks */ = {
+		0374751B2581167C00211084 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				030A63DC25035EDA00A1D27E /* SSKR.framework in Frameworks */,
+				0374751F2581167C00211084 /* BIP39.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		030A63C825035ED900A1D27E = {
+		0374750B2581167C00211084 = {
 			isa = PBXGroup;
 			children = (
-				030A63D425035ED900A1D27E /* SSKR */,
-				030A63DF25035EDA00A1D27E /* SSKRTests */,
-				030A63D325035ED900A1D27E /* Products */,
-				030A63EE25036DDF00A1D27E /* Frameworks */,
+				037475172581167C00211084 /* BIP39 */,
+				037475222581167C00211084 /* BIP39Tests */,
+				037475162581167C00211084 /* Products */,
+				03747531258116FA00211084 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		030A63D325035ED900A1D27E /* Products */ = {
+		037475162581167C00211084 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				030A63D225035ED900A1D27E /* SSKR.framework */,
-				030A63DB25035EDA00A1D27E /* SSKRTests.xctest */,
+				037475152581167C00211084 /* BIP39.framework */,
+				0374751E2581167C00211084 /* BIP39Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		030A63D425035ED900A1D27E /* SSKR */ = {
+		037475172581167C00211084 /* BIP39 */ = {
 			isa = PBXGroup;
 			children = (
-				030A63D525035ED900A1D27E /* SSKR.h */,
-				03605B2D2514702D00002D2F /* SSKR.swift */,
-				030A63D625035ED900A1D27E /* Info.plist */,
+				037475182581167C00211084 /* BIP39.h */,
+				037475192581167C00211084 /* Info.plist */,
+				0374753A2581173C00211084 /* BIP39.swift */,
 			);
-			path = SSKR;
+			path = BIP39;
 			sourceTree = "<group>";
 		};
-		030A63DF25035EDA00A1D27E /* SSKRTests */ = {
+		037475222581167C00211084 /* BIP39Tests */ = {
 			isa = PBXGroup;
 			children = (
-				030A6404250382A300A1D27E /* SSKRTests.swift */,
-				03BA7FF825183BEB00DE50B4 /* TestUtils.swift */,
-				030A63E225035EDA00A1D27E /* Info.plist */,
+				037475232581167C00211084 /* BIP39Tests.swift */,
+				037475542581222B00211084 /* TestUtils.swift */,
+				037475252581167C00211084 /* Info.plist */,
 			);
-			path = SSKRTests;
+			path = BIP39Tests;
 			sourceTree = "<group>";
 		};
-		030A63EE25036DDF00A1D27E /* Frameworks */ = {
+		03747531258116FA00211084 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				03605B382514758E00002D2F /* CCryptoBase.xcframework */,
-				03605B392514758E00002D2F /* CShamir.xcframework */,
-				030A63EF25036DDF00A1D27E /* CSSKR.xcframework */,
+				03747532258116FA00211084 /* CBIP39.xcframework */,
+				03747533258116FA00211084 /* CCryptoBase.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -115,72 +128,73 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		030A63CD25035ED900A1D27E /* Headers */ = {
+		037475102581167C00211084 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				030A63E325035EDA00A1D27E /* SSKR.h in Headers */,
+				037475262581167C00211084 /* BIP39.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		030A63D125035ED900A1D27E /* SSKR */ = {
+		037475142581167C00211084 /* BIP39 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 030A63E625035EDA00A1D27E /* Build configuration list for PBXNativeTarget "SSKR" */;
+			buildConfigurationList = 037475292581167C00211084 /* Build configuration list for PBXNativeTarget "BIP39" */;
 			buildPhases = (
-				030A63CD25035ED900A1D27E /* Headers */,
-				030A63CE25035ED900A1D27E /* Sources */,
-				030A63CF25035ED900A1D27E /* Frameworks */,
-				030A63D025035ED900A1D27E /* Resources */,
+				037475102581167C00211084 /* Headers */,
+				037475112581167C00211084 /* Sources */,
+				037475122581167C00211084 /* Frameworks */,
+				037475132581167C00211084 /* Resources */,
+				03747538258116FA00211084 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SSKR;
-			productName = SSKR;
-			productReference = 030A63D225035ED900A1D27E /* SSKR.framework */;
+			name = BIP39;
+			productName = BIP39;
+			productReference = 037475152581167C00211084 /* BIP39.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		030A63DA25035EDA00A1D27E /* SSKRTests */ = {
+		0374751D2581167C00211084 /* BIP39Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 030A63E925035EDA00A1D27E /* Build configuration list for PBXNativeTarget "SSKRTests" */;
+			buildConfigurationList = 0374752C2581167C00211084 /* Build configuration list for PBXNativeTarget "BIP39Tests" */;
 			buildPhases = (
-				030A63D725035EDA00A1D27E /* Sources */,
-				030A63D825035EDA00A1D27E /* Frameworks */,
-				030A63D925035EDA00A1D27E /* Resources */,
+				0374751A2581167C00211084 /* Sources */,
+				0374751B2581167C00211084 /* Frameworks */,
+				0374751C2581167C00211084 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				030A63DE25035EDA00A1D27E /* PBXTargetDependency */,
+				037475212581167C00211084 /* PBXTargetDependency */,
 			);
-			name = SSKRTests;
-			productName = SSKRTests;
-			productReference = 030A63DB25035EDA00A1D27E /* SSKRTests.xctest */;
+			name = BIP39Tests;
+			productName = BIP39Tests;
+			productReference = 0374751E2581167C00211084 /* BIP39Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		030A63C925035ED900A1D27E /* Project object */ = {
+		0374750C2581167C00211084 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1200;
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
 				TargetAttributes = {
-					030A63D125035ED900A1D27E = {
-						CreatedOnToolsVersion = 12.0;
-						LastSwiftMigration = 1200;
+					037475142581167C00211084 = {
+						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1230;
 					};
-					030A63DA25035EDA00A1D27E = {
-						CreatedOnToolsVersion = 12.0;
+					0374751D2581167C00211084 = {
+						CreatedOnToolsVersion = 12.3;
 					};
 				};
 			};
-			buildConfigurationList = 030A63CC25035ED900A1D27E /* Build configuration list for PBXProject "SSKR" */;
+			buildConfigurationList = 0374750F2581167C00211084 /* Build configuration list for PBXProject "BIP39" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -188,26 +202,26 @@
 				en,
 				Base,
 			);
-			mainGroup = 030A63C825035ED900A1D27E;
-			productRefGroup = 030A63D325035ED900A1D27E /* Products */;
+			mainGroup = 0374750B2581167C00211084;
+			productRefGroup = 037475162581167C00211084 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				030A63D125035ED900A1D27E /* SSKR */,
-				030A63DA25035EDA00A1D27E /* SSKRTests */,
+				037475142581167C00211084 /* BIP39 */,
+				0374751D2581167C00211084 /* BIP39Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		030A63D025035ED900A1D27E /* Resources */ = {
+		037475132581167C00211084 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		030A63D925035EDA00A1D27E /* Resources */ = {
+		0374751C2581167C00211084 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -217,35 +231,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		030A63CE25035ED900A1D27E /* Sources */ = {
+		037475112581167C00211084 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03605B2E2514702D00002D2F /* SSKR.swift in Sources */,
+				0374753B2581173C00211084 /* BIP39.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		030A63D725035EDA00A1D27E /* Sources */ = {
+		0374751A2581167C00211084 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				030A640B250382A300A1D27E /* SSKRTests.swift in Sources */,
-				03BA7FF925183BEB00DE50B4 /* TestUtils.swift in Sources */,
+				037475242581167C00211084 /* BIP39Tests.swift in Sources */,
+				037475552581222B00211084 /* TestUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		030A63DE25035EDA00A1D27E /* PBXTargetDependency */ = {
+		037475212581167C00211084 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 030A63D125035ED900A1D27E /* SSKR */;
-			targetProxy = 030A63DD25035EDA00A1D27E /* PBXContainerItemProxy */;
+			target = 037475142581167C00211084 /* BIP39 */;
+			targetProxy = 037475202581167C00211084 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		030A63E425035EDA00A1D27E /* Debug */ = {
+		037475272581167C00211084 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -297,7 +311,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -309,7 +323,7 @@
 			};
 			name = Debug;
 		};
-		030A63E525035EDA00A1D27E /* Release */ = {
+		037475282581167C00211084 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -355,7 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -367,7 +381,7 @@
 			};
 			name = Release;
 		};
-		030A63E725035EDA00A1D27E /* Debug */ = {
+		0374752A2581167C00211084 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -376,7 +390,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SSKR/Info.plist;
+				INFOPLIST_FILE = BIP39/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -385,8 +399,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MODULEMAP_FILE = SSKR/SSKR.modulemap;
-				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.SSKR;
+				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BIP39;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -395,7 +408,7 @@
 			};
 			name = Debug;
 		};
-		030A63E825035EDA00A1D27E /* Release */ = {
+		0374752B2581167C00211084 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -404,7 +417,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SSKR/Info.plist;
+				INFOPLIST_FILE = BIP39/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -413,8 +426,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MODULEMAP_FILE = SSKR/SSKR.modulemap;
-				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.SSKR;
+				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BIP39;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -422,40 +434,40 @@
 			};
 			name = Release;
 		};
-		030A63EA25035EDA00A1D27E /* Debug */ = {
+		0374752D2581167C00211084 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YZHG975W3A;
-				INFOPLIST_FILE = SSKRTests/Info.plist;
+				INFOPLIST_FILE = BIP39Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.SSKRTests;
+				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BIP39Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		030A63EB25035EDA00A1D27E /* Release */ = {
+		0374752E2581167C00211084 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YZHG975W3A;
-				INFOPLIST_FILE = SSKRTests/Info.plist;
+				INFOPLIST_FILE = BIP39Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.SSKRTests;
+				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BIP39Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -465,34 +477,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		030A63CC25035ED900A1D27E /* Build configuration list for PBXProject "SSKR" */ = {
+		0374750F2581167C00211084 /* Build configuration list for PBXProject "BIP39" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				030A63E425035EDA00A1D27E /* Debug */,
-				030A63E525035EDA00A1D27E /* Release */,
+				037475272581167C00211084 /* Debug */,
+				037475282581167C00211084 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		030A63E625035EDA00A1D27E /* Build configuration list for PBXNativeTarget "SSKR" */ = {
+		037475292581167C00211084 /* Build configuration list for PBXNativeTarget "BIP39" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				030A63E725035EDA00A1D27E /* Debug */,
-				030A63E825035EDA00A1D27E /* Release */,
+				0374752A2581167C00211084 /* Debug */,
+				0374752B2581167C00211084 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		030A63E925035EDA00A1D27E /* Build configuration list for PBXNativeTarget "SSKRTests" */ = {
+		0374752C2581167C00211084 /* Build configuration list for PBXNativeTarget "BIP39Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				030A63EA25035EDA00A1D27E /* Debug */,
-				030A63EB25035EDA00A1D27E /* Release */,
+				0374752D2581167C00211084 /* Debug */,
+				0374752E2581167C00211084 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 030A63C925035ED900A1D27E /* Project object */;
+	rootObject = 0374750C2581167C00211084 /* Project object */;
 }

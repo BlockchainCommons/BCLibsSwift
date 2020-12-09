@@ -8,6 +8,9 @@
       location = "group:CryptoBase/CryptoBase.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:BIP39/BIP39.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Shamir/Shamir.xcodeproj">
    </FileRef>
    <FileRef

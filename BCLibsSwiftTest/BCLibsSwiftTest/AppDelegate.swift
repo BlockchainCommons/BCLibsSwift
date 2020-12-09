@@ -8,10 +8,12 @@
 import UIKit
 
 import CCryptoBase
+import CBIP39
 import CShamir
 import CSSKR
 
 import CryptoBase
+import BIP39
 import Shamir
 import SSKR
 

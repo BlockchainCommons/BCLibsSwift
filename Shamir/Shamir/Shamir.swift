@@ -4,6 +4,7 @@ import CShamir
 public struct ShamirError: Error {
     public let message: String
     init(_ message: String) { self.message = message }
+    var localizedDescription: String { message }
 }
 
 class Wrapper<T> {

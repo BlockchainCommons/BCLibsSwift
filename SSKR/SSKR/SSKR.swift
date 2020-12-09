@@ -4,6 +4,7 @@ import CSSKR
 public struct SSKRError: Error {
     public let message: String
     public init(_ message: String) { self.message = message }
+    var localizedDescription: String { message }
 }
 
 class Wrapper<T> {
