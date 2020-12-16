@@ -9,6 +9,9 @@ import XCTest
 import BIP39
 
 class BIP39Tests: XCTestCase {
+    func testIdentify() {
+        XCTAssertEqual(BIP39.identify(), "BIP39")
+    }
 
     func testBIP39Word() throws {
         XCTAssertEqual(try BIP39.word(for: 0), "abandon")

@@ -1,5 +1,8 @@
 import Foundation
-import CSSKR
+
+public func identify() -> String {
+    "SSKR"
+}
 
 public struct SSKRError: Error {
     public let message: String

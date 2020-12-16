@@ -8,11 +8,8 @@
 import Cocoa
 import SwiftUI
 
-import CCryptoBase
-import CShamir
-import CSSKR
-
 import CryptoBase
+import BIP39
 import Shamir
 import SSKR
 
@@ -21,8 +18,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
 
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+
+        assert(CryptoBase.identify() == "CryptoBase")
+        assert(BIP39.identify() == "BIP39")
+        assert(Shamir.identify() == "Shamir")
+        assert(SSKR.identify() == "SSKR")
+
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
 

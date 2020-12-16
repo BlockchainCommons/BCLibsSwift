@@ -12,38 +12,22 @@
 		032939AD253BBF0400E52AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 032939AC253BBF0400E52AD5 /* Assets.xcassets */; };
 		032939B0253BBF0400E52AD5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 032939AF253BBF0400E52AD5 /* Preview Assets.xcassets */; };
 		032939B3253BBF0400E52AD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 032939B1253BBF0400E52AD5 /* Main.storyboard */; };
-		032939C7253BBF1E00E52AD5 /* CCryptoBase.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C257251B069B00BC8B3E /* CCryptoBase.xcframework */; };
-		032939C8253BBF1E00E52AD5 /* CCryptoBase.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C257251B069B00BC8B3E /* CCryptoBase.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		032939CA253BBF2000E52AD5 /* CryptoBase.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C254251B069B00BC8B3E /* CryptoBase.xcframework */; };
 		032939CB253BBF2000E52AD5 /* CryptoBase.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C254251B069B00BC8B3E /* CryptoBase.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		032939CC253BBF2100E52AD5 /* CShamir.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C253251B069B00BC8B3E /* CShamir.xcframework */; };
-		032939CD253BBF2100E52AD5 /* CShamir.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C253251B069B00BC8B3E /* CShamir.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		032939CE253BBF2200E52AD5 /* CSSKR.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C255251B069B00BC8B3E /* CSSKR.xcframework */; };
-		032939CF253BBF2200E52AD5 /* CSSKR.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C255251B069B00BC8B3E /* CSSKR.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		032939D0253BBF2400E52AD5 /* Shamir.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C252251B069B00BC8B3E /* Shamir.xcframework */; };
 		032939D1253BBF2400E52AD5 /* Shamir.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C252251B069B00BC8B3E /* Shamir.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		032939D2253BBF2500E52AD5 /* SSKR.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C256251B069B00BC8B3E /* SSKR.xcframework */; };
 		032939D3253BBF2500E52AD5 /* SSKR.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C256251B069B00BC8B3E /* SSKR.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		032DD3372589BFD500AE1A97 /* BIP39.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037475572581338200211084 /* BIP39.xcframework */; };
+		032DD3382589BFD500AE1A97 /* BIP39.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 037475572581338200211084 /* BIP39.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		032DD3392589BFD700AE1A97 /* Shamir.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C252251B069B00BC8B3E /* Shamir.xcframework */; };
+		032DD33A2589BFD700AE1A97 /* Shamir.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C252251B069B00BC8B3E /* Shamir.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		032DD33B2589BFD800AE1A97 /* SSKR.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C256251B069B00BC8B3E /* SSKR.xcframework */; };
+		032DD33C2589BFD800AE1A97 /* SSKR.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C256251B069B00BC8B3E /* SSKR.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		037475592581338200211084 /* BIP39.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037475572581338200211084 /* BIP39.xcframework */; };
 		0374755A2581338200211084 /* BIP39.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 037475572581338200211084 /* BIP39.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0374755B2581338200211084 /* CBIP39.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037475582581338200211084 /* CBIP39.xcframework */; };
-		0374755C2581338200211084 /* CBIP39.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 037475582581338200211084 /* CBIP39.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0374755D258133A000211084 /* BIP39.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037475572581338200211084 /* BIP39.xcframework */; };
-		0374755E258133A000211084 /* BIP39.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 037475572581338200211084 /* BIP39.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0374755F258133A000211084 /* CBIP39.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037475582581338200211084 /* CBIP39.xcframework */; };
-		03747560258133A000211084 /* CBIP39.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 037475582581338200211084 /* CBIP39.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03D3C258251B069B00BC8B3E /* Shamir.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C252251B069B00BC8B3E /* Shamir.xcframework */; };
-		03D3C259251B069B00BC8B3E /* Shamir.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C252251B069B00BC8B3E /* Shamir.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03D3C25A251B069B00BC8B3E /* CShamir.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C253251B069B00BC8B3E /* CShamir.xcframework */; };
-		03D3C25B251B069B00BC8B3E /* CShamir.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C253251B069B00BC8B3E /* CShamir.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03D3C25C251B069B00BC8B3E /* CryptoBase.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C254251B069B00BC8B3E /* CryptoBase.xcframework */; };
 		03D3C25D251B069B00BC8B3E /* CryptoBase.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C254251B069B00BC8B3E /* CryptoBase.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03D3C25E251B069B00BC8B3E /* CSSKR.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C255251B069B00BC8B3E /* CSSKR.xcframework */; };
-		03D3C25F251B069B00BC8B3E /* CSSKR.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C255251B069B00BC8B3E /* CSSKR.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03D3C260251B069B00BC8B3E /* SSKR.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C256251B069B00BC8B3E /* SSKR.xcframework */; };
-		03D3C261251B069B00BC8B3E /* SSKR.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C256251B069B00BC8B3E /* SSKR.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03D3C262251B069B00BC8B3E /* CCryptoBase.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C257251B069B00BC8B3E /* CCryptoBase.xcframework */; };
-		03D3C263251B069B00BC8B3E /* CCryptoBase.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C257251B069B00BC8B3E /* CCryptoBase.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03E1760D251A0F38008D3181 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E1760C251A0F38008D3181 /* AppDelegate.swift */; };
 		03E1760F251A0F38008D3181 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E1760E251A0F38008D3181 /* SceneDelegate.swift */; };
 		03E17611251A0F38008D3181 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E17610251A0F38008D3181 /* ViewController.swift */; };
@@ -59,11 +43,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				032939C8253BBF1E00E52AD5 /* CCryptoBase.xcframework in Embed Frameworks */,
-				032939CD253BBF2100E52AD5 /* CShamir.xcframework in Embed Frameworks */,
 				0374755A2581338200211084 /* BIP39.xcframework in Embed Frameworks */,
-				0374755C2581338200211084 /* CBIP39.xcframework in Embed Frameworks */,
-				032939CF253BBF2200E52AD5 /* CSSKR.xcframework in Embed Frameworks */,
 				032939CB253BBF2000E52AD5 /* CryptoBase.xcframework in Embed Frameworks */,
 				032939D3253BBF2500E52AD5 /* SSKR.xcframework in Embed Frameworks */,
 				032939D1253BBF2400E52AD5 /* Shamir.xcframework in Embed Frameworks */,
@@ -77,14 +57,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				03D3C259251B069B00BC8B3E /* Shamir.xcframework in Embed Frameworks */,
-				03D3C261251B069B00BC8B3E /* SSKR.xcframework in Embed Frameworks */,
-				0374755E258133A000211084 /* BIP39.xcframework in Embed Frameworks */,
-				03747560258133A000211084 /* CBIP39.xcframework in Embed Frameworks */,
-				03D3C25B251B069B00BC8B3E /* CShamir.xcframework in Embed Frameworks */,
-				03D3C25F251B069B00BC8B3E /* CSSKR.xcframework in Embed Frameworks */,
 				03D3C25D251B069B00BC8B3E /* CryptoBase.xcframework in Embed Frameworks */,
-				03D3C263251B069B00BC8B3E /* CCryptoBase.xcframework in Embed Frameworks */,
+				032DD3382589BFD500AE1A97 /* BIP39.xcframework in Embed Frameworks */,
+				032DD33C2589BFD800AE1A97 /* SSKR.xcframework in Embed Frameworks */,
+				032DD33A2589BFD700AE1A97 /* Shamir.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,13 +77,9 @@
 		032939B4253BBF0400E52AD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		032939B5253BBF0400E52AD5 /* BCLibsSwiftTest_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BCLibsSwiftTest_Mac.entitlements; sourceTree = "<group>"; };
 		037475572581338200211084 /* BIP39.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = BIP39.xcframework; path = ../build/BIP39.xcframework; sourceTree = "<group>"; };
-		037475582581338200211084 /* CBIP39.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CBIP39.xcframework; path = ../build/CBIP39.xcframework; sourceTree = "<group>"; };
 		03D3C252251B069B00BC8B3E /* Shamir.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Shamir.xcframework; path = ../build/Shamir.xcframework; sourceTree = "<group>"; };
-		03D3C253251B069B00BC8B3E /* CShamir.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CShamir.xcframework; path = ../build/CShamir.xcframework; sourceTree = "<group>"; };
 		03D3C254251B069B00BC8B3E /* CryptoBase.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CryptoBase.xcframework; path = ../build/CryptoBase.xcframework; sourceTree = "<group>"; };
-		03D3C255251B069B00BC8B3E /* CSSKR.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CSSKR.xcframework; path = ../build/CSSKR.xcframework; sourceTree = "<group>"; };
 		03D3C256251B069B00BC8B3E /* SSKR.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SSKR.xcframework; path = ../build/SSKR.xcframework; sourceTree = "<group>"; };
-		03D3C257251B069B00BC8B3E /* CCryptoBase.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CCryptoBase.xcframework; path = ../build/CCryptoBase.xcframework; sourceTree = "<group>"; };
 		03E17609251A0F38008D3181 /* BCLibsSwiftTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BCLibsSwiftTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E1760C251A0F38008D3181 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03E1760E251A0F38008D3181 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,11 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				032939CE253BBF2200E52AD5 /* CSSKR.xcframework in Frameworks */,
-				032939CC253BBF2100E52AD5 /* CShamir.xcframework in Frameworks */,
 				037475592581338200211084 /* BIP39.xcframework in Frameworks */,
-				0374755B2581338200211084 /* CBIP39.xcframework in Frameworks */,
-				032939C7253BBF1E00E52AD5 /* CCryptoBase.xcframework in Frameworks */,
 				032939CA253BBF2000E52AD5 /* CryptoBase.xcframework in Frameworks */,
 				032939D2253BBF2500E52AD5 /* SSKR.xcframework in Frameworks */,
 				032939D0253BBF2400E52AD5 /* Shamir.xcframework in Frameworks */,
@@ -139,14 +107,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03D3C258251B069B00BC8B3E /* Shamir.xcframework in Frameworks */,
-				03D3C260251B069B00BC8B3E /* SSKR.xcframework in Frameworks */,
-				0374755D258133A000211084 /* BIP39.xcframework in Frameworks */,
-				0374755F258133A000211084 /* CBIP39.xcframework in Frameworks */,
-				03D3C25A251B069B00BC8B3E /* CShamir.xcframework in Frameworks */,
-				03D3C25E251B069B00BC8B3E /* CSSKR.xcframework in Frameworks */,
+				032DD3392589BFD700AE1A97 /* Shamir.xcframework in Frameworks */,
 				03D3C25C251B069B00BC8B3E /* CryptoBase.xcframework in Frameworks */,
-				03D3C262251B069B00BC8B3E /* CCryptoBase.xcframework in Frameworks */,
+				032DD33B2589BFD800AE1A97 /* SSKR.xcframework in Frameworks */,
+				032DD3372589BFD500AE1A97 /* BIP39.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,11 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				037475572581338200211084 /* BIP39.xcframework */,
-				037475582581338200211084 /* CBIP39.xcframework */,
-				03D3C257251B069B00BC8B3E /* CCryptoBase.xcframework */,
 				03D3C254251B069B00BC8B3E /* CryptoBase.xcframework */,
-				03D3C253251B069B00BC8B3E /* CShamir.xcframework */,
-				03D3C255251B069B00BC8B3E /* CSSKR.xcframework */,
 				03D3C252251B069B00BC8B3E /* Shamir.xcframework */,
 				03D3C256251B069B00BC8B3E /* SSKR.xcframework */,
 			);
@@ -391,7 +351,6 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "blockchaincommons.BCLibsSwiftTest-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -419,7 +378,6 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "blockchaincommons.BCLibsSwiftTest-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -553,11 +511,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YZHG975W3A;
 				INFOPLIST_FILE = BCLibsSwiftTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BCLibsSwiftTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -575,11 +533,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YZHG975W3A;
 				INFOPLIST_FILE = BCLibsSwiftTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BCLibsSwiftTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;

@@ -3,16 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		030A63DC25035EDA00A1D27E /* Shamir.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 030A63D225035ED900A1D27E /* Shamir.framework */; };
 		030A63E325035EDA00A1D27E /* Shamir.h in Headers */ = {isa = PBXBuildFile; fileRef = 030A63D525035ED900A1D27E /* Shamir.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		030A63F025036DDF00A1D27E /* CShamir.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 030A63EF25036DDF00A1D27E /* CShamir.xcframework */; };
 		030A640B250382A300A1D27E /* ShamirTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A6404250382A300A1D27E /* ShamirTests.swift */; };
+		03564C7F25888CA80041B9FA /* shamir-errors.h in Headers */ = {isa = PBXBuildFile; fileRef = 03564C7A25888CA80041B9FA /* shamir-errors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03605B2E2514702D00002D2F /* Shamir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03605B2D2514702D00002D2F /* Shamir.swift */; };
-		03605B3A2514759B00002D2F /* CCryptoBase.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03605B372514758400002D2F /* CCryptoBase.xcframework */; };
 		03BA7FF525171E5600DE50B4 /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BA7FF425171E5600DE50B4 /* TestUtils.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,10 +31,9 @@
 		030A63D625035ED900A1D27E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		030A63DB25035EDA00A1D27E /* ShamirTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShamirTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		030A63E225035EDA00A1D27E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		030A63EF25036DDF00A1D27E /* CShamir.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CShamir.xcframework; path = ../build/CShamir.xcframework; sourceTree = "<group>"; };
 		030A6404250382A300A1D27E /* ShamirTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShamirTests.swift; sourceTree = "<group>"; };
+		03564C7A25888CA80041B9FA /* shamir-errors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "shamir-errors.h"; path = "../build/x86_64-apple-darwin/bc-shamir/include/bc-shamir/shamir-errors.h"; sourceTree = "<group>"; };
 		03605B2D2514702D00002D2F /* Shamir.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shamir.swift; sourceTree = "<group>"; };
-		03605B372514758400002D2F /* CCryptoBase.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CCryptoBase.xcframework; path = ../build/CCryptoBase.xcframework; sourceTree = SOURCE_ROOT; };
 		03BA7FF425171E5600DE50B4 /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,8 +42,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				030A63F025036DDF00A1D27E /* CShamir.xcframework in Frameworks */,
-				03605B3A2514759B00002D2F /* CCryptoBase.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,9 +60,9 @@
 			isa = PBXGroup;
 			children = (
 				030A63D425035ED900A1D27E /* Shamir */,
+				03564C7625888C7C0041B9FA /* Headers */,
 				030A63DF25035EDA00A1D27E /* ShamirTests */,
 				030A63D325035ED900A1D27E /* Products */,
-				030A63EE25036DDF00A1D27E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +95,12 @@
 			path = ShamirTests;
 			sourceTree = "<group>";
 		};
-		030A63EE25036DDF00A1D27E /* Frameworks */ = {
+		03564C7625888C7C0041B9FA /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				03605B372514758400002D2F /* CCryptoBase.xcframework */,
-				030A63EF25036DDF00A1D27E /* CShamir.xcframework */,
+				03564C7A25888CA80041B9FA /* shamir-errors.h */,
 			);
-			name = Frameworks;
+			name = Headers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,6 +110,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03564C7F25888CA80041B9FA /* shamir-errors.h in Headers */,
 				030A63E325035EDA00A1D27E /* Shamir.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,14 +370,23 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Shamir/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../build/apple-ios-macabi/bc-crypto-base/lib\"",
+					"\"$(SRCROOT)/../build/apple-ios-macabi/bc-shamir/lib\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MODULEMAP_FILE = Shamir/Shamir.modulemap;
+				OTHER_LDFLAGS = (
+					"-lbc-crypto-base",
+					"-lbc-shamir",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.Shamir;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -402,14 +407,23 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Shamir/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../build/apple-ios-macabi/bc-crypto-base/lib\"",
+					"\"$(SRCROOT)/../build/apple-ios-macabi/bc-shamir/lib\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MODULEMAP_FILE = Shamir/Shamir.modulemap;
+				OTHER_LDFLAGS = (
+					"-lbc-crypto-base",
+					"-lbc-shamir",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.Shamir;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

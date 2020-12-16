@@ -7,11 +7,6 @@
 
 import UIKit
 
-import CCryptoBase
-import CBIP39
-import CShamir
-import CSSKR
-
 import CryptoBase
 import BIP39
 import Shamir
@@ -20,10 +15,13 @@ import SSKR
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        assert(CryptoBase.identify() == "CryptoBase")
+        assert(BIP39.identify() == "BIP39")
+        assert(Shamir.identify() == "Shamir")
+        assert(SSKR.identify() == "SSKR")
+
         return true
     }
 

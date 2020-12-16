@@ -1,5 +1,4 @@
 import Foundation
-import CBIP39
 
 public struct BIP39Error: Error {
     public let message: String
@@ -8,6 +7,10 @@ public struct BIP39Error: Error {
 }
 
 public enum BIP39 {
+    public static func identify() -> String {
+        "BIP39"
+    }
+
     public static func word(for index: Int) throws -> String {
         guard (0..<2048).contains(index) else {
             throw BIP39Error("BIP39 word index out of range.")

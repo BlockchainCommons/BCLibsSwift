@@ -12,3 +12,9 @@ FOUNDATION_EXPORT double SSKRVersionNumber;
 
 //! Project version string for SSKR.
 FOUNDATION_EXPORT const unsigned char SSKRVersionString[];
+
+#import "bc-sskr.h"
+#import "encoding.h"
+#import "group.h"
+#import "shard.h"
+#import "sskr-errors.h"

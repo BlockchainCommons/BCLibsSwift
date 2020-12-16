@@ -18,6 +18,10 @@ func fakeRandom(len: Int) -> Data {
 }
 
 class SSKRTests: XCTestCase {
+    func testIdentify() {
+        XCTAssertEqual(SSKR.identify(), "SSKR")
+    }
+
     func test1() throws {
         let secret = "00112233445566778899aabbccddeeff".hexData
         let groups = [SSKRGroupDescriptor(threshold: 2, count: 3), SSKRGroupDescriptor(threshold: 3, count: 5)]

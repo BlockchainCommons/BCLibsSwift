@@ -3,17 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0374751F2581167C00211084 /* BIP39.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037475152581167C00211084 /* BIP39.framework */; };
 		037475242581167C00211084 /* BIP39Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037475232581167C00211084 /* BIP39Tests.swift */; };
 		037475262581167C00211084 /* BIP39.h in Headers */ = {isa = PBXBuildFile; fileRef = 037475182581167C00211084 /* BIP39.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		03747534258116FA00211084 /* CBIP39.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03747532258116FA00211084 /* CBIP39.xcframework */; };
-		03747535258116FA00211084 /* CBIP39.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03747532258116FA00211084 /* CBIP39.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03747536258116FA00211084 /* CCryptoBase.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03747533258116FA00211084 /* CCryptoBase.xcframework */; };
-		03747537258116FA00211084 /* CCryptoBase.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03747533258116FA00211084 /* CCryptoBase.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0374753B2581173C00211084 /* BIP39.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374753A2581173C00211084 /* BIP39.swift */; };
 		037475552581222B00211084 /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037475542581222B00211084 /* TestUtils.swift */; };
 /* End PBXBuildFile section */
@@ -35,8 +31,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				03747535258116FA00211084 /* CBIP39.xcframework in Embed Frameworks */,
-				03747537258116FA00211084 /* CCryptoBase.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,8 +44,6 @@
 		0374751E2581167C00211084 /* BIP39Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BIP39Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		037475232581167C00211084 /* BIP39Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIP39Tests.swift; sourceTree = "<group>"; };
 		037475252581167C00211084 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03747532258116FA00211084 /* CBIP39.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CBIP39.xcframework; path = ../build/CBIP39.xcframework; sourceTree = "<group>"; };
-		03747533258116FA00211084 /* CCryptoBase.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CCryptoBase.xcframework; path = ../build/CCryptoBase.xcframework; sourceTree = "<group>"; };
 		0374753A2581173C00211084 /* BIP39.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIP39.swift; sourceTree = "<group>"; };
 		037475542581222B00211084 /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,8 +53,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03747534258116FA00211084 /* CBIP39.xcframework in Frameworks */,
-				03747536258116FA00211084 /* CCryptoBase.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +73,6 @@
 				037475172581167C00211084 /* BIP39 */,
 				037475222581167C00211084 /* BIP39Tests */,
 				037475162581167C00211084 /* Products */,
-				03747531258116FA00211084 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,15 +103,6 @@
 				037475252581167C00211084 /* Info.plist */,
 			);
 			path = BIP39Tests;
-			sourceTree = "<group>";
-		};
-		03747531258116FA00211084 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				03747532258116FA00211084 /* CBIP39.xcframework */,
-				03747533258116FA00211084 /* CCryptoBase.xcframework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,7 +291,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -369,7 +348,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -392,13 +370,22 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = BIP39/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../build/apple-ios-macabi/bc-crypto-base/lib\"",
+					"\"$(SRCROOT)/../build/apple-ios-macabi/bc-bip39/lib\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				OTHER_LDFLAGS = (
+					"-lbc-crypto-base",
+					"-lbc-bip39",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BIP39;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -419,13 +406,22 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = BIP39/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../build/apple-ios-macabi/bc-crypto-base/lib\"",
+					"\"$(SRCROOT)/../build/apple-ios-macabi/bc-bip39/lib\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				OTHER_LDFLAGS = (
+					"-lbc-crypto-base",
+					"-lbc-bip39",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BIP39;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

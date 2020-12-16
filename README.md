@@ -2,31 +2,35 @@
 
 ### _by Wolf McNally and Christopher Allen_
 
-Blockchain Commons publishes several open source C libraries that are useful in cryptocurrency wallets. **BCLibsSwift** wraps some of those libraries in opinionated Swift frameworks that work across iOS devices, the iOS simulator, and Mac Catalyst builds.
+Blockchain Commons publishes several open source C libraries that are useful in cryptocurrency wallets:
+
+* [bc-crypto-base](https://github.com/blockchaincommons/bc-crypto-base)
+* [bc-bip39](https://github.com/blockchaincommons/bc-bip39)
+* [bc-shamir](https://github.com/blockchaincommons/bc-shamir)
+* [bc-sskr](https://github.com/blockchaincommons/bc-sskr)
+
+**BCLibsSwift** wraps these libraries in opinionated Swift frameworks that work across iOS devices, the iOS simulator, and Mac Catalyst builds, on both Intel (x86_64) and Apple Silicon (arm64) architectures.
 
 The build script currently produces these frameworks:
 
-* `CCryptoBase.xcframework` based on [bc-crypto-base](https://github.com/blockchaincommons/bc-crypto-base)
-* `CShamir.xcframework` based on [bc-shamir](https://github.com/blockchaincommons/bc-shamir)
-* `CSSKR.xcframework` based on [bc-sskr](https://github.com/blockchaincommons/bc-sskr)
 * `CryptoBase.xcframework`
+* `BIP39.xcframework`
 * `Shamir.xcframework`
 * `SSKR.xcframework`
 
-The frameworks that have the "C" prefix wrap the C libraries themselves. The ones without the prefix contain Swifty interfaces to the C libraries.
+These are universal frameworks built to run natively on these configurations:
 
-The C libraries have each other as dependencies, so to use any of these frameworks you must include it and any of its dependencies.
+| Processor | Platform |
+|:----------|:---------|
+| arm64 | iOS |
+| x86_64 | Catalyst |
+| arm64 | Catalyst |
+| x86_64 | iOS Simulator |
+| arm64 | iOS Simulator |
+| x86_64 | macOS |
+| arm64 | macOS |
 
-* `CCryptoBase` has no dependencies
-* `CShamir` depends on `CCryptoBase`
-* `CSSKR` depends on `CShamir` and `CCryptoBase`
-
-If you want to use one of the Swift frameworks you'll need to include the corresponding C framework and all the C frameworks it depends on in your Xcode project. So if you just want to include the SSKR functionality, you'll need:
-
-* `CCryptoBase`
-* `CShamir`
-* `CSSKR`
-* `SSKR`
+Each of these frameworks includes all the C libraries upon which it is dependent, so they can be freely mixed and matched.
 
 ## Installation Instrucations
 
@@ -40,13 +44,13 @@ The resulting frameworks are in `BCLibsSwift/build/`.
 
 ## Usage Instructions
 
-To use one of the Swift frameworks, include the necessary frameworks as above, and import the API you want to use in your code:
+To use one of the Swift frameworks, include the desired frameworks as above, make sure they are set to `Embed and Sign`, and import the API you want to use in your code:
 
 ```
 import SSKR
 ```
 
-For examples of usage, open `BCLibsSwift.xcworkspace` and examine the unit test targets `CryptoBaseTests`, `ShamirTests`, and `SSKRTests`. These unit tests may be run only after running the `build.sh` script.
+For examples of usage, open `BCLibsSwift.xcworkspace` and examine the unit test targets `CryptoBaseTests`, `BIP39Tests`, `ShamirTests`, and `SSKRTests`. These unit tests may be run only after running the `build.sh` script.
 
 ## Status - Alpha
 
