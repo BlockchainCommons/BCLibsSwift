@@ -1,9 +1,9 @@
 import Foundation
 
-public struct BIP39Error: Error {
+public struct BIP39Error: LocalizedError {
     public let message: String
     init(_ message: String) { self.message = message }
-    var localizedDescription: String { message }
+    public var errorDescription: String? { message }
 }
 
 public enum BIP39 {

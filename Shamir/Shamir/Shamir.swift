@@ -1,9 +1,9 @@
 import Foundation
 
-public struct ShamirError: Error {
+public struct ShamirError: LocalizedError {
     public let message: String
     init(_ message: String) { self.message = message }
-    var localizedDescription: String { message }
+    public var errorDescription: String? { message }
 }
 
 class Wrapper<T> {

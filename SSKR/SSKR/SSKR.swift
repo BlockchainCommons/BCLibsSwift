@@ -4,10 +4,10 @@ public func identify() -> String {
     "SSKR"
 }
 
-public struct SSKRError: Error {
+public struct SSKRError: LocalizedError {
     public let message: String
     public init(_ message: String) { self.message = message }
-    var localizedDescription: String { message }
+    public var errorDescription: String? { message }
 }
 
 class Wrapper<T> {
