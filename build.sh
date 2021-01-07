@@ -1,18 +1,15 @@
-#!/usr/bin/env zsh
+#!zsh
 set -e # abort if any command fails
-
-git submodule update --init
 
 MIN_IOS_VERSION=14.2
 MIN_MAC_VERSION=11
 PROJ_ROOT=${PWD}
 DEPS_ROOT=${PROJ_ROOT}/deps
 BUILD_ROOT=${PROJ_ROOT}/build
-LOG=${BUILD_ROOT}/log.txt
+BUILD_LOG=${BUILD_ROOT}/log.txt
 
 mkdir -p ${BUILD_ROOT}
-rm -f ${LOG}
-touch ${LOG}
+echo -n > ${BUILD_LOG}
 
 # Terminal colors
 RED=`tput setaf 1`
@@ -20,6 +17,27 @@ GREEN=`tput setaf 2`
 BLUE=`tput setaf 4`
 CYAN=`tput setaf 6`
 RESET=`tput sgr0`
+
+progress_section() {
+  echo "${CYAN}=== ${1} ===${RESET}" >&3
+}
+
+progress_item() {
+  echo "${BLUE}== ${1} ==${RESET}" >&3
+}
+
+progress_success() {
+  echo "${GREEN}==== ${1} ====${RESET}" >&3
+}
+
+progress_error() {
+  echo "${RED}** ${1} **${RESET}" >&3
+}
+
+get_dependencies() (
+  progress_section "Getting Dependencies"
+  git submodule update --init
+)
 
 build_init()
 {
@@ -38,29 +56,28 @@ build_init()
   export CC="$(xcrun --sdk ${SDK} -f clang) -isysroot ${SDK_PATH} -target ${TARGET} ${BITCODE} ${VERSION}"
   export CXX="$(xcrun --sdk ${SDK} -f clang++) -isysroot ${SDK_PATH} -target ${TARGET} ${BITCODE} ${VERSION}"
 
-  echo "${BLUE}== ${LIB_NAME} ${TARGET} ==${RESET}"
+  progress_item "${LIB_NAME} ${TARGET}"
 }
 
 build_bc_crypto_base()
-{
+(
   build_init bc-crypto-base $@
 
   pushd ${DEPS_ROOT}/bc-crypto-base
 
   ./configure \
     --host=${TARGET} \
-    --prefix=${PREFIX} \
-    >> ${LOG}
+    --prefix=${PREFIX}
 
-  make clean >> ${LOG}
-  make install >> ${LOG}
-  make clean >> ${LOG}
+  make clean
+  make install
+  make clean
 
   popd
-}
+)
 
 build_bc_bip39()
-{
+(
   build_init bc-bip39 $@
 
   pushd ${DEPS_ROOT}/bc-bip39
@@ -70,18 +87,17 @@ build_bc_bip39()
 
   ./configure \
     --host=${TARGET} \
-    --prefix=${PREFIX} \
-    >> ${LOG}
+    --prefix=${PREFIX}
 
-  make clean >> ${LOG}
-  make install >> ${LOG}
-  make clean >> ${LOG}
+  make clean
+  make install
+  make clean
 
   popd
-}
+)
 
 build_bc_shamir()
-{
+(
   build_init bc-shamir $@
 
   pushd ${DEPS_ROOT}/bc-shamir
@@ -91,18 +107,17 @@ build_bc_shamir()
 
   ./configure \
     --host=${TARGET} \
-    --prefix=${PREFIX} \
-    >> ${LOG}
+    --prefix=${PREFIX}
 
-  make clean >> ${LOG}
-  make install >> ${LOG}
-  make clean >> ${LOG}
+  make clean
+  make install
+  make clean
 
   popd
-}
+)
 
 build_csskr()
-{
+(
   build_init bc-sskr $@
 
   pushd ${DEPS_ROOT}/bc-sskr
@@ -119,19 +134,18 @@ build_csskr()
 
   ./configure \
     --host=${TARGET} \
-    --prefix=${PREFIX} \
-    >> ${LOG}
+    --prefix=${PREFIX}
 
-  make clean >> ${LOG}
-  make install >> ${LOG}
-  make clean >> ${LOG}
+  make clean
+  make install
+  make clean
 
   popd
-}
+)
 
 build_c_libraries()
 (
-  echo "${CYAN}==== Building C Libraries ====${RESET}"
+  progress_section "Building C Libraries"
 
   #             TARGET                      SDK              BITCODE                 VERSION
   ARM_IOS=(     arm64-apple-ios             iphoneos         -fembed-bitcode         -mios-version-min=${MIN_IOS_VERSION})
@@ -235,14 +249,14 @@ build_swift_framework()
   # printf $'\n'
   # exit 1
 
-  echo "${BLUE}== ${FRAMEWORK} ${TARGET} ==${RESET}"
+  progress_item "${FRAMEWORK} ${TARGET}"
 
   # This has the complete swift module information
-  xcodebuild clean build ${ARGS[@]} >> ${LOG}
+  xcodebuild clean build ${ARGS[@]}
 
   # This has the complete Bitcode information
   ARCHIVE_PATH=${DEST_DIR}/${FRAMEWORK}.xcarchive
-  xcodebuild archive -archivePath ${ARCHIVE_PATH} ${ARGS[@]} >> ${LOG}
+  xcodebuild archive -archivePath ${ARCHIVE_PATH} ${ARGS[@]}
 
   BUILD_DIR=`xcodebuild ${ARGS[@]} -showBuildSettings | grep -o '\<BUILD_DIR = .*' | cut -d ' ' -f 3`
 
@@ -255,7 +269,7 @@ build_swift_framework()
 
   cp -R ${FRAMEWORK_SOURCE_DIR}/${FRAMEWORK_DIR_NAME} ${DEST_DIR}/
 
-  xcodebuild clean ${ARGS[@]} >> ${LOG}
+  xcodebuild clean ${ARGS[@]}
 
   # Copy the binary from the framework in the archive to the main framework so we have correct Swift module information
   # **and** complete Bitcode information.
@@ -269,7 +283,7 @@ build_swift_framework()
 
 build_swift_frameworks()
 (
-  echo "${CYAN}==== Building Swift Frameworks ====${RESET}"
+  progress_section "Building Swift Frameworks"
 
   #              TARGET                      SDK              PLATFORM_DIR     CATALYST  BITCODE  VERSION
   ARM_IOS=(      arm64-apple-ios             iphoneos         iphoneos         NO        bitcode  IPHONEOS_DEPLOYMENT_TARGET=${MIN_IOS_VERSION})
@@ -322,9 +336,11 @@ lipo_swift_framework_variant() (
   FRAMEWORK2DIR=${BUILD_ROOT}/x86_64-${PLATFORMFRAMEWORK}
   DESTDIR=${BUILD_ROOT}/${PLATFORMFRAMEWORK}
 
-  echo "${BLUE}== ${FRAMEWORK} ${PLATFORM} ==${RESET}"
+  progress_item "${FRAMEWORK} ${PLATFORM}"
 
+  TRAPZERR() { }
   set +e; FRAMEWORK_LINK=`readlink ${FRAMEWORK1DIR}/${FRAMEWORK}`; set -e
+  TRAPZERR() { return $(( 128 + $1 )) }
   ARCHIVE_PATH=${FRAMEWORK_LINK:-$FRAMEWORK}
 
   FRAMEWORK1ARCHIVE=${FRAMEWORK1DIR}/${ARCHIVE_PATH}
@@ -350,7 +366,7 @@ lipo_swift_framework() (
 
 lipo_swift_frameworks()
 (
-  echo "${CYAN}==== Building fat Swift frameworks ====${RESET}"
+  progress_section "Building fat Swift frameworks"
 
   lipo_swift_framework CryptoBase
   lipo_swift_framework BIP39
@@ -366,7 +382,7 @@ build_swift_xcframework()
   XC_FRAMEWORK_NAME=${FRAMEWORK_NAME}.xcframework
   XC_FRAMEWORK_PATH=${BUILD_ROOT}/${XC_FRAMEWORK_NAME}
 
-  echo "${BLUE}== ${XC_FRAMEWORK_NAME} ==${RESET}"
+  progress_item "${XC_FRAMEWORK_NAME}"
 
   rm -rf ${XC_FRAMEWORK_PATH}
   xcodebuild -create-xcframework \
@@ -374,8 +390,7 @@ build_swift_xcframework()
   -framework ${BUILD_ROOT}/apple-darwin/${PLATFORM_FRAMEWORK_NAME} \
   -framework ${BUILD_ROOT}/apple-ios-macabi/${PLATFORM_FRAMEWORK_NAME} \
   -framework ${BUILD_ROOT}/apple-ios-simulator/${PLATFORM_FRAMEWORK_NAME} \
-  -output ${XC_FRAMEWORK_PATH} \
-  >> ${LOG}
+  -output ${XC_FRAMEWORK_PATH}
 
   # As of September 22, 2020, the step above is broken:
   # it creates unusable XCFrameworks; missing files like Modules/CryptoBase.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo
@@ -396,7 +411,7 @@ build_swift_xcframework()
 
 build_swift_xcframeworks()
 (
-  echo "${CYAN}==== Building Swift XCFrameworks ====${RESET}"
+  progress_section "Building Swift XCFrameworks"
 
   build_swift_xcframework CryptoBase
   build_swift_xcframework BIP39
@@ -404,7 +419,39 @@ build_swift_xcframeworks()
   build_swift_xcframework SSKR
 )
 
-build_c_libraries
-build_swift_frameworks
-lipo_swift_frameworks
-build_swift_xcframeworks
+build_all()
+(
+  CONTEXT=subshell
+  get_dependencies
+  build_c_libraries
+  build_swift_frameworks
+  lipo_swift_frameworks
+  build_swift_xcframeworks
+)
+
+CONTEXT=top
+
+TRAPZERR() {
+  if [[ ${CONTEXT} == "top" ]]
+  then
+    progress_error "Build error."
+    echo "Log tail:" >&3
+    tail -n 4 ${BUILD_LOG} >&3
+  fi
+
+  return $(( 128 + $1 ))
+}
+
+TRAPINT() {
+  if [[ ${CONTEXT} == "top" ]]
+  then
+    progress_error "Build stopped."
+  fi
+
+  return $(( 128 + $1 ))
+}
+
+exec 3>/dev/tty
+# build_all
+build_all >>&| ${BUILD_LOG}
+progress_success "Done!"
