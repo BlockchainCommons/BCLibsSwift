@@ -18,21 +18,29 @@ BLUE=`tput setaf 4`
 CYAN=`tput setaf 6`
 RESET=`tput sgr0`
 
-progress_section() {
-  echo "${CYAN}=== ${1} ===${RESET}" >&3
-}
+progress_section() (
+  MESSAGE="=== ${1} ==="
+  echo ${MESSAGE}
+  echo "${CYAN}${MESSAGE}${RESET}" >&3
+)
 
-progress_item() {
-  echo "${BLUE}== ${1} ==${RESET}" >&3
-}
+progress_item() (
+  MESSAGE="== ${1} =="
+  echo ${MESSAGE}
+  echo "${BLUE}${MESSAGE}${RESET}" >&3
+)
 
-progress_success() {
-  echo "${GREEN}==== ${1} ====${RESET}" >&3
-}
+progress_success() (
+  MESSAGE="==== ${1} ===="
+  echo ${MESSAGE}
+  echo "${GREEN}${MESSAGE}${RESET}" >&3
+)
 
-progress_error() {
-  echo "${RED}** ${1} **${RESET}" >&3
-}
+progress_error() (
+  MESSAGE="** ${1} **"
+  echo ${MESSAGE}
+  echo "${RED}${MESSAGE}${RESET}" >&3
+)
 
 get_dependencies() (
   progress_section "Getting Dependencies"
@@ -239,15 +247,17 @@ build_swift_framework()
     CODE_SIGNING_REQUIRED=NO \
     )
 
-  # printf $'\n'
-  # printf " <%s> " $@
-  # printf $'\n'
-  # printf " <%s> " $LIBS_NAMES
-  # printf $'\n'
-  # printf " <%s> " $ARGS
-  # printf $'\n'
-  # printf $'\n'
-  # exit 1
+  # (
+  #   printf $'\n'
+  #   printf " <%s> " $@
+  #   printf $'\n'
+  #   printf " <%s> " $LIBS_NAMES
+  #   printf $'\n'
+  #   printf " <%s> " $ARGS
+  #   printf $'\n'
+  #   printf $'\n'
+  # ) >&3
+  #   exit 0
 
   progress_item "${FRAMEWORK} ${TARGET}"
 
@@ -327,7 +337,8 @@ build_swift_frameworks()
   build_swift_framework SSKR "bc-crypto-base bc-shamir bc-sskr" ${ARM_MAC[@]}
 )
 
-lipo_swift_framework_variant() (
+lipo_swift_framework_variant()
+(
   FRAMEWORK=$1
   PLATFORM=$2
   FRAMEWORK_DIR_NAME=${FRAMEWORK}.framework
@@ -357,7 +368,8 @@ lipo_swift_framework_variant() (
   cp -R ${FRAMEWORK2DIR}/Modules/* ${DESTDIR}/Modules
 )
 
-lipo_swift_framework() (
+lipo_swift_framework()
+(
   FRAMEWORK=$1
   lipo_swift_framework_variant ${FRAMEWORK} apple-ios-macabi
   lipo_swift_framework_variant ${FRAMEWORK} apple-ios-simulator
@@ -375,7 +387,7 @@ lipo_swift_frameworks()
 )
 
 build_swift_xcframework()
-{
+(
   FRAMEWORK_NAME=$1
 
   PLATFORM_FRAMEWORK_NAME=${FRAMEWORK_NAME}.framework
@@ -407,7 +419,7 @@ build_swift_xcframework()
 
   rm -rf ${XC_FRAMEWORK_PATH}/macos-arm64_x86_64/${PLATFORM_FRAMEWORK_NAME}
   cp -R ${BUILD_ROOT}/apple-darwin/${PLATFORM_FRAMEWORK_NAME} ${XC_FRAMEWORK_PATH}/macos-arm64_x86_64/
-}
+)
 
 build_swift_xcframeworks()
 (
@@ -436,7 +448,7 @@ TRAPZERR() {
   then
     progress_error "Build error."
     echo "Log tail:" >&3
-    tail -n 4 ${BUILD_LOG} >&3
+    tail -n 10 ${BUILD_LOG} >&3
   fi
 
   return $(( 128 + $1 ))
@@ -451,7 +463,8 @@ TRAPINT() {
   return $(( 128 + $1 ))
 }
 
-exec 3>/dev/tty
-# build_all
-build_all >>&| ${BUILD_LOG}
-progress_success "Done!"
+(
+  exec 3>/dev/tty
+  build_all
+  progress_success "Done!"
+) >>&| ${BUILD_LOG}
