@@ -6,7 +6,8 @@ MIN_MAC_VERSION=11
 PROJ_ROOT=${PWD}
 DEPS_ROOT=${PROJ_ROOT}/deps
 BUILD_ROOT=${PROJ_ROOT}/build
-BUILD_LOG=${BUILD_ROOT}/log.txt
+BUILD_LOG=${PROJ_ROOT}/buildlog.txt
+CPU_COUNT=$(sysctl hw.ncpu | awk '{print $2}')
 
 mkdir -p ${BUILD_ROOT}
 echo -n > ${BUILD_LOG}
@@ -78,6 +79,7 @@ build_bc_crypto_base()
     --prefix=${PREFIX}
 
   make clean
+  make -j${CPU_COUNT}
   make install
   make clean
 
@@ -98,6 +100,7 @@ build_bc_bip39()
     --prefix=${PREFIX}
 
   make clean
+  make -j${CPU_COUNT}
   make install
   make clean
 
@@ -118,6 +121,7 @@ build_bc_shamir()
     --prefix=${PREFIX}
 
   make clean
+  make -j${CPU_COUNT}
   make install
   make clean
 
@@ -145,6 +149,7 @@ build_csskr()
     --prefix=${PREFIX}
 
   make clean
+  make -j${CPU_COUNT}
   make install
   make clean
 
