@@ -54,9 +54,9 @@ import SSKR
 
 For examples of usage, open `BCLibsSwift.xcworkspace` and examine the unit test targets `CryptoBaseTests`, `BIP39Tests`, `ShamirTests`, and `SSKRTests`. These unit tests may be run only after running the `build.sh` script.
 
-## Status - Alpha
+## Status - Release
 
-**BCLibsSwift** is currently under active development and in the late alpha testing phase. It should not be used for production tasks until it has had further testing and auditing.
+**BCLibsSwift** is considered useful and stable in its present form. Two of its constituent libraries, `bc-shamir` and `bc-sskr`, have undergone independent security review and audit.
 
 ## Origin, Authors, Copyright & Licenses
 
