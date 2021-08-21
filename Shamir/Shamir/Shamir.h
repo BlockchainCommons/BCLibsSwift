@@ -22,7 +22,7 @@ extern "C" {
 //#include "shamir.h"
 
 #include <stdint.h>
-#include "shamir-errors.h"
+#include "shamir-constants.h"
 
 #define MAX_SHARD_COUNT 16
 #define SECRET_INDEX 255

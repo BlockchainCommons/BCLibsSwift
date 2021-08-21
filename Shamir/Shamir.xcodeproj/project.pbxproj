@@ -10,7 +10,7 @@
 		030A63DC25035EDA00A1D27E /* Shamir.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 030A63D225035ED900A1D27E /* Shamir.framework */; };
 		030A63E325035EDA00A1D27E /* Shamir.h in Headers */ = {isa = PBXBuildFile; fileRef = 030A63D525035ED900A1D27E /* Shamir.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		030A640B250382A300A1D27E /* ShamirTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A6404250382A300A1D27E /* ShamirTests.swift */; };
-		03564C7F25888CA80041B9FA /* shamir-errors.h in Headers */ = {isa = PBXBuildFile; fileRef = 03564C7A25888CA80041B9FA /* shamir-errors.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		03564C7F25888CA80041B9FA /* shamir-constants.h in Headers */ = {isa = PBXBuildFile; fileRef = 03564C7A25888CA80041B9FA /* shamir-constants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03605B2E2514702D00002D2F /* Shamir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03605B2D2514702D00002D2F /* Shamir.swift */; };
 		03BA7FF525171E5600DE50B4 /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BA7FF425171E5600DE50B4 /* TestUtils.swift */; };
 /* End PBXBuildFile section */
@@ -32,7 +32,7 @@
 		030A63DB25035EDA00A1D27E /* ShamirTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShamirTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		030A63E225035EDA00A1D27E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		030A6404250382A300A1D27E /* ShamirTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShamirTests.swift; sourceTree = "<group>"; };
-		03564C7A25888CA80041B9FA /* shamir-errors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "shamir-errors.h"; path = "../build/x86_64-apple-darwin/bc-shamir/include/bc-shamir/shamir-errors.h"; sourceTree = "<group>"; };
+		03564C7A25888CA80041B9FA /* shamir-constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "shamir-constants.h"; path = "../build/x86_64-apple-darwin/bc-shamir/include/bc-shamir/shamir-constants.h"; sourceTree = "<group>"; };
 		03605B2D2514702D00002D2F /* Shamir.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shamir.swift; sourceTree = "<group>"; };
 		03BA7FF425171E5600DE50B4 /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,7 +98,7 @@
 		03564C7625888C7C0041B9FA /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				03564C7A25888CA80041B9FA /* shamir-errors.h */,
+				03564C7A25888CA80041B9FA /* shamir-constants.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -110,7 +110,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03564C7F25888CA80041B9FA /* shamir-errors.h in Headers */,
+				03564C7F25888CA80041B9FA /* shamir-constants.h in Headers */,
 				030A63E325035EDA00A1D27E /* Shamir.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
