@@ -83,14 +83,14 @@ public enum CryptoBase {
     }
 
     public static func crc32(data: Data) -> UInt32 {
-        withUnsafeBytes(of: data) {
+        data.withUnsafeBytes {
             let p = $0.bindMemory(to: UInt8.self).baseAddress
             return shim_crc32(bytes: p, len: data.count)
         }
     }
 
     public static func crc32n(data: Data) -> UInt32 {
-        withUnsafeBytes(of: data) {
+        data.withUnsafeBytes {
             let p = $0.bindMemory(to: UInt8.self).baseAddress
             return shim_crc32n(bytes: p, len: data.count)
         }
