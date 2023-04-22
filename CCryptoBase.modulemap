@@ -1,4 +1,4 @@
-module CCryptoBase {
+module CCryptoBase [extern_c] {
   header "bc-crypto-base.h"
   header "crc32.h"
   header "hmac.h"

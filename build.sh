@@ -1,77 +1,22 @@
-#!zsh
+#!/bin/zsh
 set -e # abort if any command fails
 
-MIN_IOS_VERSION=13
+MIN_IOS_VERSION=11
 MIN_MAC_VERSION=11
 PROJ_ROOT=${PWD}
 DEPS_ROOT=${PROJ_ROOT}/deps
 BUILD_ROOT=${PROJ_ROOT}/build
+LIBS_ROOT=${BUILD_ROOT}/libs
+ARCHIVES_ROOT=${BUILD_ROOT}/archives
 BUILD_LOG=${PROJ_ROOT}/buildlog.txt
 CPU_COUNT=$(sysctl hw.ncpu | awk '{print $2}')
 
 mkdir -p ${BUILD_ROOT}
 echo -n > ${BUILD_LOG}
 
-# Terminal colors
-RED=`tput setaf 1`
-GREEN=`tput setaf 2`
-BLUE=`tput setaf 4`
-CYAN=`tput setaf 6`
-RESET=`tput sgr0`
+source ./message_utils.sh
 
-progress_section() (
-  MESSAGE="=== ${1} ==="
-  echo ${MESSAGE}
-  echo "${CYAN}${MESSAGE}${RESET}" >&3
-)
-
-progress_item() (
-  MESSAGE="== ${1} =="
-  echo ${MESSAGE}
-  echo "${BLUE}${MESSAGE}${RESET}" >&3
-)
-
-progress_success() (
-  MESSAGE="==== ${1} ===="
-  echo ${MESSAGE}
-  echo "${GREEN}${MESSAGE}${RESET}" >&3
-)
-
-progress_error() (
-  MESSAGE="** ${1} **"
-  echo ${MESSAGE}
-  echo "${RED}${MESSAGE}${RESET}" >&3
-)
-
-get_dependencies() (
-  progress_section "Getting Dependencies"
-  git submodule update --init
-)
-
-build_init()
-{
-  LIB_NAME=$1
-  TARGET=$2
-  SDK=$3
-  BITCODE=$4
-  VERSION=$5
-  SDK_PATH=`xcrun -sdk ${SDK} --show-sdk-path`
-  BUILD_ARCH_DIR=${BUILD_ROOT}/${TARGET}
-  PREFIX=${BUILD_ARCH_DIR}/${LIB_NAME}
-
-  export CFLAGS="-O3 -isysroot ${SDK_PATH} -target ${TARGET} ${BITCODE} ${VERSION} -Wno-overriding-t-option"
-  export CXXFLAGS="-O3 -isysroot ${SDK_PATH} -target ${TARGET} ${BITCODE} ${VERSION} -Wno-overriding-t-option"
-  export LDFLAGS="-target ${TARGET} ${BITCODE}"
-  export CC="$(xcrun --sdk ${SDK} -f clang) -isysroot ${SDK_PATH} -target ${TARGET} ${BITCODE} ${VERSION}"
-  export CXX="$(xcrun --sdk ${SDK} -f clang++) -isysroot ${SDK_PATH} -target ${TARGET} ${BITCODE} ${VERSION}"
-
-  progress_item "${LIB_NAME} ${TARGET}"
-}
-
-build_bc_crypto_base()
-(
-  build_init bc-crypto-base $@
-
+build_crypto_base() {
   pushd ${DEPS_ROOT}/bc-crypto-base
 
   ./configure \
@@ -83,13 +28,13 @@ build_bc_crypto_base()
   make install
   make clean
 
+  cp ${PROJ_ROOT}/CCryptoBase.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
+
   popd
-)
+}
 
-build_bc_bip39()
-(
-  build_init bc-bip39 $@
-
+build_bip39()
+{
   pushd ${DEPS_ROOT}/bc-bip39
 
   export CFLAGS="${CFLAGS} -I${BUILD_ARCH_DIR}/bc-crypto-base/include"
@@ -104,13 +49,13 @@ build_bc_bip39()
   make install
   make clean
 
+  cp ${PROJ_ROOT}/CBIP39.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
+
   popd
-)
+}
 
-build_bc_shamir()
+build_shamir()
 (
-  build_init bc-shamir $@
-
   pushd ${DEPS_ROOT}/bc-shamir
 
   export CFLAGS="${CFLAGS} -I${BUILD_ARCH_DIR}/bc-crypto-base/include"
@@ -125,13 +70,13 @@ build_bc_shamir()
   make install
   make clean
 
+  cp ${PROJ_ROOT}/CShamir.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
+
   popd
 )
 
-build_csskr()
+build_sskr()
 (
-  build_init bc-sskr $@
-
   pushd ${DEPS_ROOT}/bc-sskr
 
   export CFLAGS="${CFLAGS} \
@@ -153,323 +98,194 @@ build_csskr()
   make install
   make clean
 
+  cp ${PROJ_ROOT}/CSSKR.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
+
   popd
 )
 
-build_c_libraries()
-(
-  progress_section "Building C Libraries"
+build_libs() (
+  LIB_NAME=$1
+  BUILD_FUNC=$2
 
-  #             TARGET                      SDK              BITCODE                 VERSION
-  ARM_IOS=(     arm64-apple-ios             iphoneos         -fembed-bitcode         -mios-version-min=${MIN_IOS_VERSION})
+  progress_subsection "Building C libraries for ${LIB_NAME}"
 
-  X86_CATALYST=(x86_64-apple-ios-macabi     macosx           -fembed-bitcode         -mmacosx-version-min=${MIN_MAC_VERSION})
-  ARM_CATALYST=(arm64-apple-ios-macabi      macosx           -fembed-bitcode         -mmacosx-version-min=${MIN_MAC_VERSION})
+  TARGETS=(
+    "arm64-apple-ios:iphoneos:-mios-version-min=${MIN_IOS_VERSION}"
 
-  X86_IOS_SIM=( x86_64-apple-ios-simulator  iphonesimulator  -fembed-bitcode-marker  -mios-simulator-version-min=${MIN_IOS_VERSION})
-  ARM_IOS_SIM=( arm64-apple-ios-simulator   iphonesimulator  -fembed-bitcode-marker  -mios-simulator-version-min=${MIN_IOS_VERSION})
+    "arm64-apple-ios-macabi:macosx:-mmacosx-version-min=${MIN_MAC_VERSION}"
+    "x86_64-apple-ios-macabi:macosx:-mmacosx-version-min=${MIN_MAC_VERSION}"
 
-  X86_MAC=(     x86_64-apple-darwin         macosx           -fembed-bitcode         -mmacosx-version-min=${MIN_MAC_VERSION})
-  ARM_MAC=(     arm64-apple-darwin          macosx           -fembed-bitcode         -mmacosx-version-min=${MIN_MAC_VERSION})
+    "arm64-apple-ios-simulator:iphonesimulator:-mios-simulator-version-min=${MIN_IOS_VERSION}"
+    "x86_64-apple-ios-simulator:iphonesimulator:-mios-simulator-version-min=${MIN_IOS_VERSION}"
 
-  build_bc_crypto_base ${ARM_IOS[@]}
-  build_bc_crypto_base ${X86_CATALYST[@]}
-  build_bc_crypto_base ${ARM_CATALYST[@]}
-  build_bc_crypto_base ${X86_IOS_SIM[@]}
-  build_bc_crypto_base ${ARM_IOS_SIM[@]}
-  build_bc_crypto_base ${X86_MAC[@]}
-  build_bc_crypto_base ${ARM_MAC[@]}
+    "arm64-apple-macos:macosx:-mmacosx-version-min=${MIN_MAC_VERSION}"
+    "x86_64-apple-macos:macosx:-mmacosx-version-min=${MIN_MAC_VERSION}"
+  )
 
-  build_bc_bip39 ${ARM_IOS[@]}
-  build_bc_bip39 ${X86_CATALYST[@]}
-  build_bc_bip39 ${ARM_CATALYST[@]}
-  build_bc_bip39 ${X86_IOS_SIM[@]}
-  build_bc_bip39 ${ARM_IOS_SIM[@]}
-  build_bc_bip39 ${X86_MAC[@]}
-  build_bc_bip39 ${ARM_MAC[@]}
+  for TARGET_INFO in "${TARGETS[@]}"; do
+    IFS=":" read -r TARGET SDK VERSION <<< "$TARGET_INFO"
 
-  build_bc_shamir ${ARM_IOS[@]}
-  build_bc_shamir ${X86_CATALYST[@]}
-  build_bc_shamir ${ARM_CATALYST[@]}
-  build_bc_shamir ${X86_IOS_SIM[@]}
-  build_bc_shamir ${ARM_IOS_SIM[@]}
-  build_bc_shamir ${X86_MAC[@]}
-  build_bc_shamir ${ARM_MAC[@]}
+    progress_item "Building C library for ${LIB_NAME} ${TARGET} ${SDK}"
 
-  build_csskr ${ARM_IOS[@]}
-  build_csskr ${X86_CATALYST[@]}
-  build_csskr ${ARM_CATALYST[@]}
-  build_csskr ${X86_IOS_SIM[@]}
-  build_csskr ${ARM_IOS_SIM[@]}
-  build_csskr ${X86_MAC[@]}
-  build_csskr ${ARM_MAC[@]}
+    SYSROOT=`xcrun -sdk ${SDK} --show-sdk-path`
+    PREFIX="$LIBS_ROOT/$TARGET/$LIB_NAME"
+    BUILD_ARCH_DIR=${BUILD_ROOT}/libs/${TARGET}
+
+    export CFLAGS="-O3 -isysroot ${SYSROOT} -target ${TARGET} ${VERSION} -Wno-overriding-t-option"
+    export CXXFLAGS="-O3 -isysroot ${SYSROOT} -target ${TARGET} -Wno-overriding-t-option ${VERSION}"
+    export LDFLAGS="-target ${TARGET}"
+    export CC="$(xcrun --sdk ${SDK} -f clang) -isysroot ${SYSROOT} -target ${TARGET} ${VERSION}"
+    export CXX="$(xcrun --sdk ${SDK} -f clang++) -isysroot ${SYSROOT} -target ${TARGET} ${VERSION}"
+
+    ${BUILD_FUNC} ${LIB_NAME} ${TARGET} ${SDK} ${SYSROOT}
+  done
 )
 
-build_swift_framework()
-(
-  FRAMEWORK=$1
-  LIBS=$2
-  TARGET=$3
-  SDK=$4
-  PLATFORM_DIR=$5
-  CATALYST=$6
-  BITCODE=$7
-  VERSION=$8
-  CONFIGURATION=Debug
+lipo_lib() (
+  LIB_NAME=$1
+  FAT_TARGET=$2
 
-  TARGET_ELEMS=("${(@s/-/)TARGET}")
-  ARCHS=${TARGET_ELEMS[1]}
+  progress_item "Creating fat binary for ${LIB_NAME} ${FAT_TARGET}"
 
-  LIBS_NAMES=("${(@s/ /)LIBS}")
-  LIBS_PATHS=()
-  for e in $LIBS_NAMES; do
-    LIBS_PATHS+=\"${BUILD_ROOT}/${TARGET}/${e}/lib\"
+  ARCHS=("arm64" "x86_64")
+  ARCHIVE_NAME="lib${LIB_NAME}.a"
+
+  FAT_TARGET_DIR="arm64 x86_64-${FAT_TARGET}"
+  OUTPUT_DIR="${LIBS_ROOT}/${FAT_TARGET_DIR}"
+
+  TARGET_LIB_DIR="${OUTPUT_DIR}/${LIB_NAME}/lib"
+  TARGET_INCLUDE_DIR="${OUTPUT_DIR}/${LIB_NAME}/include"
+  mkdir -p ${TARGET_LIB_DIR}
+  mkdir -p ${TARGET_INCLUDE_DIR}
+
+  INPUT_LIBS=()
+  for ARCH in "${ARCHS[@]}"; do
+    INPUT_LIBS+=("${LIBS_ROOT}/${ARCH}-${FAT_TARGET}/${LIB_NAME}/lib/${ARCHIVE_NAME}")
   done
 
-  FRAMEWORK_ROOT=${PROJ_ROOT}/${FRAMEWORK}
+  lipo -create -output "${TARGET_LIB_DIR}/${ARCHIVE_NAME}" ${INPUT_LIBS[@]}
 
-  PROJECT=${FRAMEWORK_ROOT}/${FRAMEWORK}.xcodeproj
-  SCHEME=${FRAMEWORK}
-  DEST_DIR=${BUILD_ROOT}/${TARGET}
-  FRAMEWORK_DIR_NAME=${FRAMEWORK}.framework
-  rm -rf ${DEST_DIR}/${FRAMEWORK_DIR_NAME}
+  # Copy the header files and module.modulemap file
+  SOURCE_INCLUDE_DIR="${LIBS_ROOT}/${ARCHS[1]}-${FAT_TARGET}/${LIB_NAME}/include"
+  cp -r "${SOURCE_INCLUDE_DIR}"/* "${TARGET_INCLUDE_DIR}/"
+)
 
-  ARGS=(\
-    -project ${PROJECT} \
+lipo_libs() (
+  LIB_NAME=$1
+
+  progress_subsection "Creating fat binaries for ${LIB_NAME}"
+
+  FAT_TARGETS=(
+    "apple-macos"
+    "apple-ios-macabi"
+    "apple-ios-simulator"
+  )
+
+  for FAT_TARGET in "${FAT_TARGETS[@]}"; do
+    lipo_lib ${LIB_NAME} ${FAT_TARGET}
+  done
+)
+
+build_framework() (
+  FRAMEWORK=$1
+  SCHEME=$2
+  XCODE_PLATFORM=$3
+  ARCHIVE_PLATFORM=$4
+  SDKROOT=$5
+  ARCHS=$6
+  SHALLOW_BUNDLE_TRIPLE=$7
+  LIB_NAME=$8
+  LOCAL_LIBS=$9
+
+  progress_item "Building ${FRAMEWORK} scheme ${SCHEME} for ${ARCHIVE_PLATFORM}"
+
+  SEARCH_PATH_BASE=${LIBS_ROOT}/${ARCHS}-apple-${SHALLOW_BUNDLE_TRIPLE}
+
+  IFS=',' LOCAL_LIBS=(${(s.,.)LOCAL_LIBS})
+  LIBS=("${LIB_NAME}" "${(@)LOCAL_LIBS}")
+
+  HEADER_SEARCH_PATHS=""
+  LIBRARY_SEARCH_PATHS=""
+  for LIB in "${LIBS[@]}"; do
+    HEADER_SEARCH_PATHS="${HEADER_SEARCH_PATHS} \"${SEARCH_PATH_BASE}/${LIB}/include/${LIB}\""
+    LIBRARY_SEARCH_PATHS="${LIBRARY_SEARCH_PATHS} \"${SEARCH_PATH_BASE}/${LIB}/lib\""
+  done
+
+  xcodebuild -project ${FRAMEWORK}/${FRAMEWORK}.xcodeproj \
     -scheme ${SCHEME} \
-    -configuration ${CONFIGURATION} \
-    -sdk ${SDK} \
-    ${VERSION} \
-    LIBRARY_SEARCH_PATHS="${LIBS_PATHS}" \
-    ONLY_ACTIVE_ARCH=YES \
+    -destination generic/platform=${XCODE_PLATFORM} \
+    -archivePath "${ARCHIVES_ROOT}/${FRAMEWORK}-${ARCHIVE_PLATFORM}" \
+    CODE_SIGNING_ALLOWED=NO \
+    SDKROOT=${SDKROOT} \
     ARCHS=${ARCHS} \
-    SKIP_INSTALL=NO \
-    BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
-    SUPPORTS_MACCATALYST=${CATALYST} \
-    BITCODE_GENERATION_MODE=${BITCODE} \
-    CODE_SIGN_IDENTITY= \
-    CODE_SIGNING_ALLOWED=YES \
-    CODE_SIGNING_REQUIRED=NO \
-    )
-
-  # (
-  #   printf $'\n'
-  #   printf " <%s> " $@
-  #   printf $'\n'
-  #   printf " <%s> " $LIBS_NAMES
-  #   printf $'\n'
-  #   printf " <%s> " $ARGS
-  #   printf $'\n'
-  #   printf $'\n'
-  # ) >&3
-  #   exit 0
-
-  progress_item "${FRAMEWORK} ${TARGET}"
-
-  # This has the complete swift module information
-  xcodebuild clean build ${ARGS[@]}
-
-  # This has the complete Bitcode information
-  ARCHIVE_PATH=${DEST_DIR}/${FRAMEWORK}.xcarchive
-  xcodebuild archive -archivePath ${ARCHIVE_PATH} ${ARGS[@]}
-
-  BUILD_DIR=`xcodebuild ${ARGS[@]} -showBuildSettings | grep -o '\<BUILD_DIR = .*' | cut -d ' ' -f 3`
-
-  if [[ ${PLATFORM_DIR} == NONE ]]
-  then
-    FRAMEWORK_SOURCE_DIR=${BUILD_DIR}/${CONFIGURATION}
-  else
-    FRAMEWORK_SOURCE_DIR=${BUILD_DIR}/${CONFIGURATION}-${PLATFORM_DIR}
-  fi
-
-  cp -R ${FRAMEWORK_SOURCE_DIR}/${FRAMEWORK_DIR_NAME} ${DEST_DIR}/
-
-  xcodebuild clean ${ARGS[@]}
-
-  # Copy the binary from the framework in the archive to the main framework so we have correct Swift module information
-  # **and** complete Bitcode information.
-  cp ${ARCHIVE_PATH}/Products/Library/Frameworks/${FRAMEWORK_DIR_NAME}/${FRAMEWORK} ${DEST_DIR}/${FRAMEWORK_DIR_NAME}/
-
-  # Delete the archive, we no longer need it.
-  rm -rf ${ARCHIVE_PATH}
-
-  #echo diff -rq "${FRAMEWORK_SOURCE_DIR}/${FRAMEWORK_DIR_NAME}" "${DEST_DIR}/${FRAMEWORK_DIR_NAME}"
+    HEADER_SEARCH_PATHS=${HEADER_SEARCH_PATHS} \
+    LIBRARY_SEARCH_PATHS=${LIBRARY_SEARCH_PATHS} \
+    SWIFT_INCLUDE_PATHS=${HEADER_SEARCH_PATHS} \
+    IPHONEOS_DEPLOYMENT_TARGET=${MIN_IOS_VERSION} \
+    MACOSX_DEPLOYMENT_TARGET=${MIN_MAC_VERSION} \
+    clean archive
 )
 
-build_swift_frameworks()
-(
-  progress_section "Building Swift Frameworks"
-
-  #              TARGET                      SDK              PLATFORM_DIR     CATALYST  BITCODE  VERSION
-  ARM_IOS=(      arm64-apple-ios             iphoneos         iphoneos         NO        bitcode  IPHONEOS_DEPLOYMENT_TARGET=${MIN_IOS_VERSION})
-  X86_CATALYST=( x86_64-apple-ios-macabi     macosx           maccatalyst      YES       bitcode  MACOSX_DEPLOYMENT_TARGET=${MIN_MAC_VERSION})
-  ARM_CATALYST=( arm64-apple-ios-macabi      macosx           maccatalyst      YES       bitcode  MACOSX_DEPLOYMENT_TARGET=${MIN_MAC_VERSION})
-  X86_IOS_SIM=(  x86_64-apple-ios-simulator  iphonesimulator  iphonesimulator  NO        marker   IPHONEOS_DEPLOYMENT_TARGET=${MIN_IOS_VERSION})
-  ARM_IOS_SIM=(  arm64-apple-ios-simulator   iphonesimulator  iphonesimulator  NO        marker   IPHONEOS_DEPLOYMENT_TARGET=${MIN_IOS_VERSION})
-  X86_MAC=(      x86_64-apple-darwin         macosx           NONE             NO        bitcode  MACOSX_DEPLOYMENT_TARGET=${MIN_MAC_VERSION})
-  ARM_MAC=(      arm64-apple-darwin          macosx           NONE             NO        bitcode  MACOSX_DEPLOYMENT_TARGET=${MIN_MAC_VERSION})
-
-  build_swift_framework CryptoBase "bc-crypto-base" ${ARM_IOS[@]}
-  build_swift_framework CryptoBase "bc-crypto-base" ${X86_CATALYST[@]}
-  build_swift_framework CryptoBase "bc-crypto-base" ${ARM_CATALYST[@]}
-  build_swift_framework CryptoBase "bc-crypto-base" ${X86_IOS_SIM[@]}
-  build_swift_framework CryptoBase "bc-crypto-base" ${ARM_IOS_SIM[@]}
-  build_swift_framework CryptoBase "bc-crypto-base" ${X86_MAC[@]}
-  build_swift_framework CryptoBase "bc-crypto-base" ${ARM_MAC[@]}
-
-  build_swift_framework BIP39 "bc-crypto-base bc-bip39" ${ARM_IOS[@]}
-  build_swift_framework BIP39 "bc-crypto-base bc-bip39" ${X86_CATALYST[@]}
-  build_swift_framework BIP39 "bc-crypto-base bc-bip39" ${ARM_CATALYST[@]}
-  build_swift_framework BIP39 "bc-crypto-base bc-bip39" ${X86_IOS_SIM[@]}
-  build_swift_framework BIP39 "bc-crypto-base bc-bip39" ${ARM_IOS_SIM[@]}
-  build_swift_framework BIP39 "bc-crypto-base bc-bip39" ${X86_MAC[@]}
-  build_swift_framework BIP39 "bc-crypto-base bc-bip39" ${ARM_MAC[@]}
-
-  build_swift_framework Shamir "bc-crypto-base bc-shamir" ${ARM_IOS[@]}
-  build_swift_framework Shamir "bc-crypto-base bc-shamir" ${X86_CATALYST[@]}
-  build_swift_framework Shamir "bc-crypto-base bc-shamir" ${ARM_CATALYST[@]}
-  build_swift_framework Shamir "bc-crypto-base bc-shamir" ${X86_IOS_SIM[@]}
-  build_swift_framework Shamir "bc-crypto-base bc-shamir" ${ARM_IOS_SIM[@]}
-  build_swift_framework Shamir "bc-crypto-base bc-shamir" ${X86_MAC[@]}
-  build_swift_framework Shamir "bc-crypto-base bc-shamir" ${ARM_MAC[@]}
-
-  build_swift_framework SSKR "bc-crypto-base bc-shamir bc-sskr" ${ARM_IOS[@]}
-  build_swift_framework SSKR "bc-crypto-base bc-shamir bc-sskr" ${X86_CATALYST[@]}
-  build_swift_framework SSKR "bc-crypto-base bc-shamir bc-sskr" ${ARM_CATALYST[@]}
-  build_swift_framework SSKR "bc-crypto-base bc-shamir bc-sskr" ${X86_IOS_SIM[@]}
-  build_swift_framework SSKR "bc-crypto-base bc-shamir bc-sskr" ${ARM_IOS_SIM[@]}
-  build_swift_framework SSKR "bc-crypto-base bc-shamir bc-sskr" ${X86_MAC[@]}
-  build_swift_framework SSKR "bc-crypto-base bc-shamir bc-sskr" ${ARM_MAC[@]}
-)
-
-lipo_swift_framework_variant()
-(
+build_frameworks() (
   FRAMEWORK=$1
-  PLATFORM=$2
-  FRAMEWORK_DIR_NAME=${FRAMEWORK}.framework
-  PLATFORMFRAMEWORK=${PLATFORM}/${FRAMEWORK_DIR_NAME}
-  FRAMEWORK1DIR=${BUILD_ROOT}/arm64-${PLATFORMFRAMEWORK}
-  FRAMEWORK2DIR=${BUILD_ROOT}/x86_64-${PLATFORMFRAMEWORK}
-  DESTDIR=${BUILD_ROOT}/${PLATFORMFRAMEWORK}
+  SCHEME=$2
+  LIB_NAME=$3
+  LOCAL_LIBS=$4
 
-  progress_item "${FRAMEWORK} ${PLATFORM}"
+  progress_subsection "Building ${FRAMEWORK} frameworks"
 
-  TRAPZERR() { }
-  set +e; FRAMEWORK_LINK=`readlink ${FRAMEWORK1DIR}/${FRAMEWORK}`; set -e
-  TRAPZERR() { return $(( 128 + $1 )) }
-  ARCHIVE_PATH=${FRAMEWORK_LINK:-$FRAMEWORK}
+  PLATFORMS=(
+    "iOS:iOS:iphoneos:arm64:ios"
+    "iOS Simulator:iOS_Simulator:iphoneos:arm64 x86_64:ios-simulator"
+    "macOS:Mac_Catalyst:iphoneos:arm64 x86_64:ios-macabi"
+    "macOS:macOS:macosx:arm64 x86_64:macos"
+  )
 
-  FRAMEWORK1ARCHIVE=${FRAMEWORK1DIR}/${ARCHIVE_PATH}
-  FRAMEWORK2ARCHIVE=${FRAMEWORK2DIR}/${ARCHIVE_PATH}
-  DESTARCHIVE=${DESTDIR}/${ARCHIVE_PATH}
+  for PLATFORM_INFO in "${PLATFORMS[@]}"; do
+    IFS=":" read -r XCODE_PLATFORM ARCHIVE_PLATFORM SDKROOT ARCHS SHALLOW_BUNDLE_TRIPLE <<< "$PLATFORM_INFO"
 
-  mkdir -p ${BUILD_ROOT}/${PLATFORM}
-  rm -rf ${DESTDIR}
-  cp -R ${FRAMEWORK1DIR} ${DESTDIR}
-  rm -f ${DESTARCHIVE}
-  lipo -create ${FRAMEWORK1ARCHIVE} ${FRAMEWORK2ARCHIVE} -output ${DESTARCHIVE}
-
-  # Merge the Modules directories
-  cp -R ${FRAMEWORK2DIR}/Modules/* ${DESTDIR}/Modules
+    build_framework ${FRAMEWORK} ${SCHEME} ${XCODE_PLATFORM} ${ARCHIVE_PLATFORM} \
+      ${SDKROOT} ${ARCHS} ${SHALLOW_BUNDLE_TRIPLE} ${LIB_NAME} ${LOCAL_LIBS}
+  done
 )
 
-lipo_swift_framework()
-(
+build_xcframework() (
   FRAMEWORK=$1
-  lipo_swift_framework_variant ${FRAMEWORK} apple-ios-macabi
-  lipo_swift_framework_variant ${FRAMEWORK} apple-ios-simulator
-  lipo_swift_framework_variant ${FRAMEWORK} apple-darwin
-)
 
-lipo_swift_frameworks()
-(
-  progress_section "Building fat Swift frameworks"
+  progress_subsection "Building ${FRAMEWORK} xcframework"
 
-  lipo_swift_framework CryptoBase
-  lipo_swift_framework BIP39
-  lipo_swift_framework Shamir
-  lipo_swift_framework SSKR
-)
-
-build_swift_xcframework()
-(
-  FRAMEWORK_NAME=$1
-
-  PLATFORM_FRAMEWORK_NAME=${FRAMEWORK_NAME}.framework
-  XC_FRAMEWORK_NAME=${FRAMEWORK_NAME}.xcframework
-  XC_FRAMEWORK_PATH=${BUILD_ROOT}/${XC_FRAMEWORK_NAME}
-
-  progress_item "${XC_FRAMEWORK_NAME}"
-
-  rm -rf ${XC_FRAMEWORK_PATH}
   xcodebuild -create-xcframework \
-  -framework ${BUILD_ROOT}/arm64-apple-ios/${PLATFORM_FRAMEWORK_NAME} \
-  -framework ${BUILD_ROOT}/apple-darwin/${PLATFORM_FRAMEWORK_NAME} \
-  -framework ${BUILD_ROOT}/apple-ios-macabi/${PLATFORM_FRAMEWORK_NAME} \
-  -framework ${BUILD_ROOT}/apple-ios-simulator/${PLATFORM_FRAMEWORK_NAME} \
-  -output ${XC_FRAMEWORK_PATH}
-
-  # As of September 22, 2020, the step above is broken:
-  # it creates unusable XCFrameworks; missing files like Modules/CryptoBase.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo
-  # The frameworks we started with were fine. So we're going to brute-force replace the frameworks in the XCFramework with the originials.
-
-  rm -rf ${XC_FRAMEWORK_PATH}/ios-arm64/${PLATFORM_FRAMEWORK_NAME}
-  cp -R ${BUILD_ROOT}/arm64-apple-ios/${PLATFORM_FRAMEWORK_NAME} ${XC_FRAMEWORK_PATH}/ios-arm64/
-
-  rm -rf ${XC_FRAMEWORK_PATH}/ios-arm64_x86_64-maccatalyst/${PLATFORM_FRAMEWORK_NAME}
-  cp -R ${BUILD_ROOT}/apple-ios-macabi/${PLATFORM_FRAMEWORK_NAME} ${XC_FRAMEWORK_PATH}/ios-arm64_x86_64-maccatalyst/
-
-  rm -rf ${XC_FRAMEWORK_PATH}/ios-arm64_x86_64-simulator/${PLATFORM_FRAMEWORK_NAME}
-  cp -R ${BUILD_ROOT}/apple-ios-simulator/${PLATFORM_FRAMEWORK_NAME} ${XC_FRAMEWORK_PATH}/ios-arm64_x86_64-simulator/
-
-  rm -rf ${XC_FRAMEWORK_PATH}/macos-arm64_x86_64/${PLATFORM_FRAMEWORK_NAME}
-  cp -R ${BUILD_ROOT}/apple-darwin/${PLATFORM_FRAMEWORK_NAME} ${XC_FRAMEWORK_PATH}/macos-arm64_x86_64/
+    -archive "${ARCHIVES_ROOT}/${FRAMEWORK}-iOS.xcarchive" -framework ${FRAMEWORK}.framework \
+    -archive "${ARCHIVES_ROOT}/${FRAMEWORK}-iOS_Simulator.xcarchive" -framework ${FRAMEWORK}.framework \
+    -archive "${ARCHIVES_ROOT}/${FRAMEWORK}-Mac_Catalyst.xcarchive" -framework ${FRAMEWORK}.framework \
+    -archive "${ARCHIVES_ROOT}/${FRAMEWORK}-macOS.xcarchive" -framework ${FRAMEWORK}.framework \
+    -output "${BUILD_ROOT}/${FRAMEWORK}.xcframework"
 )
-
-build_swift_xcframeworks()
-(
-  progress_section "Building Swift XCFrameworks"
-
-  build_swift_xcframework CryptoBase
-  build_swift_xcframework BIP39
-  build_swift_xcframework Shamir
-  build_swift_xcframework SSKR
-)
-
-build_all()
-(
-  CONTEXT=subshell
-  get_dependencies
-  build_c_libraries
-  build_swift_frameworks
-  lipo_swift_frameworks
-  build_swift_xcframeworks
-)
-
-CONTEXT=top
-
-TRAPZERR() {
-  if [[ ${CONTEXT} == "top" ]]
-  then
-    progress_error "Build error."
-    echo "Log tail:" >&3
-    tail -n 10 ${BUILD_LOG} >&3
-  fi
-
-  return $(( 128 + $1 ))
-}
-
-TRAPINT() {
-  if [[ ${CONTEXT} == "top" ]]
-  then
-    progress_error "Build stopped."
-  fi
-
-  return $(( 128 + $1 ))
-}
 
 (
   exec 3>/dev/tty
-  build_all
+
+  CONTEXT=subshell
+
+  get_dependencies
+
+  PROJECTS=(
+    "bc-crypto-base:build_crypto_base:CryptoBase:CryptoBase"
+    "bc-bip39:build_bip39:BIP39:BIP39:bc-crypto-base"
+    "bc-shamir:build_shamir:Shamir:Shamir:bc-crypto-base"
+    "bc-sskr:build_sskr:SSKR:SSKR:bc-crypto-base,bc-shamir"
+  )
+
+  for PROJECT_INFO in "${PROJECTS[@]}"; do
+    IFS=":" read -r LIB_NAME BUILD_FUNC FRAMEWORK SCHEME LOCAL_LIBS <<< "$PROJECT_INFO"
+
+    progress_section "Building ${LIB_NAME} and ${FRAMEWORK}"
+
+    build_libs ${LIB_NAME} ${BUILD_FUNC}
+    lipo_libs ${LIB_NAME}
+    build_frameworks ${FRAMEWORK} ${SCHEME} ${LIB_NAME} ${LOCAL_LIBS}
+    build_xcframework ${FRAMEWORK}
+  done
+
   progress_success "Done!"
 ) >>&| ${BUILD_LOG}

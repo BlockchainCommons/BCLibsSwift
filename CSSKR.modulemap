@@ -1,4 +1,4 @@
-module CSSKR {
+module CSSKR [extern_c] {
   header "bc-sskr.h"
   header "encoding.h"
   header "group.h"

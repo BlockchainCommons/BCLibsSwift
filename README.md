@@ -11,9 +11,7 @@ Blockchain Commons publishes several open source C libraries that are useful in 
 * [bc-shamir](https://github.com/blockchaincommons/bc-shamir)
 * [bc-sskr](https://github.com/blockchaincommons/bc-sskr)
 
-**BCLibsSwift** wraps these libraries in opinionated Swift frameworks that work across iOS devices, the iOS simulator, and Mac Catalyst builds, on both Intel (x86_64) and Apple Silicon (arm64) architectures.
-
-The build script currently produces these frameworks:
+**BCLibsSwift** wraps these libraries in opinionated Swift frameworks that work across iOS devices, the iOS simulator, and Mac Catalyst builds, on both Intel (x86_64) and Apple Silicon (arm64) architectures:
 
 * `CryptoBase.xcframework`
 * `BIP39.xcframework`
@@ -25,16 +23,13 @@ These are universal frameworks built to run natively on these configurations:
 | Processor | Platform |
 |:----------|:---------|
 | arm64 | iOS |
-| x86_64 | Catalyst |
-| arm64 | Catalyst |
-| x86_64 | iOS Simulator |
-| arm64 | iOS Simulator |
-| x86_64 | macOS |
-| arm64 | macOS |
+| arm64 or x86_64 | Mac Catalyst |
+| arm64 or x86_64 | iOS Simulator |
+| arm64 or x86_64 | macOS |
 
-Each of these frameworks includes all the C libraries upon which it is dependent, so they can be freely mixed and matched.
+Each of these frameworks includes all the C libraries upon which they are dependent, so they can be freely mixed and matched.
 
-## Installation Instrucations
+## Installation Instructions
 
 ```
 $ git clone https://github.com/blockchaincommons/BCLibsSwift.git
@@ -42,7 +37,12 @@ $ cd BCLibsSwift
 $ ./build.sh
 ```
 
-The resulting frameworks are in `BCLibsSwift/build/`.
+The resulting xcframeworks are in `BCLibsSwift/build/`:
+
+* `CryptoBase.xcframework`
+* `BIP39.xcframework`
+* `Shamir.xcframework`
+* `SSKR.xcframework`
 
 ## Usage Instructions
 
@@ -51,8 +51,6 @@ To use one of the Swift frameworks, include the desired frameworks as above, mak
 ```
 import SSKR
 ```
-
-For examples of usage, open `BCLibsSwift.xcworkspace` and examine the unit test targets `CryptoBaseTests`, `BIP39Tests`, `ShamirTests`, and `SSKRTests`. These unit tests may be run only after running the `build.sh` script.
 
 ## Status - Release
 
@@ -80,7 +78,7 @@ The best place to talk about Blockchain Commons and its projects is in our GitHu
 
 [**Gordian Developer Community**](https://github.com/BlockchainCommons/Gordian-Developer-Community/discussions). For standards and open-source developers who want to talk about interoperable wallet specifications, please use the Discussions area of the [Gordian Developer Community repo](https://github.com/BlockchainCommons/Gordian-Developer-Community/discussions). This is where you talk about Gordian specifications such as [Gordian Envelope](https://github.com/BlockchainCommons/Gordian/tree/master/Envelope#articles), [bc-shamir](https://github.com/BlockchainCommons/bc-shamir), [Sharded Secret Key Reconstruction](https://github.com/BlockchainCommons/bc-sskr), and [bc-ur](https://github.com/BlockchainCommons/bc-ur) as well as the larger [Gordian Architecture](https://github.com/BlockchainCommons/Gordian/blob/master/Docs/Overview-Architecture.md), its [Principles](https://github.com/BlockchainCommons/Gordian#gordian-principles) of independence, privacy, resilience, and openness, and its macro-architectural ideas such as functional partition (including airgapping, the original name of this community).
 
-[**Blockchain Commons Discussions**](https://github.com/BlockchainCommons/Community/discussions). For developers, interns, and patrons of Blockchain Commons, please use the discussions area of the [Community repo](https://github.com/BlockchainCommons/Community) to talk about general Blockchain Commons issues, the intern program, or topics other than those covered by the [Gordian Developer Community](https://github.com/BlockchainCommons/Gordian-Developer-Community/discussions) or the 
+[**Blockchain Commons Discussions**](https://github.com/BlockchainCommons/Community/discussions). For developers, interns, and patrons of Blockchain Commons, please use the discussions area of the [Community repo](https://github.com/BlockchainCommons/Community) to talk about general Blockchain Commons issues, the intern program, or topics other than those covered by the [Gordian Developer Community](https://github.com/BlockchainCommons/Gordian-Developer-Community/discussions) or the
 [Gordian User Community](https://github.com/BlockchainCommons/Gordian/discussions).
 
 ### Other Questions & Problems
@@ -115,4 +113,3 @@ The following keys may be used to communicate sensitive information to developer
 | Christopher Allen | FDFE 14A5 4ECB 30FC 5D22  74EF F8D3 6C91 3574 05ED |
 
 You can import a key by running the following command with that individual’s fingerprint: `gpg --recv-keys "<fingerprint>"` Ensure that you put quotes around fingerprints that contain spaces.
-

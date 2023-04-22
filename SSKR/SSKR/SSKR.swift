@@ -1,4 +1,5 @@
 import Foundation
+@_implementationOnly import CSSKR
 
 public func identify() -> String {
     "SSKR"
@@ -27,10 +28,21 @@ class Wrapper<T> {
 
 public typealias RandomFunc = (Int) -> Data
 
-public typealias SSKRGroupDescriptor = sskr_group_descriptor_struct
+public struct SSKRGroupDescriptor {
+    public var threshold: UInt8
+    public var count: UInt8
+    
+    public init(threshold: UInt8, count: UInt8) {
+        self.threshold = threshold
+        self.count = count
+    }
+}
 
 public func SSKRCountShares(groupThreshold: Int, groups: [SSKRGroupDescriptor]) throws -> Int {
-    let result = sskr_count_shards(groupThreshold, groups, groups.count)
+    let sskr_groups: [sskr_group_descriptor_struct] = groups.map {
+        sskr_group_descriptor_struct(threshold: $0.threshold, count: $0.count)
+    }
+    let result = sskr_count_shards(groupThreshold, sskr_groups, groups.count)
     guard result >= 0 else {
         throw SSKRError("SSKR error: \(result)")
     }
@@ -55,7 +67,10 @@ public func SSKRGenerate(groupThreshold: Int, groups: [SSKRGroupDescriptor], sec
 
     let error = secret.withUnsafeBytes { masterSecretBufferPointer -> Int32 in
         let masterSecretPointer = masterSecretBufferPointer.bindMemory(to: UInt8.self).baseAddress!
-        return sskr_generate(groupThreshold, groups, groups.count, masterSecretPointer, secret.count, &resultShardLen, &output, outputLen, wrapper.ref, { p, len, ctx in
+        let sskr_groups: [sskr_group_descriptor_struct] = groups.map {
+            sskr_group_descriptor_struct(threshold: $0.threshold, count: $0.count)
+        }
+        return sskr_generate(groupThreshold, sskr_groups, groups.count, masterSecretPointer, secret.count, &resultShardLen, &output, outputLen, wrapper.ref, { p, len, ctx in
             let rng = Wrapper<RandomFunc>.get(ctx!)
             let randomData = rng(len)
             assert(randomData.count == len)

@@ -1,4 +1,5 @@
 import Foundation
+@_implementationOnly import CShamir
 
 public struct ShamirError: LocalizedError {
     public let message: String
@@ -21,87 +22,84 @@ class Wrapper<T> {
     }
 }
 
-public enum Shamir {
+public typealias RandomFunc = (Int) -> Data
 
-    public typealias RandomFunc = (Int) -> Data
+public func identify() -> String {
+    "Shamir"
+}
 
-    public static func identify() -> String {
-        "Shamir"
+public struct Share {
+    public let index: Int
+    public var data: [UInt8]
+
+    public init(index: Int, data: [UInt8]) {
+        self.index = index
+        self.data = data
     }
+}
 
-    public struct Share {
-        public let index: Int
-        public var data: [UInt8]
+public func splitSecret(threshold: Int, shareCount: Int, secret: Data, randomGenerator: @escaping RandomFunc) -> [Share] {
+    let wrapper = Wrapper(randomGenerator)
 
-        public init(index: Int, data: [UInt8]) {
-            self.index = index
-            self.data = data
-        }
-    }
-
-    public static func splitSecret(threshold: Int, shareCount: Int, secret: Data, randomGenerator: @escaping RandomFunc) -> [Share] {
-        let wrapper = Wrapper(randomGenerator)
-
-        var result = Data(count: secret.count * shareCount)
-        result.withUnsafeMutableBytes { rr in
-            secret.withUnsafeBytes { ss in
-                let s = ss.bindMemory(to: UInt8.self).baseAddress!
-                let r = rr.bindMemory(to: UInt8.self).baseAddress!
-                let error = split_secret(UInt8(threshold), UInt8(shareCount), s, UInt32(secret.count), r, wrapper.ref, { p, len, ctx in
-                    let rng = Wrapper<RandomFunc>.get(ctx!)
-                    let randomData = rng(len)
-                    assert(randomData.count == len)
-                    for i in 0 ..< len {
-                        p![i] = randomData[i]
-                    }
-                })
-                assert(error == shareCount)
-            }
-        }
-        var shares = [Share]()
-        for index in 0 ..< shareCount {
-            let offset = index * secret.count
-            let data = Array(result[offset ..< (offset + secret.count)])
-            shares.append(Share(index: index, data: data))
-        }
-        return shares
-    }
-
-    public static func recoverSecret(shares: [Share]) throws -> Data {
-        let shareCount = shares.count
-        guard shareCount > 0 else {
-            throw ShamirError("No shares provided")
-        }
-
-        let shareLengths = Set(shares.map { $0.data.count })
-        guard shareLengths.count == 1 else {
-            throw ShamirError("Shares don't all have the same length")
-        }
-        let shareLength = shareLengths.first!
-
-        var indexes = [UInt8](repeating: 0, count: shareCount)
-        var shareDataPointers = [UnsafePointer<UInt8>?](repeating: nil, count: shareCount)
-        defer {
-            for i in 0 ..< shareCount {
-                if let d = shareDataPointers[i] {
-                    d.deallocate()
+    var result = Data(count: secret.count * shareCount)
+    result.withUnsafeMutableBytes { rr in
+        secret.withUnsafeBytes { ss in
+            let s = ss.bindMemory(to: UInt8.self).baseAddress!
+            let r = rr.bindMemory(to: UInt8.self).baseAddress!
+            let error = split_secret(UInt8(threshold), UInt8(shareCount), s, UInt32(secret.count), r, wrapper.ref, { p, len, ctx in
+                let rng = Wrapper<RandomFunc>.get(ctx!)
+                let randomData = rng(len)
+                assert(randomData.count == len)
+                for i in 0 ..< len {
+                    p![i] = randomData[i]
                 }
-            }
+            })
+            assert(error == shareCount)
         }
-        for i in 0 ..< shareCount {
-            let share = shares[i]
-            indexes[i] = UInt8(share.index)
-            let shareDataPointer = UnsafeMutablePointer<UInt8>.allocate(capacity: shareLength)
-            for j in 0 ..< shareLength {
-                shareDataPointer[j] = share.data[j]
-            }
-            shareDataPointers[i] = UnsafePointer(shareDataPointer)
-        }
-        var secret = [UInt8](repeating: 0, count: shareLength)
-        let error = recover_secret(UInt8(shareCount), &indexes, &shareDataPointers, UInt32(shareLength), &secret)
-        guard error == shareLength else {
-            throw ShamirError("Shamir decoding error: \(error)")
-        }
-        return Data(secret)
     }
+    var shares = [Share]()
+    for index in 0 ..< shareCount {
+        let offset = index * secret.count
+        let data = Array(result[offset ..< (offset + secret.count)])
+        shares.append(Share(index: index, data: data))
+    }
+    return shares
+}
+
+public func recoverSecret(shares: [Share]) throws -> Data {
+    let shareCount = shares.count
+    guard shareCount > 0 else {
+        throw ShamirError("No shares provided")
+    }
+
+    let shareLengths = Set(shares.map { $0.data.count })
+    guard shareLengths.count == 1 else {
+        throw ShamirError("Shares don't all have the same length")
+    }
+    let shareLength = shareLengths.first!
+
+    var indexes = [UInt8](repeating: 0, count: shareCount)
+    var shareDataPointers = [UnsafePointer<UInt8>?](repeating: nil, count: shareCount)
+    defer {
+        for i in 0 ..< shareCount {
+            if let d = shareDataPointers[i] {
+                d.deallocate()
+            }
+        }
+    }
+    for i in 0 ..< shareCount {
+        let share = shares[i]
+        indexes[i] = UInt8(share.index)
+        let shareDataPointer = UnsafeMutablePointer<UInt8>.allocate(capacity: shareLength)
+        for j in 0 ..< shareLength {
+            shareDataPointer[j] = share.data[j]
+        }
+        shareDataPointers[i] = UnsafePointer(shareDataPointer)
+    }
+    var secret = [UInt8](repeating: 0, count: shareLength)
+    let error = recover_secret(UInt8(shareCount), &indexes, &shareDataPointers, UInt32(shareLength), &secret)
+    guard error == shareLength else {
+        throw ShamirError("Shamir decoding error: \(error)")
+    }
+    return Data(secret)
 }

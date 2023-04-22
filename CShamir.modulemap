@@ -1,4 +1,4 @@
-module CShamir {
+module CShamir [extern_c] {
   header "bc-shamir.h"
   header "hazmat.h"
   header "interpolate.h"

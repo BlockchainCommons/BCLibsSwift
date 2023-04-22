@@ -1,7 +1,0 @@
-framework module SSKR {
-  umbrella header "SSKR.h"
-
-  export *
-  module * { export * }
-
-}

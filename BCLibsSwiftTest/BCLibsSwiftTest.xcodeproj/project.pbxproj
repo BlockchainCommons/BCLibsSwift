@@ -3,64 +3,43 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		032939A9253BBF0300E52AD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032939A8253BBF0300E52AD5 /* AppDelegate.swift */; };
-		032939AB253BBF0300E52AD5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032939AA253BBF0300E52AD5 /* ContentView.swift */; };
-		032939AD253BBF0400E52AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 032939AC253BBF0400E52AD5 /* Assets.xcassets */; };
-		032939B0253BBF0400E52AD5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 032939AF253BBF0400E52AD5 /* Preview Assets.xcassets */; };
-		032939B3253BBF0400E52AD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 032939B1253BBF0400E52AD5 /* Main.storyboard */; };
-		032939CA253BBF2000E52AD5 /* CryptoBase.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C254251B069B00BC8B3E /* CryptoBase.xcframework */; };
-		032939CB253BBF2000E52AD5 /* CryptoBase.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C254251B069B00BC8B3E /* CryptoBase.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		032939D0253BBF2400E52AD5 /* Shamir.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C252251B069B00BC8B3E /* Shamir.xcframework */; };
-		032939D1253BBF2400E52AD5 /* Shamir.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C252251B069B00BC8B3E /* Shamir.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		032939D2253BBF2500E52AD5 /* SSKR.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C256251B069B00BC8B3E /* SSKR.xcframework */; };
-		032939D3253BBF2500E52AD5 /* SSKR.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C256251B069B00BC8B3E /* SSKR.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		032DD3372589BFD500AE1A97 /* BIP39.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037475572581338200211084 /* BIP39.xcframework */; };
-		032DD3382589BFD500AE1A97 /* BIP39.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 037475572581338200211084 /* BIP39.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		032DD3392589BFD700AE1A97 /* Shamir.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C252251B069B00BC8B3E /* Shamir.xcframework */; };
-		032DD33A2589BFD700AE1A97 /* Shamir.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C252251B069B00BC8B3E /* Shamir.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		032DD33B2589BFD800AE1A97 /* SSKR.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C256251B069B00BC8B3E /* SSKR.xcframework */; };
-		032DD33C2589BFD800AE1A97 /* SSKR.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C256251B069B00BC8B3E /* SSKR.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		037475592581338200211084 /* BIP39.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037475572581338200211084 /* BIP39.xcframework */; };
-		0374755A2581338200211084 /* BIP39.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 037475572581338200211084 /* BIP39.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03D3C25C251B069B00BC8B3E /* CryptoBase.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C254251B069B00BC8B3E /* CryptoBase.xcframework */; };
-		03D3C25D251B069B00BC8B3E /* CryptoBase.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C254251B069B00BC8B3E /* CryptoBase.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03E1760D251A0F38008D3181 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E1760C251A0F38008D3181 /* AppDelegate.swift */; };
-		03E1760F251A0F38008D3181 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E1760E251A0F38008D3181 /* SceneDelegate.swift */; };
-		03E17611251A0F38008D3181 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E17610251A0F38008D3181 /* ViewController.swift */; };
-		03E17614251A0F38008D3181 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E17612251A0F38008D3181 /* Main.storyboard */; };
-		03E17616251A0F3A008D3181 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03E17615251A0F3A008D3181 /* Assets.xcassets */; };
-		03E17619251A0F3A008D3181 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E17617251A0F3A008D3181 /* LaunchScreen.storyboard */; };
+		794CF4AA29F3C6020022BA51 /* BCLibsSwiftTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4A929F3C6020022BA51 /* BCLibsSwiftTestApp.swift */; };
+		794CF4AC29F3C6020022BA51 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4AB29F3C6020022BA51 /* ContentView.swift */; };
+		794CF4AE29F3C6040022BA51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 794CF4AD29F3C6040022BA51 /* Assets.xcassets */; };
+		794CF4B129F3C6040022BA51 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 794CF4B029F3C6040022BA51 /* Preview Assets.xcassets */; };
+		794CF4BC29F3C6350022BA51 /* BIP39.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794CF4B829F3C6350022BA51 /* BIP39.xcframework */; };
+		794CF4BD29F3C6350022BA51 /* CryptoBase.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794CF4B929F3C6350022BA51 /* CryptoBase.xcframework */; };
+		794CF4BE29F3C6350022BA51 /* SSKR.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794CF4BA29F3C6350022BA51 /* SSKR.xcframework */; };
+		794CF4BF29F3C6350022BA51 /* Shamir.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794CF4BB29F3C6350022BA51 /* Shamir.xcframework */; };
+		794CF4C829F3C98F0022BA51 /* BCLibsSwiftTestMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4C729F3C98F0022BA51 /* BCLibsSwiftTestMacApp.swift */; };
+		794CF4CC29F3C9910022BA51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 794CF4CB29F3C9910022BA51 /* Assets.xcassets */; };
+		794CF4CF29F3C9910022BA51 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 794CF4CE29F3C9910022BA51 /* Preview Assets.xcassets */; };
+		794CF4D829F3C9A30022BA51 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4AB29F3C6020022BA51 /* ContentView.swift */; };
+		794CF4D929F3CA0C0022BA51 /* BIP39.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794CF4B829F3C6350022BA51 /* BIP39.xcframework */; };
+		794CF4DA29F3CA0C0022BA51 /* BIP39.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 794CF4B829F3C6350022BA51 /* BIP39.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		794CF4DC29F3CA0E0022BA51 /* CryptoBase.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794CF4B929F3C6350022BA51 /* CryptoBase.xcframework */; };
+		794CF4DD29F3CA0E0022BA51 /* CryptoBase.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 794CF4B929F3C6350022BA51 /* CryptoBase.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		794CF4DE29F3CA0F0022BA51 /* Shamir.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794CF4BB29F3C6350022BA51 /* Shamir.xcframework */; };
+		794CF4DF29F3CA0F0022BA51 /* Shamir.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 794CF4BB29F3C6350022BA51 /* Shamir.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		794CF4E029F3CA100022BA51 /* SSKR.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794CF4BA29F3C6350022BA51 /* SSKR.xcframework */; };
+		794CF4E129F3CA110022BA51 /* SSKR.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 794CF4BA29F3C6350022BA51 /* SSKR.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		032939C9253BBF1E00E52AD5 /* Embed Frameworks */ = {
+		794CF4DB29F3CA0C0022BA51 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0374755A2581338200211084 /* BIP39.xcframework in Embed Frameworks */,
-				032939CB253BBF2000E52AD5 /* CryptoBase.xcframework in Embed Frameworks */,
-				032939D3253BBF2500E52AD5 /* SSKR.xcframework in Embed Frameworks */,
-				032939D1253BBF2400E52AD5 /* Shamir.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03D3C264251B069C00BC8B3E /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				03D3C25D251B069B00BC8B3E /* CryptoBase.xcframework in Embed Frameworks */,
-				032DD3382589BFD500AE1A97 /* BIP39.xcframework in Embed Frameworks */,
-				032DD33C2589BFD800AE1A97 /* SSKR.xcframework in Embed Frameworks */,
-				032DD33A2589BFD700AE1A97 /* Shamir.xcframework in Embed Frameworks */,
+				794CF4DA29F3CA0C0022BA51 /* BIP39.xcframework in Embed Frameworks */,
+				794CF4DD29F3CA0E0022BA51 /* CryptoBase.xcframework in Embed Frameworks */,
+				794CF4E129F3CA110022BA51 /* SSKR.xcframework in Embed Frameworks */,
+				794CF4DF29F3CA0F0022BA51 /* Shamir.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -68,151 +47,128 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		032939A6253BBF0300E52AD5 /* BCLibsSwiftTest-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BCLibsSwiftTest-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		032939A8253BBF0300E52AD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		032939AA253BBF0300E52AD5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		032939AC253BBF0400E52AD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		032939AF253BBF0400E52AD5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		032939B2253BBF0400E52AD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		032939B4253BBF0400E52AD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		032939B5253BBF0400E52AD5 /* BCLibsSwiftTest_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BCLibsSwiftTest_Mac.entitlements; sourceTree = "<group>"; };
-		037475572581338200211084 /* BIP39.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = BIP39.xcframework; path = ../build/BIP39.xcframework; sourceTree = "<group>"; };
-		03D3C252251B069B00BC8B3E /* Shamir.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Shamir.xcframework; path = ../build/Shamir.xcframework; sourceTree = "<group>"; };
-		03D3C254251B069B00BC8B3E /* CryptoBase.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CryptoBase.xcframework; path = ../build/CryptoBase.xcframework; sourceTree = "<group>"; };
-		03D3C256251B069B00BC8B3E /* SSKR.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SSKR.xcframework; path = ../build/SSKR.xcframework; sourceTree = "<group>"; };
-		03E17609251A0F38008D3181 /* BCLibsSwiftTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BCLibsSwiftTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		03E1760C251A0F38008D3181 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		03E1760E251A0F38008D3181 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		03E17610251A0F38008D3181 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		03E17613251A0F38008D3181 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		03E17615251A0F3A008D3181 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		03E17618251A0F3A008D3181 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		03E1761A251A0F3A008D3181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03E17639251A103F008D3181 /* BCLibsSwiftTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BCLibsSwiftTest.entitlements; sourceTree = "<group>"; };
+		794CF4A629F3C6020022BA51 /* BCLibsSwiftTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BCLibsSwiftTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		794CF4A929F3C6020022BA51 /* BCLibsSwiftTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCLibsSwiftTestApp.swift; sourceTree = "<group>"; };
+		794CF4AB29F3C6020022BA51 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		794CF4AD29F3C6040022BA51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		794CF4B029F3C6040022BA51 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		794CF4B829F3C6350022BA51 /* BIP39.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = BIP39.xcframework; path = ../build/BIP39.xcframework; sourceTree = "<group>"; };
+		794CF4B929F3C6350022BA51 /* CryptoBase.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CryptoBase.xcframework; path = ../build/CryptoBase.xcframework; sourceTree = "<group>"; };
+		794CF4BA29F3C6350022BA51 /* SSKR.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SSKR.xcframework; path = ../build/SSKR.xcframework; sourceTree = "<group>"; };
+		794CF4BB29F3C6350022BA51 /* Shamir.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Shamir.xcframework; path = ../build/Shamir.xcframework; sourceTree = "<group>"; };
+		794CF4C029F3C8E00022BA51 /* BCLibsSwiftTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BCLibsSwiftTest.entitlements; sourceTree = "<group>"; };
+		794CF4C529F3C98F0022BA51 /* BCLibsSwiftTestMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BCLibsSwiftTestMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		794CF4C729F3C98F0022BA51 /* BCLibsSwiftTestMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCLibsSwiftTestMacApp.swift; sourceTree = "<group>"; };
+		794CF4CB29F3C9910022BA51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		794CF4CE29F3C9910022BA51 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		794CF4D029F3C9910022BA51 /* BCLibsSwiftTestMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BCLibsSwiftTestMac.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		032939A3253BBF0300E52AD5 /* Frameworks */ = {
+		794CF4A329F3C6020022BA51 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				037475592581338200211084 /* BIP39.xcframework in Frameworks */,
-				032939CA253BBF2000E52AD5 /* CryptoBase.xcframework in Frameworks */,
-				032939D2253BBF2500E52AD5 /* SSKR.xcframework in Frameworks */,
-				032939D0253BBF2400E52AD5 /* Shamir.xcframework in Frameworks */,
+				794CF4BC29F3C6350022BA51 /* BIP39.xcframework in Frameworks */,
+				794CF4BF29F3C6350022BA51 /* Shamir.xcframework in Frameworks */,
+				794CF4BE29F3C6350022BA51 /* SSKR.xcframework in Frameworks */,
+				794CF4BD29F3C6350022BA51 /* CryptoBase.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		03E17606251A0F38008D3181 /* Frameworks */ = {
+		794CF4C229F3C98F0022BA51 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				032DD3392589BFD700AE1A97 /* Shamir.xcframework in Frameworks */,
-				03D3C25C251B069B00BC8B3E /* CryptoBase.xcframework in Frameworks */,
-				032DD33B2589BFD800AE1A97 /* SSKR.xcframework in Frameworks */,
-				032DD3372589BFD500AE1A97 /* BIP39.xcframework in Frameworks */,
+				794CF4DC29F3CA0E0022BA51 /* CryptoBase.xcframework in Frameworks */,
+				794CF4DE29F3CA0F0022BA51 /* Shamir.xcframework in Frameworks */,
+				794CF4E029F3CA100022BA51 /* SSKR.xcframework in Frameworks */,
+				794CF4D929F3CA0C0022BA51 /* BIP39.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		032939A7253BBF0300E52AD5 /* BCLibsSwiftTest-Mac */ = {
+		794CF49D29F3C6020022BA51 = {
 			isa = PBXGroup;
 			children = (
-				032939A8253BBF0300E52AD5 /* AppDelegate.swift */,
-				032939AA253BBF0300E52AD5 /* ContentView.swift */,
-				032939AC253BBF0400E52AD5 /* Assets.xcassets */,
-				032939B1253BBF0400E52AD5 /* Main.storyboard */,
-				032939B4253BBF0400E52AD5 /* Info.plist */,
-				032939B5253BBF0400E52AD5 /* BCLibsSwiftTest_Mac.entitlements */,
-				032939AE253BBF0400E52AD5 /* Preview Content */,
-			);
-			path = "BCLibsSwiftTest-Mac";
-			sourceTree = "<group>";
-		};
-		032939AE253BBF0400E52AD5 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				032939AF253BBF0400E52AD5 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		03E17600251A0F38008D3181 = {
-			isa = PBXGroup;
-			children = (
-				03E1760B251A0F38008D3181 /* BCLibsSwiftTest */,
-				032939A7253BBF0300E52AD5 /* BCLibsSwiftTest-Mac */,
-				03E1760A251A0F38008D3181 /* Products */,
-				03E17621251A0F67008D3181 /* Frameworks */,
+				794CF4AB29F3C6020022BA51 /* ContentView.swift */,
+				794CF4A829F3C6020022BA51 /* BCLibsSwiftTest */,
+				794CF4C629F3C98F0022BA51 /* BCLibsSwiftTestMac */,
+				794CF4B729F3C6180022BA51 /* Frameworks */,
+				794CF4A729F3C6020022BA51 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		03E1760A251A0F38008D3181 /* Products */ = {
+		794CF4A729F3C6020022BA51 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				03E17609251A0F38008D3181 /* BCLibsSwiftTest.app */,
-				032939A6253BBF0300E52AD5 /* BCLibsSwiftTest-Mac.app */,
+				794CF4A629F3C6020022BA51 /* BCLibsSwiftTest.app */,
+				794CF4C529F3C98F0022BA51 /* BCLibsSwiftTestMac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		03E1760B251A0F38008D3181 /* BCLibsSwiftTest */ = {
+		794CF4A829F3C6020022BA51 /* BCLibsSwiftTest */ = {
 			isa = PBXGroup;
 			children = (
-				03E17639251A103F008D3181 /* BCLibsSwiftTest.entitlements */,
-				03E1760C251A0F38008D3181 /* AppDelegate.swift */,
-				03E1760E251A0F38008D3181 /* SceneDelegate.swift */,
-				03E17610251A0F38008D3181 /* ViewController.swift */,
-				03E17612251A0F38008D3181 /* Main.storyboard */,
-				03E17615251A0F3A008D3181 /* Assets.xcassets */,
-				03E17617251A0F3A008D3181 /* LaunchScreen.storyboard */,
-				03E1761A251A0F3A008D3181 /* Info.plist */,
+				794CF4C029F3C8E00022BA51 /* BCLibsSwiftTest.entitlements */,
+				794CF4A929F3C6020022BA51 /* BCLibsSwiftTestApp.swift */,
+				794CF4AD29F3C6040022BA51 /* Assets.xcassets */,
+				794CF4AF29F3C6040022BA51 /* Preview Content */,
 			);
 			path = BCLibsSwiftTest;
 			sourceTree = "<group>";
 		};
-		03E17621251A0F67008D3181 /* Frameworks */ = {
+		794CF4AF29F3C6040022BA51 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				037475572581338200211084 /* BIP39.xcframework */,
-				03D3C254251B069B00BC8B3E /* CryptoBase.xcframework */,
-				03D3C252251B069B00BC8B3E /* Shamir.xcframework */,
-				03D3C256251B069B00BC8B3E /* SSKR.xcframework */,
+				794CF4B029F3C6040022BA51 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		794CF4B729F3C6180022BA51 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				794CF4B829F3C6350022BA51 /* BIP39.xcframework */,
+				794CF4B929F3C6350022BA51 /* CryptoBase.xcframework */,
+				794CF4BB29F3C6350022BA51 /* Shamir.xcframework */,
+				794CF4BA29F3C6350022BA51 /* SSKR.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		794CF4C629F3C98F0022BA51 /* BCLibsSwiftTestMac */ = {
+			isa = PBXGroup;
+			children = (
+				794CF4C729F3C98F0022BA51 /* BCLibsSwiftTestMacApp.swift */,
+				794CF4CB29F3C9910022BA51 /* Assets.xcassets */,
+				794CF4D029F3C9910022BA51 /* BCLibsSwiftTestMac.entitlements */,
+				794CF4CD29F3C9910022BA51 /* Preview Content */,
+			);
+			path = BCLibsSwiftTestMac;
+			sourceTree = "<group>";
+		};
+		794CF4CD29F3C9910022BA51 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				794CF4CE29F3C9910022BA51 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		032939A5253BBF0300E52AD5 /* BCLibsSwiftTest-Mac */ = {
+		794CF4A529F3C6020022BA51 /* BCLibsSwiftTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 032939B8253BBF0400E52AD5 /* Build configuration list for PBXNativeTarget "BCLibsSwiftTest-Mac" */;
+			buildConfigurationList = 794CF4B429F3C6040022BA51 /* Build configuration list for PBXNativeTarget "BCLibsSwiftTest" */;
 			buildPhases = (
-				032939A2253BBF0300E52AD5 /* Sources */,
-				032939A3253BBF0300E52AD5 /* Frameworks */,
-				032939A4253BBF0300E52AD5 /* Resources */,
-				032939C9253BBF1E00E52AD5 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "BCLibsSwiftTest-Mac";
-			productName = "BCLibsSwiftTest-Mac";
-			productReference = 032939A6253BBF0300E52AD5 /* BCLibsSwiftTest-Mac.app */;
-			productType = "com.apple.product-type.application";
-		};
-		03E17608251A0F38008D3181 /* BCLibsSwiftTest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 03E1761D251A0F3A008D3181 /* Build configuration list for PBXNativeTarget "BCLibsSwiftTest" */;
-			buildPhases = (
-				03E17605251A0F38008D3181 /* Sources */,
-				03E17606251A0F38008D3181 /* Frameworks */,
-				03E17607251A0F38008D3181 /* Resources */,
-				03D3C264251B069C00BC8B3E /* Embed Frameworks */,
+				794CF4A229F3C6020022BA51 /* Sources */,
+				794CF4A329F3C6020022BA51 /* Frameworks */,
+				794CF4A429F3C6020022BA51 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -220,180 +176,114 @@
 			);
 			name = BCLibsSwiftTest;
 			productName = BCLibsSwiftTest;
-			productReference = 03E17609251A0F38008D3181 /* BCLibsSwiftTest.app */;
+			productReference = 794CF4A629F3C6020022BA51 /* BCLibsSwiftTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		794CF4C429F3C98F0022BA51 /* BCLibsSwiftTestMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 794CF4D129F3C9910022BA51 /* Build configuration list for PBXNativeTarget "BCLibsSwiftTestMac" */;
+			buildPhases = (
+				794CF4C129F3C98F0022BA51 /* Sources */,
+				794CF4C229F3C98F0022BA51 /* Frameworks */,
+				794CF4C329F3C98F0022BA51 /* Resources */,
+				794CF4DB29F3CA0C0022BA51 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BCLibsSwiftTestMac;
+			productName = BCLibsSwiftTestMac;
+			productReference = 794CF4C529F3C98F0022BA51 /* BCLibsSwiftTestMac.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		03E17601251A0F38008D3181 /* Project object */ = {
+		794CF49E29F3C6020022BA51 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1200;
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					032939A5253BBF0300E52AD5 = {
-						CreatedOnToolsVersion = 12.0.1;
+					794CF4A529F3C6020022BA51 = {
+						CreatedOnToolsVersion = 14.3;
 					};
-					03E17608251A0F38008D3181 = {
-						CreatedOnToolsVersion = 12.0;
+					794CF4C429F3C98F0022BA51 = {
+						CreatedOnToolsVersion = 14.3;
 					};
 				};
 			};
-			buildConfigurationList = 03E17604251A0F38008D3181 /* Build configuration list for PBXProject "BCLibsSwiftTest" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = 794CF4A129F3C6020022BA51 /* Build configuration list for PBXProject "BCLibsSwiftTest" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 03E17600251A0F38008D3181;
-			productRefGroup = 03E1760A251A0F38008D3181 /* Products */;
+			mainGroup = 794CF49D29F3C6020022BA51;
+			productRefGroup = 794CF4A729F3C6020022BA51 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				03E17608251A0F38008D3181 /* BCLibsSwiftTest */,
-				032939A5253BBF0300E52AD5 /* BCLibsSwiftTest-Mac */,
+				794CF4A529F3C6020022BA51 /* BCLibsSwiftTest */,
+				794CF4C429F3C98F0022BA51 /* BCLibsSwiftTestMac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		032939A4253BBF0300E52AD5 /* Resources */ = {
+		794CF4A429F3C6020022BA51 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				032939B3253BBF0400E52AD5 /* Main.storyboard in Resources */,
-				032939B0253BBF0400E52AD5 /* Preview Assets.xcassets in Resources */,
-				032939AD253BBF0400E52AD5 /* Assets.xcassets in Resources */,
+				794CF4B129F3C6040022BA51 /* Preview Assets.xcassets in Resources */,
+				794CF4AE29F3C6040022BA51 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		03E17607251A0F38008D3181 /* Resources */ = {
+		794CF4C329F3C98F0022BA51 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03E17619251A0F3A008D3181 /* LaunchScreen.storyboard in Resources */,
-				03E17616251A0F3A008D3181 /* Assets.xcassets in Resources */,
-				03E17614251A0F38008D3181 /* Main.storyboard in Resources */,
+				794CF4CF29F3C9910022BA51 /* Preview Assets.xcassets in Resources */,
+				794CF4CC29F3C9910022BA51 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		032939A2253BBF0300E52AD5 /* Sources */ = {
+		794CF4A229F3C6020022BA51 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				032939AB253BBF0300E52AD5 /* ContentView.swift in Sources */,
-				032939A9253BBF0300E52AD5 /* AppDelegate.swift in Sources */,
+				794CF4AC29F3C6020022BA51 /* ContentView.swift in Sources */,
+				794CF4AA29F3C6020022BA51 /* BCLibsSwiftTestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		03E17605251A0F38008D3181 /* Sources */ = {
+		794CF4C129F3C98F0022BA51 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03E17611251A0F38008D3181 /* ViewController.swift in Sources */,
-				03E1760D251A0F38008D3181 /* AppDelegate.swift in Sources */,
-				03E1760F251A0F38008D3181 /* SceneDelegate.swift in Sources */,
+				794CF4C829F3C98F0022BA51 /* BCLibsSwiftTestMacApp.swift in Sources */,
+				794CF4D829F3C9A30022BA51 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		032939B1253BBF0400E52AD5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				032939B2253BBF0400E52AD5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		03E17612251A0F38008D3181 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				03E17613251A0F38008D3181 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		03E17617251A0F3A008D3181 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				03E17618251A0F3A008D3181 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		032939B6253BBF0400E52AD5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "BCLibsSwiftTest-Mac/BCLibsSwiftTest_Mac.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"BCLibsSwiftTest-Mac/Preview Content\"";
-				DEVELOPMENT_TEAM = YZHG975W3A;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "BCLibsSwiftTest-Mac/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = "blockchaincommons.BCLibsSwiftTest-Mac";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		032939B7253BBF0400E52AD5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "BCLibsSwiftTest-Mac/BCLibsSwiftTest_Mac.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"BCLibsSwiftTest-Mac/Preview Content\"";
-				DEVELOPMENT_TEAM = YZHG975W3A;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "BCLibsSwiftTest-Mac/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = "blockchaincommons.BCLibsSwiftTest-Mac";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		03E1761B251A0F3A008D3181 /* Debug */ = {
+		794CF4B229F3C6040022BA51 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -437,7 +327,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -447,14 +337,13 @@
 			};
 			name = Debug;
 		};
-		03E1761C251A0F3A008D3181 /* Release */ = {
+		794CF4B329F3C6040022BA51 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -492,7 +381,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -502,81 +391,163 @@
 			};
 			name = Release;
 		};
-		03E1761E251A0F3A008D3181 /* Debug */ = {
+		794CF4B529F3C6040022BA51 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BCLibsSwiftTest/BCLibsSwiftTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BCLibsSwiftTest/Preview Content\"";
 				DEVELOPMENT_TEAM = YZHG975W3A;
-				INFOPLIST_FILE = BCLibsSwiftTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BCLibsSwiftTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		03E1761F251A0F3A008D3181 /* Release */ = {
+		794CF4B629F3C6040022BA51 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BCLibsSwiftTest/BCLibsSwiftTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BCLibsSwiftTest/Preview Content\"";
 				DEVELOPMENT_TEAM = YZHG975W3A;
-				INFOPLIST_FILE = BCLibsSwiftTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BCLibsSwiftTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		794CF4D229F3C9910022BA51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BCLibsSwiftTestMac/BCLibsSwiftTestMac.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BCLibsSwiftTestMac/Preview Content\"";
+				DEVELOPMENT_TEAM = YZHG975W3A;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BCLibsSwiftTestMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		794CF4D329F3C9910022BA51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BCLibsSwiftTestMac/BCLibsSwiftTestMac.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BCLibsSwiftTestMac/Preview Content\"";
+				DEVELOPMENT_TEAM = YZHG975W3A;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BCLibsSwiftTestMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		032939B8253BBF0400E52AD5 /* Build configuration list for PBXNativeTarget "BCLibsSwiftTest-Mac" */ = {
+		794CF4A129F3C6020022BA51 /* Build configuration list for PBXProject "BCLibsSwiftTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				032939B6253BBF0400E52AD5 /* Debug */,
-				032939B7253BBF0400E52AD5 /* Release */,
+				794CF4B229F3C6040022BA51 /* Debug */,
+				794CF4B329F3C6040022BA51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		03E17604251A0F38008D3181 /* Build configuration list for PBXProject "BCLibsSwiftTest" */ = {
+		794CF4B429F3C6040022BA51 /* Build configuration list for PBXNativeTarget "BCLibsSwiftTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				03E1761B251A0F3A008D3181 /* Debug */,
-				03E1761C251A0F3A008D3181 /* Release */,
+				794CF4B529F3C6040022BA51 /* Debug */,
+				794CF4B629F3C6040022BA51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		03E1761D251A0F3A008D3181 /* Build configuration list for PBXNativeTarget "BCLibsSwiftTest" */ = {
+		794CF4D129F3C9910022BA51 /* Build configuration list for PBXNativeTarget "BCLibsSwiftTestMac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				03E1761E251A0F3A008D3181 /* Debug */,
-				03E1761F251A0F3A008D3181 /* Release */,
+				794CF4D229F3C9910022BA51 /* Debug */,
+				794CF4D329F3C9910022BA51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 03E17601251A0F38008D3181 /* Project object */;
+	rootObject = 794CF49E29F3C6020022BA51 /* Project object */;
 }
