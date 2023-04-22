@@ -28,7 +28,7 @@ build_crypto_base() {
   make install
   make clean
 
-  cp ${PROJ_ROOT}/CCryptoBase.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
+  cp ${PROJ_ROOT}/CryptoBase/CCryptoBase.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
 
   popd
 }
@@ -49,7 +49,7 @@ build_bip39()
   make install
   make clean
 
-  cp ${PROJ_ROOT}/CBIP39.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
+  cp ${PROJ_ROOT}/BIP39/CBIP39.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
 
   popd
 }
@@ -70,7 +70,7 @@ build_shamir()
   make install
   make clean
 
-  cp ${PROJ_ROOT}/CShamir.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
+  cp ${PROJ_ROOT}/Shamir/CShamir.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
 
   popd
 )
@@ -98,7 +98,7 @@ build_sskr()
   make install
   make clean
 
-  cp ${PROJ_ROOT}/CSSKR.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
+  cp ${PROJ_ROOT}/SSKR/CSSKR.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
 
   popd
 )
