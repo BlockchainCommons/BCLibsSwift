@@ -13,3 +13,6 @@
 [submodule "deps/bc-bip39"]
 	path = deps/bc-bip39
 	url = https://github.com/BlockchainCommons/bc-bip39.git
+[submodule "deps/bc-libwally-core"]
+	path = deps/bc-libwally-core
+	url = https://github.com/BlockchainCommons/bc-libwally-core.git
