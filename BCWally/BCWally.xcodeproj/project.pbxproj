@@ -1,0 +1,799 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 53;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		030A63DC25035EDA00A1D27E /* BCWally.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 030A63D225035ED900A1D27E /* BCWally.framework */; };
+		030A63E325035EDA00A1D27E /* BCWally.h in Headers */ = {isa = PBXBuildFile; fileRef = 030A63D525035ED900A1D27E /* BCWally.h */; };
+		030A640B250382A300A1D27E /* BCWallyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A6404250382A300A1D27E /* BCWallyTests.swift */; };
+		031BD4F62515746B001E6492 /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031BD4F52515746B001E6492 /* TestUtils.swift */; };
+		03605B2E2514702D00002D2F /* BCWally.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03605B2D2514702D00002D2F /* BCWally.swift */; };
+		794CF41329F35BA60022BA51 /* BCWally.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794CF40B29F35BA50022BA51 /* BCWally.framework */; };
+		794CF42029F35EA80022BA51 /* BCWally.h in Headers */ = {isa = PBXBuildFile; fileRef = 030A63D525035ED900A1D27E /* BCWally.h */; };
+		794CF42129F35ED20022BA51 /* BCWally.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03605B2D2514702D00002D2F /* BCWally.swift */; };
+		794CF42229F35EF30022BA51 /* BCWallyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A6404250382A300A1D27E /* BCWallyTests.swift */; };
+		794CF42329F35EF50022BA51 /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031BD4F52515746B001E6492 /* TestUtils.swift */; };
+		794CF4EE29F795450022BA51 /* WallyBIP39.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E229F795440022BA51 /* WallyBIP39.swift */; };
+		794CF4EF29F795450022BA51 /* WallyBIP39.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E229F795440022BA51 /* WallyBIP39.swift */; };
+		794CF4F029F795450022BA51 /* WallyHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E329F795440022BA51 /* WallyHash.swift */; };
+		794CF4F129F795450022BA51 /* WallyHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E329F795440022BA51 /* WallyHash.swift */; };
+		794CF4F229F795450022BA51 /* WallyBase58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E429F795440022BA51 /* WallyBase58.swift */; };
+		794CF4F329F795450022BA51 /* WallyBase58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E429F795440022BA51 /* WallyBase58.swift */; };
+		794CF4F429F795450022BA51 /* WallyExtKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E529F795440022BA51 /* WallyExtKey.swift */; };
+		794CF4F529F795450022BA51 /* WallyExtKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E529F795440022BA51 /* WallyExtKey.swift */; };
+		794CF4F629F795450022BA51 /* WallyPSBT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E629F795440022BA51 /* WallyPSBT.swift */; };
+		794CF4F729F795450022BA51 /* WallyPSBT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E629F795440022BA51 /* WallyPSBT.swift */; };
+		794CF4F829F795450022BA51 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E729F795440022BA51 /* Network.swift */; };
+		794CF4F929F795450022BA51 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E729F795440022BA51 /* Network.swift */; };
+		794CF4FA29F795450022BA51 /* WallyTx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E829F795440022BA51 /* WallyTx.swift */; };
+		794CF4FB29F795450022BA51 /* WallyTx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E829F795440022BA51 /* WallyTx.swift */; };
+		794CF4FC29F795450022BA51 /* WallyAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E929F795440022BA51 /* WallyAddress.swift */; };
+		794CF4FD29F795450022BA51 /* WallyAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4E929F795440022BA51 /* WallyAddress.swift */; };
+		794CF4FE29F795450022BA51 /* WallyECKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4EA29F795440022BA51 /* WallyECKey.swift */; };
+		794CF4FF29F795450022BA51 /* WallyECKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4EA29F795440022BA51 /* WallyECKey.swift */; };
+		794CF50029F795450022BA51 /* WallyScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4EB29F795440022BA51 /* WallyScript.swift */; };
+		794CF50129F795450022BA51 /* WallyScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4EB29F795440022BA51 /* WallyScript.swift */; };
+		794CF50229F795450022BA51 /* WallyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4EC29F795440022BA51 /* WallyUtils.swift */; };
+		794CF50329F795450022BA51 /* WallyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4EC29F795440022BA51 /* WallyUtils.swift */; };
+		794CF50429F795450022BA51 /* WallyWIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4ED29F795450022BA51 /* WallyWIF.swift */; };
+		794CF50529F795450022BA51 /* WallyWIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4ED29F795450022BA51 /* WallyWIF.swift */; };
+		794CF50929F7A70E0022BA51 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF50829F7A70E0022BA51 /* Utils.swift */; };
+		794CF50A29F7AADF0022BA51 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF50829F7A70E0022BA51 /* Utils.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		030A63DD25035EDA00A1D27E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 030A63C925035ED900A1D27E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 030A63D125035ED900A1D27E;
+			remoteInfo = BCWally;
+		};
+		794CF41429F35BA60022BA51 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 030A63C925035ED900A1D27E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 794CF40A29F35BA50022BA51;
+			remoteInfo = BCWallyMac;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		030A63D225035ED900A1D27E /* BCWally.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BCWally.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		030A63D525035ED900A1D27E /* BCWally.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCWally.h; sourceTree = "<group>"; };
+		030A63DB25035EDA00A1D27E /* BCWallyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BCWallyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		030A6404250382A300A1D27E /* BCWallyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCWallyTests.swift; sourceTree = "<group>"; };
+		031BD4F52515746B001E6492 /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
+		03605B2D2514702D00002D2F /* BCWally.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCWally.swift; sourceTree = "<group>"; };
+		794CF40B29F35BA50022BA51 /* BCWally.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BCWally.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		794CF41229F35BA60022BA51 /* BCWallyMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BCWallyMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		794CF4E229F795440022BA51 /* WallyBIP39.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallyBIP39.swift; sourceTree = "<group>"; };
+		794CF4E329F795440022BA51 /* WallyHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallyHash.swift; sourceTree = "<group>"; };
+		794CF4E429F795440022BA51 /* WallyBase58.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallyBase58.swift; sourceTree = "<group>"; };
+		794CF4E529F795440022BA51 /* WallyExtKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallyExtKey.swift; sourceTree = "<group>"; };
+		794CF4E629F795440022BA51 /* WallyPSBT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallyPSBT.swift; sourceTree = "<group>"; };
+		794CF4E729F795440022BA51 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		794CF4E829F795440022BA51 /* WallyTx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallyTx.swift; sourceTree = "<group>"; };
+		794CF4E929F795440022BA51 /* WallyAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallyAddress.swift; sourceTree = "<group>"; };
+		794CF4EA29F795440022BA51 /* WallyECKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallyECKey.swift; sourceTree = "<group>"; };
+		794CF4EB29F795440022BA51 /* WallyScript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallyScript.swift; sourceTree = "<group>"; };
+		794CF4EC29F795440022BA51 /* WallyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WallyUtils.swift; path = BCWally/WallyUtils.swift; sourceTree = SOURCE_ROOT; };
+		794CF4ED29F795450022BA51 /* WallyWIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallyWIF.swift; sourceTree = "<group>"; };
+		794CF50829F7A70E0022BA51 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		030A63CF25035ED900A1D27E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		030A63D825035EDA00A1D27E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				030A63DC25035EDA00A1D27E /* BCWally.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		794CF40829F35BA50022BA51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		794CF40F29F35BA60022BA51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				794CF41329F35BA60022BA51 /* BCWally.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		030A63C825035ED900A1D27E = {
+			isa = PBXGroup;
+			children = (
+				030A63D425035ED900A1D27E /* BCWally */,
+				030A63DF25035EDA00A1D27E /* BCWallyTests */,
+				030A63D325035ED900A1D27E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		030A63D325035ED900A1D27E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				030A63D225035ED900A1D27E /* BCWally.framework */,
+				030A63DB25035EDA00A1D27E /* BCWallyTests.xctest */,
+				794CF40B29F35BA50022BA51 /* BCWally.framework */,
+				794CF41229F35BA60022BA51 /* BCWallyMacTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		030A63D425035ED900A1D27E /* BCWally */ = {
+			isa = PBXGroup;
+			children = (
+				030A63D525035ED900A1D27E /* BCWally.h */,
+				03605B2D2514702D00002D2F /* BCWally.swift */,
+				794CF4E729F795440022BA51 /* Network.swift */,
+				794CF4E929F795440022BA51 /* WallyAddress.swift */,
+				794CF4E429F795440022BA51 /* WallyBase58.swift */,
+				794CF4E229F795440022BA51 /* WallyBIP39.swift */,
+				794CF4EA29F795440022BA51 /* WallyECKey.swift */,
+				794CF4E529F795440022BA51 /* WallyExtKey.swift */,
+				794CF4E329F795440022BA51 /* WallyHash.swift */,
+				794CF4E629F795440022BA51 /* WallyPSBT.swift */,
+				794CF4EB29F795440022BA51 /* WallyScript.swift */,
+				794CF4E829F795440022BA51 /* WallyTx.swift */,
+				794CF4EC29F795440022BA51 /* WallyUtils.swift */,
+				794CF4ED29F795450022BA51 /* WallyWIF.swift */,
+				794CF50829F7A70E0022BA51 /* Utils.swift */,
+			);
+			path = BCWally;
+			sourceTree = "<group>";
+		};
+		030A63DF25035EDA00A1D27E /* BCWallyTests */ = {
+			isa = PBXGroup;
+			children = (
+				030A6404250382A300A1D27E /* BCWallyTests.swift */,
+				031BD4F52515746B001E6492 /* TestUtils.swift */,
+			);
+			path = BCWallyTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		030A63CD25035ED900A1D27E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				030A63E325035EDA00A1D27E /* BCWally.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		794CF40629F35BA50022BA51 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				794CF42029F35EA80022BA51 /* BCWally.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		030A63D125035ED900A1D27E /* BCWally */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 030A63E625035EDA00A1D27E /* Build configuration list for PBXNativeTarget "BCWally" */;
+			buildPhases = (
+				030A63CD25035ED900A1D27E /* Headers */,
+				030A63CE25035ED900A1D27E /* Sources */,
+				030A63CF25035ED900A1D27E /* Frameworks */,
+				030A63D025035ED900A1D27E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BCWally;
+			productName = BCWally;
+			productReference = 030A63D225035ED900A1D27E /* BCWally.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		030A63DA25035EDA00A1D27E /* BCWallyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 030A63E925035EDA00A1D27E /* Build configuration list for PBXNativeTarget "BCWallyTests" */;
+			buildPhases = (
+				030A63D725035EDA00A1D27E /* Sources */,
+				030A63D825035EDA00A1D27E /* Frameworks */,
+				030A63D925035EDA00A1D27E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				030A63DE25035EDA00A1D27E /* PBXTargetDependency */,
+			);
+			name = BCWallyTests;
+			productName = BCWallyTests;
+			productReference = 030A63DB25035EDA00A1D27E /* BCWallyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		794CF40A29F35BA50022BA51 /* BCWallyMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 794CF41A29F35BA60022BA51 /* Build configuration list for PBXNativeTarget "BCWallyMac" */;
+			buildPhases = (
+				794CF40629F35BA50022BA51 /* Headers */,
+				794CF40729F35BA50022BA51 /* Sources */,
+				794CF40829F35BA50022BA51 /* Frameworks */,
+				794CF40929F35BA50022BA51 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BCWallyMac;
+			productName = BCWallyMac;
+			productReference = 794CF40B29F35BA50022BA51 /* BCWally.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		794CF41129F35BA60022BA51 /* BCWallyMacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 794CF41D29F35BA60022BA51 /* Build configuration list for PBXNativeTarget "BCWallyMacTests" */;
+			buildPhases = (
+				794CF40E29F35BA60022BA51 /* Sources */,
+				794CF40F29F35BA60022BA51 /* Frameworks */,
+				794CF41029F35BA60022BA51 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				794CF41529F35BA60022BA51 /* PBXTargetDependency */,
+			);
+			name = BCWallyMacTests;
+			productName = BCWallyMacTests;
+			productReference = 794CF41229F35BA60022BA51 /* BCWallyMacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		030A63C925035ED900A1D27E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					030A63D125035ED900A1D27E = {
+						CreatedOnToolsVersion = 12.0;
+						LastSwiftMigration = 1230;
+					};
+					030A63DA25035EDA00A1D27E = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					794CF40A29F35BA50022BA51 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					794CF41129F35BA60022BA51 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+				};
+			};
+			buildConfigurationList = 030A63CC25035ED900A1D27E /* Build configuration list for PBXProject "BCWally" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 030A63C825035ED900A1D27E;
+			productRefGroup = 030A63D325035ED900A1D27E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				030A63D125035ED900A1D27E /* BCWally */,
+				030A63DA25035EDA00A1D27E /* BCWallyTests */,
+				794CF40A29F35BA50022BA51 /* BCWallyMac */,
+				794CF41129F35BA60022BA51 /* BCWallyMacTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		030A63D025035ED900A1D27E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		030A63D925035EDA00A1D27E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		794CF40929F35BA50022BA51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		794CF41029F35BA60022BA51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		030A63CE25035ED900A1D27E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				794CF4F629F795450022BA51 /* WallyPSBT.swift in Sources */,
+				03605B2E2514702D00002D2F /* BCWally.swift in Sources */,
+				794CF4FC29F795450022BA51 /* WallyAddress.swift in Sources */,
+				794CF4F229F795450022BA51 /* WallyBase58.swift in Sources */,
+				794CF4F429F795450022BA51 /* WallyExtKey.swift in Sources */,
+				794CF50929F7A70E0022BA51 /* Utils.swift in Sources */,
+				794CF50429F795450022BA51 /* WallyWIF.swift in Sources */,
+				794CF4F029F795450022BA51 /* WallyHash.swift in Sources */,
+				794CF4FA29F795450022BA51 /* WallyTx.swift in Sources */,
+				794CF4F829F795450022BA51 /* Network.swift in Sources */,
+				794CF50029F795450022BA51 /* WallyScript.swift in Sources */,
+				794CF50229F795450022BA51 /* WallyUtils.swift in Sources */,
+				794CF4EE29F795450022BA51 /* WallyBIP39.swift in Sources */,
+				794CF4FE29F795450022BA51 /* WallyECKey.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		030A63D725035EDA00A1D27E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				030A640B250382A300A1D27E /* BCWallyTests.swift in Sources */,
+				031BD4F62515746B001E6492 /* TestUtils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		794CF40729F35BA50022BA51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				794CF4F729F795450022BA51 /* WallyPSBT.swift in Sources */,
+				794CF42129F35ED20022BA51 /* BCWally.swift in Sources */,
+				794CF4FD29F795450022BA51 /* WallyAddress.swift in Sources */,
+				794CF50A29F7AADF0022BA51 /* Utils.swift in Sources */,
+				794CF4F329F795450022BA51 /* WallyBase58.swift in Sources */,
+				794CF4F529F795450022BA51 /* WallyExtKey.swift in Sources */,
+				794CF50529F795450022BA51 /* WallyWIF.swift in Sources */,
+				794CF4F129F795450022BA51 /* WallyHash.swift in Sources */,
+				794CF4FB29F795450022BA51 /* WallyTx.swift in Sources */,
+				794CF4F929F795450022BA51 /* Network.swift in Sources */,
+				794CF50129F795450022BA51 /* WallyScript.swift in Sources */,
+				794CF50329F795450022BA51 /* WallyUtils.swift in Sources */,
+				794CF4EF29F795450022BA51 /* WallyBIP39.swift in Sources */,
+				794CF4FF29F795450022BA51 /* WallyECKey.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		794CF40E29F35BA60022BA51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				794CF42229F35EF30022BA51 /* BCWallyTests.swift in Sources */,
+				794CF42329F35EF50022BA51 /* TestUtils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		030A63DE25035EDA00A1D27E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 030A63D125035ED900A1D27E /* BCWally */;
+			targetProxy = 030A63DD25035EDA00A1D27E /* PBXContainerItemProxy */;
+		};
+		794CF41529F35BA60022BA51 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 794CF40A29F35BA50022BA51 /* BCWallyMac */;
+			targetProxy = 794CF41429F35BA60022BA51 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		030A63E425035EDA00A1D27E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		030A63E525035EDA00A1D27E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		030A63E725035EDA00A1D27E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../build/libs/$(ARCHS)-apple-$(SHALLOW_BUNDLE_TRIPLE)/bc-libwally-core/include\"";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../build/libs/$(ARCHS)-apple-$(SHALLOW_BUNDLE_TRIPLE)/bc-libwally-core/lib\"";
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				OTHER_LDFLAGS = (
+					"-lwallycore",
+					"-lsecp256k1",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BCWally;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_INCLUDE_PATHS = "\"$(SRCROOT)/../build/libs/$(ARCHS)-apple-$(SHALLOW_BUNDLE_TRIPLE)/bc-libwally-core/include\"";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+			};
+			name = Debug;
+		};
+		030A63E825035EDA00A1D27E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../build/libs/$(ARCHS)-apple-$(SHALLOW_BUNDLE_TRIPLE)/bc-libwally-core/include\"";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../build/libs/$(ARCHS)-apple-$(SHALLOW_BUNDLE_TRIPLE)/bc-libwally-core/lib\"";
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				OTHER_LDFLAGS = (
+					"-lwallycore",
+					"-lsecp256k1",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BCWally;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_INCLUDE_PATHS = "\"$(SRCROOT)/../build/libs/$(ARCHS)-apple-$(SHALLOW_BUNDLE_TRIPLE)/bc-libwally-core/include\"";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+			};
+			name = Release;
+		};
+		030A63EA25035EDA00A1D27E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YZHG975W3A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BCWallyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		030A63EB25035EDA00A1D27E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YZHG975W3A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BCWallyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		794CF41B29F35BA60022BA51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../build/libs/$(ARCHS)-apple-$(SHALLOW_BUNDLE_TRIPLE)/bc-libwally-core/include\"";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../build/libs/$(ARCHS)-apple-$(SHALLOW_BUNDLE_TRIPLE)/bc-libwally-core/lib\"";
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				OTHER_LDFLAGS = (
+					"-lwallycore",
+					"-lsecp256k1",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BCWally;
+				PRODUCT_NAME = BCWally;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "\"$(SRCROOT)/../build/libs/$(ARCHS)-apple-$(SHALLOW_BUNDLE_TRIPLE)/bc-libwally-core/include\"";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		794CF41C29F35BA60022BA51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../build/libs/$(ARCHS)-apple-$(SHALLOW_BUNDLE_TRIPLE)/bc-libwally-core/include\"";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../build/libs/$(ARCHS)-apple-$(SHALLOW_BUNDLE_TRIPLE)/bc-libwally-core/lib\"";
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				OTHER_LDFLAGS = (
+					"-lwallycore",
+					"-lsecp256k1",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = blockchaincommons.BCWally;
+				PRODUCT_NAME = BCWally;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "\"$(SRCROOT)/../build/libs/$(ARCHS)-apple-$(SHALLOW_BUNDLE_TRIPLE)/bc-libwally-core/include\"";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		794CF41E29F35BA60022BA51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92TUA8H52D;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arciem.BCWallyMacTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		794CF41F29F35BA60022BA51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92TUA8H52D;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arciem.BCWallyMacTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		030A63CC25035ED900A1D27E /* Build configuration list for PBXProject "BCWally" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				030A63E425035EDA00A1D27E /* Debug */,
+				030A63E525035EDA00A1D27E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		030A63E625035EDA00A1D27E /* Build configuration list for PBXNativeTarget "BCWally" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				030A63E725035EDA00A1D27E /* Debug */,
+				030A63E825035EDA00A1D27E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		030A63E925035EDA00A1D27E /* Build configuration list for PBXNativeTarget "BCWallyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				030A63EA25035EDA00A1D27E /* Debug */,
+				030A63EB25035EDA00A1D27E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		794CF41A29F35BA60022BA51 /* Build configuration list for PBXNativeTarget "BCWallyMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				794CF41B29F35BA60022BA51 /* Debug */,
+				794CF41C29F35BA60022BA51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		794CF41D29F35BA60022BA51 /* Build configuration list for PBXNativeTarget "BCWallyMacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				794CF41E29F35BA60022BA51 /* Debug */,
+				794CF41F29F35BA60022BA51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 030A63C925035ED900A1D27E /* Project object */;
+}

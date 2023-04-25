@@ -1,0 +1,18 @@
+module CBCWally [extern_c] {
+  header "wally_address.h"
+  header "wally_anti_exfil.h"
+  header "wally_bip32.h"
+  header "wally_bip38.h"
+  header "wally_bip39.h"
+  header "wally_core.h"
+  header "wally_crypto.h"
+  header "wally_descriptor.h"
+  header "wally_map.h"
+  header "wally_psbt_members.h"
+  header "wally_psbt.h"
+  header "wally_script.h"
+  header "wally_symmetric.h"
+  header "wally_transaction.h"
+
+  export *
+}

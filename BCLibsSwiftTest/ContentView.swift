@@ -3,6 +3,7 @@ import CryptoBase
 import BIP39
 import Shamir
 import SSKR
+import BCWally
 
 struct ContentView: View {
     var body: some View {
@@ -11,6 +12,7 @@ struct ContentView: View {
             testLib(name: "BIP39", test: { BIP39.identify() })
             testLib(name: "Shamir", test: { Shamir.identify() })
             testLib(name: "SSKR", test: { SSKR.identify() })
+            testLib(name: "BCWally", test: { BCWally.identify() })
         }
         .padding()
     }

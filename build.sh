@@ -16,6 +16,44 @@ echo -n > ${BUILD_LOG}
 
 source ./message_utils.sh
 
+build_wally() {
+  pushd ${DEPS_ROOT}/bc-libwally-core
+
+  ./tools/cleanup.sh
+  ./tools/autogen.sh
+
+  if [[ ${TARGET} == arm64* ]]
+  then
+    HOST=arm-apple-darwin
+  else
+    HOST=x86_64-apple-darwin
+  fi
+
+  PKG_CONFIG_ALLOW_CROSS=1 \
+  PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig \
+  ./configure \
+    --disable-shared \
+    --enable-static \
+    --host=${HOST} \
+    --prefix=${PREFIX}
+
+  make clean
+  make -j${CPU_COUNT}
+  make install
+  make clean
+
+  popd
+
+  cp "${PROJ_ROOT}/BCWally/CBCWally.modulemap" "${PREFIX}/include/module.modulemap"
+
+  # Remove unused headers
+  pushd ${PREFIX}/include
+  rm secp256k1*.h
+  rm wally_elements.h
+  rm wally.hpp
+  popd
+}
+
 build_crypto_base() {
   pushd ${DEPS_ROOT}/bc-crypto-base
 
@@ -28,7 +66,7 @@ build_crypto_base() {
   make install
   make clean
 
-  cp ${PROJ_ROOT}/CryptoBase/CCryptoBase.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
+  cp "${PROJ_ROOT}/CryptoBase/CCryptoBase.modulemap" "${PREFIX}/include/${LIB_NAME}/module.modulemap"
 
   popd
 }
@@ -49,7 +87,7 @@ build_bip39()
   make install
   make clean
 
-  cp ${PROJ_ROOT}/BIP39/CBIP39.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
+  cp "${PROJ_ROOT}/BIP39/CBIP39.modulemap" "${PREFIX}/include/${LIB_NAME}/module.modulemap"
 
   popd
 }
@@ -70,7 +108,7 @@ build_shamir()
   make install
   make clean
 
-  cp ${PROJ_ROOT}/Shamir/CShamir.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
+  cp "${PROJ_ROOT}/Shamir/CShamir.modulemap" "${PREFIX}/include/${LIB_NAME}/module.modulemap"
 
   popd
 )
@@ -98,7 +136,7 @@ build_sskr()
   make install
   make clean
 
-  cp ${PROJ_ROOT}/SSKR/CSSKR.modulemap ${PREFIX}/include/${LIB_NAME}/module.modulemap
+  cp "${PROJ_ROOT}/SSKR/CSSKR.modulemap" "${PREFIX}/include/${LIB_NAME}/module.modulemap"
 
   popd
 )
@@ -123,7 +161,10 @@ build_libs() (
   )
 
   for TARGET_INFO in "${TARGETS[@]}"; do
-    IFS=":" read -r TARGET SDK VERSION <<< "$TARGET_INFO"
+    TARGET_INFO_PARTS=("${(@s/:/)TARGET_INFO}")
+    TARGET=${TARGET_INFO_PARTS[1]}
+    SDK=${TARGET_INFO_PARTS[2]}
+    VERSION=${TARGET_INFO_PARTS[3]}
 
     progress_item "Building C library for ${LIB_NAME} ${TARGET} ${SDK}"
 
@@ -143,12 +184,13 @@ build_libs() (
 
 lipo_lib() (
   LIB_NAME=$1
-  FAT_TARGET=$2
+  LIB=$2
+  FAT_TARGET=$3
 
-  progress_item "Creating fat binary for ${LIB_NAME} ${FAT_TARGET}"
+  progress_item "Creating fat binary for ${LIB} ${FAT_TARGET}"
 
   ARCHS=("arm64" "x86_64")
-  ARCHIVE_NAME="lib${LIB_NAME}.a"
+  ARCHIVE_NAME="lib${LIB}.a"
 
   FAT_TARGET_DIR="arm64 x86_64-${FAT_TARGET}"
   OUTPUT_DIR="${LIBS_ROOT}/${FAT_TARGET_DIR}"
@@ -172,6 +214,7 @@ lipo_lib() (
 
 lipo_libs() (
   LIB_NAME=$1
+  BUILT_LIBS=$2
 
   progress_subsection "Creating fat binaries for ${LIB_NAME}"
 
@@ -181,8 +224,16 @@ lipo_libs() (
     "apple-ios-simulator"
   )
 
-  for FAT_TARGET in "${FAT_TARGETS[@]}"; do
-    lipo_lib ${LIB_NAME} ${FAT_TARGET}
+  # If BUILT_LIBS is not empty, then split it into A LIBS array at the commas.
+  # If it's empty, then set LIBS to a single-element array containing LIB_NAME.
+  LIBS=(${(s.,.)BUILT_LIBS:-${LIB_NAME}})
+
+  # Loop through each element of the LIBS array
+  for LIB in "${LIBS[@]}"; do
+    # Loop through each FAT_TARGET
+    for FAT_TARGET in "${FAT_TARGETS[@]}"; do
+      lipo_lib ${LIB_NAME} ${LIB} ${FAT_TARGET}
+    done
   done
 )
 
@@ -195,20 +246,27 @@ build_framework() (
   ARCHS=$6
   SHALLOW_BUNDLE_TRIPLE=$7
   LIB_NAME=$8
-  LOCAL_LIBS=$9
+  ADD_LIB_TO_HEADER_SEARCH_PATH=$9
+  LOCAL_LIBS=$10
 
   progress_item "Building ${FRAMEWORK} scheme ${SCHEME} for ${ARCHIVE_PLATFORM}"
 
   SEARCH_PATH_BASE=${LIBS_ROOT}/${ARCHS}-apple-${SHALLOW_BUNDLE_TRIPLE}
 
-  IFS=',' LOCAL_LIBS=(${(s.,.)LOCAL_LIBS})
-  LIBS=("${LIB_NAME}" "${(@)LOCAL_LIBS}")
+  LOCAL_LIBS_PARTS=(${(@s/,/)LOCAL_LIBS})
+  LIBS=("${LIB_NAME}" "${(@)LOCAL_LIBS_PARTS}")
 
   HEADER_SEARCH_PATHS=""
   LIBRARY_SEARCH_PATHS=""
   for LIB in "${LIBS[@]}"; do
-    HEADER_SEARCH_PATHS="${HEADER_SEARCH_PATHS} \"${SEARCH_PATH_BASE}/${LIB}/include/${LIB}\""
-    LIBRARY_SEARCH_PATHS="${LIBRARY_SEARCH_PATHS} \"${SEARCH_PATH_BASE}/${LIB}/lib\""
+    HEADER_SEARCH_PATH=${SEARCH_PATH_BASE}/${LIB}/include
+    if [[ ${ADD_LIB_TO_HEADER_SEARCH_PATH} == "true" ]]; then
+      HEADER_SEARCH_PATH="${HEADER_SEARCH_PATH}/${LIB}"
+    fi
+    HEADER_SEARCH_PATHS="${HEADER_SEARCH_PATHS} \"${HEADER_SEARCH_PATH}\""
+
+    LIBRARY_SEARCH_PATH=${SEARCH_PATH_BASE}/${LIB}/lib
+    LIBRARY_SEARCH_PATHS="${LIBRARY_SEARCH_PATHS} \"${LIBRARY_SEARCH_PATH}\""
   done
 
   xcodebuild -project ${FRAMEWORK}/${FRAMEWORK}.xcodeproj \
@@ -230,7 +288,8 @@ build_frameworks() (
   FRAMEWORK=$1
   SCHEME=$2
   LIB_NAME=$3
-  LOCAL_LIBS=$4
+  ADD_LIB_TO_HEADER_SEARCH_PATH=$4
+  LOCAL_LIBS=$5
 
   progress_subsection "Building ${FRAMEWORK} frameworks"
 
@@ -242,10 +301,15 @@ build_frameworks() (
   )
 
   for PLATFORM_INFO in "${PLATFORMS[@]}"; do
-    IFS=":" read -r XCODE_PLATFORM ARCHIVE_PLATFORM SDKROOT ARCHS SHALLOW_BUNDLE_TRIPLE <<< "$PLATFORM_INFO"
+    PLATFORM_INFO_PARTS=("${(@s/:/)PLATFORM_INFO}")
+    XCODE_PLATFORM=${PLATFORM_INFO_PARTS[1]}
+    ARCHIVE_PLATFORM=${PLATFORM_INFO_PARTS[2]}
+    SDKROOT=${PLATFORM_INFO_PARTS[3]}
+    ARCHS=${PLATFORM_INFO_PARTS[4]}
+    SHALLOW_BUNDLE_TRIPLE=${PLATFORM_INFO_PARTS[5]}
 
     build_framework ${FRAMEWORK} ${SCHEME} ${XCODE_PLATFORM} ${ARCHIVE_PLATFORM} \
-      ${SDKROOT} ${ARCHS} ${SHALLOW_BUNDLE_TRIPLE} ${LIB_NAME} ${LOCAL_LIBS}
+      ${SDKROOT} ${ARCHS} ${SHALLOW_BUNDLE_TRIPLE} ${LIB_NAME} ${ADD_LIB_TO_HEADER_SEARCH_PATH} ${LOCAL_LIBS}
   done
 )
 
@@ -262,28 +326,46 @@ build_xcframework() (
     -output "${BUILD_ROOT}/${FRAMEWORK}.xcframework"
 )
 
+get_dependencies() (
+  progress_section "Getting Dependencies"
+  git submodule update --init --recursive
+)
+
 (
   exec 3>/dev/tty
 
-  CONTEXT=subshell
+  export CONTEXT=subshell
 
   get_dependencies
 
   PROJECTS=(
-    "bc-crypto-base:build_crypto_base:CryptoBase:CryptoBase"
-    "bc-bip39:build_bip39:BIP39:BIP39:bc-crypto-base"
-    "bc-shamir:build_shamir:Shamir:Shamir:bc-crypto-base"
-    "bc-sskr:build_sskr:SSKR:SSKR:bc-crypto-base,bc-shamir"
+    "bc-crypto-base:build_crypto_base:CryptoBase:CryptoBase:true"
+    "bc-bip39:build_bip39:BIP39:BIP39:true:bc-crypto-base"
+    "bc-shamir:build_shamir:Shamir:Shamir:true:bc-crypto-base"
+    "bc-sskr:build_sskr:SSKR:SSKR:true:bc-crypto-base,bc-shamir"
+    "bc-libwally-core/wallycore,secp256k1:build_wally:BCWally:BCWally:false"
   )
 
   for PROJECT_INFO in "${PROJECTS[@]}"; do
-    IFS=":" read -r LIB_NAME BUILD_FUNC FRAMEWORK SCHEME LOCAL_LIBS <<< "$PROJECT_INFO"
+    PROJECT_INFO_PARTS=("${(@s/:/)PROJECT_INFO}")
+    LIB_NAME=${PROJECT_INFO_PARTS[1]}
+    BUILD_FUNC=${PROJECT_INFO_PARTS[2]}
+    FRAMEWORK=${PROJECT_INFO_PARTS[3]}
+    SCHEME=${PROJECT_INFO_PARTS[4]}
+    ADD_LIB_TO_HEADER_SEARCH_PATH=${PROJECT_INFO_PARTS[5]}
+    LOCAL_LIBS=${PROJECT_INFO_PARTS[6]}
+
+    if [[ $LIB_NAME == */* ]]; then
+      LIB_NAME_PARTS=("${(@s:/:)LIB_NAME}")
+      LIB_NAME=${LIB_NAME_PARTS[1]}
+      BUILT_LIBS=${LIB_NAME_PARTS[2]}
+    fi
 
     progress_section "Building ${LIB_NAME} and ${FRAMEWORK}"
 
     build_libs ${LIB_NAME} ${BUILD_FUNC}
-    lipo_libs ${LIB_NAME}
-    build_frameworks ${FRAMEWORK} ${SCHEME} ${LIB_NAME} ${LOCAL_LIBS}
+    lipo_libs ${LIB_NAME} ${BUILT_LIBS}
+    build_frameworks ${FRAMEWORK} ${SCHEME} ${LIB_NAME} ${ADD_LIB_TO_HEADER_SEARCH_PATH} ${LOCAL_LIBS}
     build_xcframework ${FRAMEWORK}
   done
 

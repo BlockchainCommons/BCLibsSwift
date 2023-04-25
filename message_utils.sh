@@ -46,12 +46,7 @@ note() (
   echo "${YELLOW}${MESSAGE}${RESET}" >&3
 )
 
-get_dependencies() (
-  progress_section "Getting Dependencies"
-  git submodule update --init
-)
-
-CONTEXT=top
+export CONTEXT=top
 
 TRAPZERR() {
   if [[ ${CONTEXT} == "top" ]]
