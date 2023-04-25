@@ -228,9 +228,7 @@ lipo_libs() (
   # If it's empty, then set LIBS to a single-element array containing LIB_NAME.
   LIBS=(${(s.,.)BUILT_LIBS:-${LIB_NAME}})
 
-  # Loop through each element of the LIBS array
   for LIB in "${LIBS[@]}"; do
-    # Loop through each FAT_TARGET
     for FAT_TARGET in "${FAT_TARGETS[@]}"; do
       lipo_lib ${LIB_NAME} ${LIB} ${FAT_TARGET}
     done
