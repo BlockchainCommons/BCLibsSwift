@@ -10,6 +10,7 @@ Blockchain Commons publishes several open source C libraries that are useful in 
 * [bc-bip39](https://github.com/blockchaincommons/bc-bip39)
 * [bc-shamir](https://github.com/blockchaincommons/bc-shamir)
 * [bc-sskr](https://github.com/blockchaincommons/bc-sskr)
+* [bc-libwally-core](https://github.com/blockchaincommons/bc-libwally-core)
 
 **BCLibsSwift** wraps these libraries in opinionated Swift frameworks that work across iOS devices, the iOS simulator, and Mac Catalyst builds, on both Intel (x86_64) and Apple Silicon (arm64) architectures:
 
@@ -17,6 +18,7 @@ Blockchain Commons publishes several open source C libraries that are useful in 
 * `BIP39.xcframework`
 * `Shamir.xcframework`
 * `SSKR.xcframework`
+* `BCWally.xcframework`
 
 These are universal frameworks built to run natively on these configurations:
 
@@ -43,6 +45,7 @@ The resulting xcframeworks are in `BCLibsSwift/build/`:
 * `BIP39.xcframework`
 * `Shamir.xcframework`
 * `SSKR.xcframework`
+* `BCWally.xcframework`
 
 ## Usage Instructions
 
