@@ -11,9 +11,6 @@ ARCHIVES_ROOT=${BUILD_ROOT}/archives
 BUILD_LOG=${PROJ_ROOT}/buildlog.txt
 CPU_COUNT=$(sysctl hw.ncpu | awk '{print $2}')
 
-mkdir -p ${BUILD_ROOT}
-echo -n > ${BUILD_LOG}
-
 source ./message_utils.sh
 
 build_wally() {
@@ -329,10 +326,28 @@ get_dependencies() (
   git submodule update --init --recursive
 )
 
+ignore() (
+  IGNORE_PATH=$1
+  if [ -e "${IGNORE_PATH}" ]; then
+    echo "## Ignoring for Dropbox ${IGNORE_PATH}"
+    xattr -w com.dropbox.ignored 1 "${IGNORE_PATH}" || true
+    xattr -d com.dropbox.attrs "${IGNORE_PATH}" 2> /dev/null || true
+  fi
+)
+
 (
   exec 3>/dev/tty
 
   export CONTEXT=subshell
+
+  mkdir -p ${DEPS_ROOT}
+  ignore ${DEPS_ROOT}
+
+  mkdir -p ${BUILD_ROOT}
+  ignore ${BUILD_ROOT}
+
+  echo -n > ${BUILD_LOG}
+  ignore ${BUILD_LOG}
 
   get_dependencies
 
