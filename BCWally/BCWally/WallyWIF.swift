@@ -1,8 +1,8 @@
 import Foundation
 @_implementationOnly import CBCWally
 
-extension Wally {
-    public static func encodeWIF(key: Data, network: Network, isPublicKeyCompressed: Bool) -> String {
+public extension Wally {
+    static func encodeWIF(key: Data, network: Network, isPublicKeyCompressed: Bool) -> String {
         var output: UnsafeMutablePointer<Int8>!
         defer {
             wally_free_string(output)

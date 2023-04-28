@@ -1,8 +1,14 @@
 import Foundation
 @_implementationOnly import CBCWally
 
-extension Wally {
-    public static func ecPublicKeyFromPrivateKey(data: Data) -> Data {
+public extension Wally {
+    static let ecPublicKeyLen = Int(EC_PUBLIC_KEY_LEN)
+    static let ecSignatureDerMaxLowRLen = Int(EC_SIGNATURE_DER_MAX_LOW_R_LEN)
+    static let sighashAll = UInt8(WALLY_SIGHASH_ALL)
+    static let ecMessageHashLen = Int(EC_MESSAGE_HASH_LEN)
+    static let sha256Len = Int(SHA256_LEN)
+    
+    static func ecPublicKeyFromPrivateKey(data: Data) -> Data {
         data.withUnsafeByteBuffer { inputBytes in
             var result = Data(count: Int(EC_PUBLIC_KEY_LEN))
             result.withUnsafeMutableByteBuffer { outputBytes in
@@ -19,7 +25,7 @@ extension Wally {
         }
     }
 
-    public static func ecPublicKeyDecompress(data: Data) -> Data {
+    static func ecPublicKeyDecompress(data: Data) -> Data {
         data.withUnsafeByteBuffer { inputBytes in
             var result = Data(count: Int(EC_PUBLIC_KEY_UNCOMPRESSED_LEN))
             result.withUnsafeMutableByteBuffer { outputBytes in
@@ -36,7 +42,7 @@ extension Wally {
         }
     }
 
-    public static func ecPublicKeyCompress(data: Data) -> Data {
+    static func ecPublicKeyCompress(data: Data) -> Data {
         data.withUnsafeByteBuffer { inputBytes in
             var result = Data(count: Int(EC_PUBLIC_KEY_LEN))
             result.withUnsafeMutableByteBuffer { outputBytes in
@@ -54,14 +60,14 @@ extension Wally {
     }
 }
 
-extension Wally {
-    public static func ecPrivateKeyVerify(_ privKey: Data) -> Bool {
+public extension Wally {
+    static func ecPrivateKeyVerify(_ privKey: Data) -> Bool {
         privKey.withUnsafeByteBuffer {
             wally_ec_private_key_verify($0.baseAddress, $0.count) == WALLY_OK
         }
     }
 
-    public static func ecSigFromBytes(privKey: Data, messageHash: Data) -> Data {
+    static func ecSigFromBytes(privKey: Data, messageHash: Data) -> Data {
         privKey.withUnsafeByteBuffer { privKeyBytes in
             messageHash.withUnsafeByteBuffer { messageHashBytes in
                 var compactSig = [UInt8](repeating: 0, count: Int(EC_SIGNATURE_LEN))
@@ -71,7 +77,7 @@ extension Wally {
         }
     }
 
-    public static func ecSigVerify(key: WallyExtKey, messageHash: Data, compactSig: Data) -> Bool {
+    static func ecSigVerify(key: WallyExtKey, messageHash: Data, compactSig: Data) -> Bool {
         withUnsafeByteBuffer(of: key.wrapped.pub_key) { pubKeyBytes in
             messageHash.withUnsafeByteBuffer { messageHashBytes in
                 compactSig.withUnsafeByteBuffer { compactSigBytes in
@@ -81,7 +87,7 @@ extension Wally {
         }
     }
 
-    public static func ecSigNormalize(compactSig: Data) -> Data {
+    static func ecSigNormalize(compactSig: Data) -> Data {
         compactSig.withUnsafeByteBuffer { compactSigBytes in
             var sigNormBytes = [UInt8](repeating: 0, count: Int(EC_SIGNATURE_LEN))
             precondition(wally_ec_sig_normalize(compactSigBytes.baseAddress, compactSigBytes.count, &sigNormBytes, Int(EC_SIGNATURE_LEN)) == WALLY_OK)
@@ -89,7 +95,7 @@ extension Wally {
         }
     }
 
-    public static func ecSigToDer(sigNorm: Data) -> Data {
+    static func ecSigToDer(sigNorm: Data) -> Data {
         sigNorm.withUnsafeByteBuffer { sigNormBytes in
             var sig_bytes = [UInt8](repeating: 0, count: Int(EC_SIGNATURE_DER_MAX_LEN))
             var sig_bytes_written = 0

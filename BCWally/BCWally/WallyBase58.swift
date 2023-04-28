@@ -1,8 +1,8 @@
 import Foundation
 @_implementationOnly import CBCWally
 
-extension Wally {
-    public static func base58(from key: WallyExtKey, isPrivate: Bool) -> String? {
+public extension Wally {
+    static func base58(from key: WallyExtKey, isPrivate: Bool) -> String? {
         guard
             !Data(of: key.wrapped.chain_code).isAllZero,
             key.wrapped.version != 0
@@ -23,7 +23,7 @@ extension Wally {
         }
     }
     
-    public static func base58(data: Data, isCheck: Bool) -> String {
+    static func base58(data: Data, isCheck: Bool) -> String {
         data.withUnsafeByteBuffer { p in
             var result: UnsafeMutablePointer<CChar>?
             precondition(
@@ -40,7 +40,7 @@ extension Wally {
         }
     }
     
-    public static func decodeBase58(_ s: String, isCheck: Bool) -> Data? {
+    static func decodeBase58(_ s: String, isCheck: Bool) -> Data? {
         var output = [UInt8](repeating: 0, count: s.count)
         var written = 0
         guard wally_base58_to_bytes(s, isCheck ? UInt32(BASE58_FLAG_CHECKSUM) : 0, &output, output.count, &written) == WALLY_OK else {

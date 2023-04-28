@@ -264,10 +264,13 @@ build_framework() (
     LIBRARY_SEARCH_PATHS="${LIBRARY_SEARCH_PATHS} \"${LIBRARY_SEARCH_PATH}\""
   done
 
+  ARCHIVE_PATH="${ARCHIVES_ROOT}/${FRAMEWORK}-${ARCHIVE_PLATFORM}"
+  rm -rf "${ARCHIVE_PATH}"
+
   xcodebuild -project ${FRAMEWORK}/${FRAMEWORK}.xcodeproj \
     -scheme ${SCHEME} \
     -destination generic/platform=${XCODE_PLATFORM} \
-    -archivePath "${ARCHIVES_ROOT}/${FRAMEWORK}-${ARCHIVE_PLATFORM}" \
+    -archivePath "${ARCHIVE_PATH}" \
     CODE_SIGNING_ALLOWED=NO \
     SDKROOT=${SDKROOT} \
     ARCHS=${ARCHS} \
@@ -313,12 +316,16 @@ build_xcframework() (
 
   progress_subsection "Building ${FRAMEWORK} xcframework"
 
+  OUTPUT_PATH="${BUILD_ROOT}/${FRAMEWORK}.xcframework"
+
+  rm -rf "${OUTPUT_PATH}"
+
   xcodebuild -create-xcframework \
     -archive "${ARCHIVES_ROOT}/${FRAMEWORK}-iOS.xcarchive" -framework ${FRAMEWORK}.framework \
     -archive "${ARCHIVES_ROOT}/${FRAMEWORK}-iOS_Simulator.xcarchive" -framework ${FRAMEWORK}.framework \
     -archive "${ARCHIVES_ROOT}/${FRAMEWORK}-Mac_Catalyst.xcarchive" -framework ${FRAMEWORK}.framework \
     -archive "${ARCHIVES_ROOT}/${FRAMEWORK}-macOS.xcarchive" -framework ${FRAMEWORK}.framework \
-    -output "${BUILD_ROOT}/${FRAMEWORK}.xcframework"
+    -output "${OUTPUT_PATH}"
 )
 
 get_dependencies() (

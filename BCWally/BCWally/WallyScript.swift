@@ -1,16 +1,26 @@
 import Foundation
 @_implementationOnly import CBCWally
 
-extension Wally {
-    public static func getScriptType(from script: Data) -> Int {
+public extension Wally {
+    enum ScriptType: Int, RawRepresentable {
+        case `return` = 0x1 // WALLY_SCRIPT_TYPE_OP_RETURN
+        case pkh = 0x2      // WALLY_SCRIPT_TYPE_P2PKH (legacy)
+        case sh = 0x4       // WALLY_SCRIPT_TYPE_P2SH (could be wrapped SegWit)
+        case wpkh = 0x8     // WALLY_SCRIPT_TYPE_P2WPKH (native SegWit)
+        case wsh = 0x10     // WALLY_SCRIPT_TYPE_P2WSH (native SegWit script)
+        case multi = 0x20   // WALLY_SCRIPT_TYPE_MULTISIG
+        case tr = 0x40      // WALLY_SCRIPT_TYPE_P2TR Taproot
+    }
+
+    static func getScriptType(from script: Data) -> ScriptType? {
         var output = 0
         script.withUnsafeByteBuffer { buf in
             precondition(wally_scriptpubkey_get_type(buf.baseAddress, buf.count, &output) == WALLY_OK)
         }
-        return output
+        return ScriptType(rawValue: output)
     }
     
-    public static func multisigScriptPubKey(pubKeys: [Data], threshold: UInt, isBIP67: Bool = true) -> Data {
+    static func multisigScriptPubKey(pubKeys: [Data], threshold: UInt, isBIP67: Bool = true) -> Data {
         var pubkeys_bytes = Data()
         for pubKey in pubKeys {
             pubkeys_bytes.append(pubKey)
@@ -25,7 +35,7 @@ extension Wally {
         return Data(bytes: script_bytes, count: written)
     }
 
-    public static func witnessProgram(from script: Data) -> Data {
+    static func witnessProgram(from script: Data) -> Data {
         var script_bytes = [UInt8](repeating: 0, count: 34) // 00 20 HASH256
         var written = 0
         script.withUnsafeByteBuffer { buf in
@@ -35,7 +45,7 @@ extension Wally {
         return Data(script_bytes)
     }
     
-    public static func addressToScript(address: String, network: Network) -> Data? {
+    static func addressToScript(address: String, network: Network) -> Data? {
         // base58 and bech32 use more bytes in string form, so description.count should be safe:
         var bytes_out = [UInt8](repeating: 0, count: address.count)
         var written = 0
@@ -45,7 +55,7 @@ extension Wally {
         return Data(bytes: bytes_out, count: written)
     }
 
-    public static func segwitAddressToScript(address: String, network: Network) -> Data? {
+    static func segwitAddressToScript(address: String, network: Network) -> Data? {
         // base58 and bech32 use more bytes in string form, so description.count should be safe:
         var bytes_out = [UInt8](repeating: 0, count: address.count)
         var written = 0

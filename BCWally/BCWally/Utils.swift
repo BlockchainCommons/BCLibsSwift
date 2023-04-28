@@ -85,7 +85,7 @@ func serialize<I>(_ n: I, littleEndian: Bool = false) -> Data where I: FixedWidt
     return d
 }
 
-public func deserialize<T, D>(_ t: T.Type, _ data: D, littleEndian: Bool = false) -> T? where T: FixedWidthInteger, D : DataProtocol {
+func deserialize<T, D>(_ t: T.Type, _ data: D, littleEndian: Bool = false) -> T? where T: FixedWidthInteger, D : DataProtocol {
     let size = MemoryLayout<T>.size
     guard data.count >= size else {
         return nil

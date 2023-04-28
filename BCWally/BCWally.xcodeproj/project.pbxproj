@@ -43,6 +43,10 @@
 		794CF50529F795450022BA51 /* WallyWIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF4ED29F795450022BA51 /* WallyWIF.swift */; };
 		794CF50929F7A70E0022BA51 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF50829F7A70E0022BA51 /* Utils.swift */; };
 		794CF50A29F7AADF0022BA51 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF50829F7A70E0022BA51 /* Utils.swift */; };
+		794CF57629FA3C8D0022BA51 /* WallyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF57529FA3C8D0022BA51 /* WallyMap.swift */; };
+		794CF57729FA3C8D0022BA51 /* WallyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF57529FA3C8D0022BA51 /* WallyMap.swift */; };
+		794CF57929FA5A1C0022BA51 /* WallyWitnessStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF57829FA5A1C0022BA51 /* WallyWitnessStack.swift */; };
+		794CF57A29FA5A1C0022BA51 /* WallyWitnessStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF57829FA5A1C0022BA51 /* WallyWitnessStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +88,8 @@
 		794CF4EC29F795440022BA51 /* WallyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WallyUtils.swift; path = BCWally/WallyUtils.swift; sourceTree = SOURCE_ROOT; };
 		794CF4ED29F795450022BA51 /* WallyWIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallyWIF.swift; sourceTree = "<group>"; };
 		794CF50829F7A70E0022BA51 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		794CF57529FA3C8D0022BA51 /* WallyMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallyMap.swift; sourceTree = "<group>"; };
+		794CF57829FA5A1C0022BA51 /* WallyWitnessStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallyWitnessStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +159,8 @@
 				794CF4E529F795440022BA51 /* WallyExtKey.swift */,
 				794CF4E329F795440022BA51 /* WallyHash.swift */,
 				794CF4E629F795440022BA51 /* WallyPSBT.swift */,
+				794CF57829FA5A1C0022BA51 /* WallyWitnessStack.swift */,
+				794CF57529FA3C8D0022BA51 /* WallyMap.swift */,
 				794CF4EB29F795440022BA51 /* WallyScript.swift */,
 				794CF4E829F795440022BA51 /* WallyTx.swift */,
 				794CF4EC29F795440022BA51 /* WallyUtils.swift */,
@@ -352,6 +360,7 @@
 				794CF4FC29F795450022BA51 /* WallyAddress.swift in Sources */,
 				794CF4F229F795450022BA51 /* WallyBase58.swift in Sources */,
 				794CF4F429F795450022BA51 /* WallyExtKey.swift in Sources */,
+				794CF57629FA3C8D0022BA51 /* WallyMap.swift in Sources */,
 				794CF50929F7A70E0022BA51 /* Utils.swift in Sources */,
 				794CF50429F795450022BA51 /* WallyWIF.swift in Sources */,
 				794CF4F029F795450022BA51 /* WallyHash.swift in Sources */,
@@ -360,6 +369,7 @@
 				794CF50029F795450022BA51 /* WallyScript.swift in Sources */,
 				794CF50229F795450022BA51 /* WallyUtils.swift in Sources */,
 				794CF4EE29F795450022BA51 /* WallyBIP39.swift in Sources */,
+				794CF57929FA5A1C0022BA51 /* WallyWitnessStack.swift in Sources */,
 				794CF4FE29F795450022BA51 /* WallyECKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +392,7 @@
 				794CF4FD29F795450022BA51 /* WallyAddress.swift in Sources */,
 				794CF50A29F7AADF0022BA51 /* Utils.swift in Sources */,
 				794CF4F329F795450022BA51 /* WallyBase58.swift in Sources */,
+				794CF57729FA3C8D0022BA51 /* WallyMap.swift in Sources */,
 				794CF4F529F795450022BA51 /* WallyExtKey.swift in Sources */,
 				794CF50529F795450022BA51 /* WallyWIF.swift in Sources */,
 				794CF4F129F795450022BA51 /* WallyHash.swift in Sources */,
@@ -390,6 +401,7 @@
 				794CF50129F795450022BA51 /* WallyScript.swift in Sources */,
 				794CF50329F795450022BA51 /* WallyUtils.swift in Sources */,
 				794CF4EF29F795450022BA51 /* WallyBIP39.swift in Sources */,
+				794CF57A29FA5A1C0022BA51 /* WallyWitnessStack.swift in Sources */,
 				794CF4FF29F795450022BA51 /* WallyECKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
