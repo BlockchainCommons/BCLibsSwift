@@ -41,21 +41,18 @@ public extension Wally {
             return result
         }
     }
+    
+    func ecPublicKeyCompress(uncompressedKey: Data) -> Data {
+        precondition(uncompressedKey.count == 65)
+        precondition(uncompressedKey[0] == 0x04)
 
-    static func ecPublicKeyCompress(data: Data) -> Data {
-        data.withUnsafeByteBuffer { inputBytes in
-            var result = Data(count: Int(EC_PUBLIC_KEY_LEN))
-            result.withUnsafeMutableByteBuffer { outputBytes in
-                precondition(
-                    wally_ec_public_key_negate(
-                        inputBytes.baseAddress,
-                        inputBytes.count,
-                        outputBytes.baseAddress,
-                        outputBytes.count
-                    ) == WALLY_OK
-                )
-            }
-            return result
+        let x = uncompressedKey[1...32]
+        let y = uncompressedKey[33...64]
+
+        if y.last! % 2 == 0 {
+            return Data([0x02]) + x
+        } else {
+            return Data([0x03]) + x
         }
     }
 }
