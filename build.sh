@@ -269,9 +269,11 @@ build_framework() (
 
   xcodebuild -project ${FRAMEWORK}/${FRAMEWORK}.xcodeproj \
     -scheme ${SCHEME} \
+    -configuration Release \
     -destination generic/platform=${XCODE_PLATFORM} \
     -archivePath "${ARCHIVE_PATH}" \
     CODE_SIGNING_ALLOWED=NO \
+    SWIFT_SERIALIZE_DEBUGGING_OPTIONS=NO \
     SDKROOT=${SDKROOT} \
     ARCHS=${ARCHS} \
     HEADER_SEARCH_PATHS=${HEADER_SEARCH_PATHS} \
